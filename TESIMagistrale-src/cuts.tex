@@ -1,0 +1,1989 @@
+\chapter{Cut constructible pieces of the two-loop $\phi+4g^+$ amplitude}	\label{ch:cuts}
+\section{Normalization of the color decomposition}
+\iffalse
+ we used the following color organization for one-loop amplitudes:
+$$
+	\mathcal{A}^{1L}(\phi;1,2,\dots,n)=g^nC\,c_\Gamma \sum_{c=1}^{\lfloor n/2 \rfloor+1} \sum_\sigma Gr_{n;c} A^{1L}_{n,c}\left(\phi;\sigma(1,2,\dots,n)\right).
+$$
+where $\lfloor x \rfloor$ is the largest integer less than or equal to $x$. The decomposition of the two-loop $\phi+$gluon amplitude 
+will be
+$$
+	\mathcal{A}^{2L}(\phi,1,2,\dots,n)=g^{n+2} c_\Gamma^2 N_C \sum_{c=1}^{\lfloor n/2 \rfloor+1} \sum_\sigma Gr_{n;c} A^{2L}_{n,c}\left(\phi;\sigma(1,2,\dots,n)\right)
+$$
+Keeping in mind that
+$$
+	Gr_{n;1}(1)=N_C \Tr\left(T^{a_1}T^{a_2}\dots T^{a_n}\right),
+$$
+the unrenormalized amplitude
+\fi
+We consider the following decomposition of the two-loop $\phi+$gluon amplitude at leading color,
+\begin{align}
+	\mathcal{A}^{2L}(\phi,1,2,\dots,n)|_{\text{leading color}}=g^{n+2} c_\Gamma^2 N_C^2 C \sum_{\sigma\in S_n/C_n} \tr\left(T^{a_{\sigma(1)}}T^{a_{\sigma(2)}}\dots T^{a_{\sigma(n)}}\right)A^{2L}_{n,1}\left(\phi;\sigma(1,2,\dots,n)\right).	\label{Cgdec}
+\end{align}
+Due to the coupling between $\phi$ and gluons, we explicitly extracted the effective constant $C$ as already done at one-loop level (\ref{phidec1l}).\\
+In this chapter, we will compute the cut-constructible pieces of $A^{2L}_{n,1}\left(\phi;1^+,2^+,3^+,4^+\right)$ which represent the main purpose of this project.
+\section{Structure of the two-loop amplitude}
+The unitarity condition of the S-matrix was expanded perturbatively in order to find the discontinuity of the two-loop amplitude (\ref{discamp}).\\
+We observe the presence of double cuts in which we have to consider the product of two sub-amplitudes respectively at tree and one-loop level. In our case with one self-dual field, we can separate the double cuts into two sectors. In the first one, we will consider a tree-level YM vertex and a one-loop sub-amplitude involving $\phi$, while in the second sector we will study the contributions of double cuts with a pure gluon interaction at one-loop level and a tree $\phi$+gluon sub-amplitude. In order to obtain the discontinuity, we have to integrate over the two-particle phase-space
+\begin{equation}
+	\int \dd\Phi_2=\int \dd^4\ell_1 \dd^4\ell_2 \ \delta^{(+)}(\ell_1^2)\delta^{(+)}(\ell_1^2)\delta^{(4)}(\ell_2-\ell_1-P_a),	\label{phase-space}
+\end{equation}
+and we will describe this contributions in terms of scalar integrals.
+In principle, at two-loop level we can also have contributions from three-particle cuts with tree-level sub-amplitudes. In the all-plus configuration, the three-particle cuts vanish, thanks to the behavior of tree-level amplitudes. We can consider the following helicity configuration of the three-particle cut in order to understand the absence of this contribution.
+\begin{equation} 
+\begin{aligned}	
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [horizontal=b to c] {
+      b [blob,label={160:\(\bullet\)},label={180:\(\bullet\hspace{0.1cm}\)},label={200:\(\bullet\)},label={[red]85:\(\hspace{-0.2cm}-\)}, label={[violet]5:\(\hspace{-0.1cm}-\)}] --  [white] db -- [white] c [blob, label={-45:\(\bullet\)}, label={0:\(\hspace{0.1cm}\bullet\)}, label={-13:\(\hspace{0.04cm}\bullet\)},label={[red]90:\(+\)}, label={[violet]5:\(\hspace{-1.75cm}+\)}], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [] -- [white] b
+        -- [gluon, half left, out=60, in=120, red] c
+        -- [gluon, half left, in=120, out=60] b ,
+       b -- [gluon, violet] c,
+      d1 [particle=\(+\)] -- [gluon] b,
+      d3 [particle=\(+\)]-- [gluon] b,
+      c -- [gluon] d4 [particle=\(+\)],
+      c -- [gluon] d6 [particle=\(+\)],
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [white] d2 ,
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.1)$) -- ($(midpoint) + (0, -2.1)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+We have to consider at least two inner gluons with negative helicity to obtain a non-trivial result from the vertex which involves only gluons. This causes the vanishing behavior of the sub-amplitude with the self-dual Higgs, indeed $A^{tree}(\phi;+,+,\dots,+,\pm)=0$.\\
+The absence of three-particle cuts shows that the reduction of the two-loop amplitude corresponds to a one-loop integral decomposition. Hence the discontinuities of the amplitude can be expressed in terms of scalar boxes, triangles and bubbles. The structure of the amplitude can be represented pictorially in the following way.
+\begin{eqnarray*}
+A^{2L}(\phi;1^+,2^+,3^+,4^+)\hspace{0.3cm}=&&\sum_i c_i\left[
+\begin{tikzpicture}[scale=0.7,baseline=(current bounding box.center)]
+  \begin{feynman}
+  	\diagram [horizontal=b to d] {
+      			a -- b
+        			--  c
+        			-- d --  a,
+			d3  -- [] b,
+			d2 -- [] b,
+      			d1 -- [] a,
+      			d4 -- [] c,
+      			d -- [] s ,
+   		 };
+  \end{feynman}
+\end{tikzpicture}\right]_i\\
+&&\\
+&&+\sum_i d_i \left[
+\begin{tikzpicture}[scale=0.5,baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=s to d] {
+      			d2 -- b -- c
+        			-- d -- b,
+      			d1 -- [] b,
+			d3  -- [] c,
+      			d4 -- [] c,
+      			d -- [] s ,
+   		 };
+	\end{feynman}
+\end{tikzpicture}
+\right]_i+\sum_i d'_i \left[\begin{tikzpicture}[scale=0.65,baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [vertical=c to d] {
+      			d2 -- b --c
+        			-- d --b,
+      			d1 -- [] b,
+			d3  -- [] b,
+      			d4 -- [] c,
+      			d -- [] s ,
+   		 };
+  	\end{feynman}
+	\end{tikzpicture}\,\right]_i\\
+	&&\\
+&&+\sum_i e_i \left[\,
+\begin{tikzpicture}[scale=0.7, transform shape, baseline=(current  bounding  box.center)]
+     \begin{feynman}
+    \vertex (x);
+    \vertex[right=of x] (y);
+    \vertex[above left=of x] (a);
+    \vertex[below left=of x] (b);
+    \vertex[above right=of y] (c);
+    \vertex[below right=of y] (d);
+    \vertex[right=of y] (e);
+    \diagram*{
+        (x) --[half left] (y),
+        (x) --[half right] (y),
+        (a) --(x),
+        (x) -- (b),
+        (y) --(c),
+        (y) --(d),
+        (y) -- (e),
+    };
+    \end{feynman}
+    \end{tikzpicture}
+\right]_i+\sum_i e'_i \left[
+\begin{tikzpicture}[scale=0.7, transform shape, baseline=(current  bounding  box.center)]
+     \begin{feynman}
+    \vertex (x);
+    \vertex[right=of x] (y);
+    \path (x) ++ (180:1.5) node[vertex] (a);
+    \path (y) ++ (-60:1.9) node[vertex] (b);
+    \path (y) ++ (-30:1.9) node[vertex] (c);
+    \path (y) ++ (30:1.9) node[vertex] (d);
+    \path (y) ++ (60:1.9) node[vertex] (e);
+    \diagram*{
+        (x) --[half left] (y),
+        (x) --[half right] (y),
+        (a) --(x),
+        (y.-60) -- (b),
+        (y.-30) --(c),
+        (y.30) --(d),
+        (y.60) -- (e),
+    };
+    \end{feynman}
+    \end{tikzpicture}
+\right]_i\\
+&&\\
+&&+\big[(d=4-2\epsilon) \text{ finite contributions}\big] + \mathcal{O}(\epsilon)
+\end{eqnarray*}
+Besides contributions proportional to the scalar integrals, in the amplitude we also have an effect due to the dimensional regularisation which can produce a finite contribution without discontinuities.\\%The expectation is that also in our case of a two-loop amplitude with the simplest helicity configuration, this missing information from unitarity-based techniques is rational.\\
+In this chapter, we will isolate the coefficients of scalar integrals, separating the discontinuities into two sectors with different perturbative levels of YM and self-dual Higgs sub-amplitudes.
+\section{Double cuts with 1L $\phi$ amplitudes and tree YM amplitudes} \label{sec:cutphi}
+In this section, we study the double cuts which factorize into the product of a one-loop $\phi+$gluon amplitude and a tree level gluon amplitude. Preliminarily, we have computed the quadruple cuts in order to isolate and extract the contributions proportional to the four-point integrals using simple calculations (see Appendix \ref{appC}). Computing the double cuts, we will find all the discontinuities of the amplitude. We will compare the box contributions obtained with the two independent computations in order to have a partial check for the correctness of double cuts.\\
+We have to compute three different double cuts to capture the discontinuities in the three channels $s_\phi, s_{\phi1}, s_{34}$.\\
+\vspace{-0.2cm}
+\noindent
+\begin{tabularx}{\linewidth}{XX}
+\begin{equation}  \tag{dcut A}
+    \begin{aligned}	\label{dcut A}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [scale=0.95, large, horizontal=b to c] {
+      b [blob] --  [white] db -- [white] c [myblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(4^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(1^+\)] -- [gluon] b,
+      d2 [particle=\(3^+\)] -- [gluon] b,
+      d3 [particle=\(2^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.2)$) -- ($(midpoint) + (0, -2.2)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+&
+\vspace{-0.2cm}
+\begin{equation} \tag{dcut B}
+    \begin{aligned}	\label{dcut B}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [large, horizontal=b to c] {
+      b [blob] --  [white] db -- [white] c [myblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(4^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(2^+\)] -- [gluon] b,
+      d3 [particle=\(3^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d2 [particle=\(1^+\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.1)$) -- ($(midpoint) + (0, -2.1)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+\end{tabularx}
+
+\vspace{-2.1cm}
+\newcolumntype{b}{>{\hsize=2.3\hsize}X}
+\newcolumntype{s}{>{\hsize=.45\hsize}X}
+\begin{tabularx}{\textwidth}{sbs}
+&
+ \begin{equation} \tag{dcut C}
+\text{\hspace{1.1cm}}\,\,
+\begin{aligned}	\label{dcut C}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [scale=1, transform shape, large, horizontal=b to c] {
+      b [blob] --  [white] db -- [white] c [myblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(4^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(3^+\)] -- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d3 [particle=\(1^+\)],
+      c -- [gluon] d2 [particle=\(2^+\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 1.5)$) -- ($(midpoint) + (0, -1.5)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+ \end{equation} &
+ \end{tabularx}
+Due to the colorless of the self-dual Higgs, we are also interested in configurations obtained through a cyclic permutation of gluons. The last possible channel with a different structure is characterised by a single external gluon (for example, the fourth gluon) on the left-hand side and it does not contribute to the discontinuities of the amplitude (indeed $s_4$ vanishes).\\
+We have considered only gluons circulating in the loop since we want to extract two-loop QCD corrections. Furthermore, the other possible particles in our model, the complex scalars $\phi$ and $\phi^\dagger$, can be coupled in a diagram only through an effective vertex with coupling $C$. Considering $C$ and $g$ as independent parameters, the double cuts with inner scalar legs will be associated to a different amplitude in comparison with (\ref{Cgdec}) which is proportional to $Cg^{n+2}$.\\%\footnote{Since in the SM the effective interaction implies a quark loop, double cuts of a gluon and a scalar field have the same perturbative order of our amplitude if we consider tree-level sub-amplitudes.  These scalar contributions should be useful for the renormalisation of the Wilson coefficient, but they affect a different type of amplitude. For this reason, we focus on the double cuts with only inner gluon propagators because they represent the full contribution for the discontinuities of (\ref{Cgdec}).}\\
+
+In each double cut, we will reduce the product of the sub-amplitudes in terms of scalar integrals considering the possible helicity configuration of the inner gluons. With these computations, we will extract the coefficients of boxes, triangles and bubbles which characterised the discontinuities of the two-loop amplitude in this sector with a one-loop $\phi$+gluon sub-amplitude.
+\subsection{Double cut in $s_{\phi}$ channel}
+Let us study the double cut represented by the diagram (\ref{dcut A}). In order to evaluate the double cut, we have to compute the following object,
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut A}}&=\sum_{\lambda_1=\pm}\sum_{\lambda_2=\pm}A^{tree}(1^+,2^+,3^+,4^+,\ell_1^{\lambda_1},(-\ell_2)^{\lambda_2})A^{1L}(\phi;\ell_2^{-\lambda_2},(-\ell_1)^{-\lambda_1})\\
+	&=A^{tree}(1^+,2^+,3^+,4^+,\ell_1^{-},(-\ell_2)^{-})A^{1L}(\phi;\ell_2^{+},(-\ell_1)^{+})\\
+	&=A^{1L}(\phi;1^+,2^+,3^+,4^+)\frac{\langle \ell_1\ell_2\rangle \langle 41 \rangle}{\langle \ell_2 1\rangle \langle \ell_1 4\rangle}.
+\end{align*}
+We reconstruct the propagators at the denominator intending to write it in terms of scalar integrals,
+\begin{align*}
+	\frac{A^{2L}_{int}|_{\text{dcut A}}}{A^{1L}(\phi;1^+,2^+,3^+,4^+)}&=\frac{\langle \ell_1\ell_2\rangle \langle 41 \rangle}{\langle \ell_2 1\rangle \langle \ell_1 4\rangle}=\frac{-\frac{1}{2}\tr(\slashed{p}_1\slashed{p}_4\slashed{\ell}_1\slashed{\ell}_2)-\frac{1}{2}\tr_5(p_1{p}_4{\ell}_1{\ell}_2)}{(\ell_2-p_1)^2(\ell_1+p_4)^2}.
+\end{align*}
+Let us focus our attention on the term with $\tr_5$,
+\begin{align}
+	\frac{\tr_5({p}_1{p}_4{\ell}_1{\ell}_2)}{(\ell_2-p_1)^2(\ell_1+p_4)^2}&=\frac{\tr_5({p}_1{p}_4{\ell}_1{P}_a)}{(\ell_1+P-p_1)^2(\ell_1+p_4)^2} \label{eq:dcuttr5}
+\end{align}
+where we introduce the momentum $P_a=p_1+p_2+p_3+p_4=-p_\phi$.\\
+The unitarity procedure requires the integration over the phase-space (\ref{phase-space}). Then we can perform the substitution $\ell_1\rightarrow -\ell_1-p_4-P_a+p_1$ in the integrand (\ref{eq:dcuttr5}). Using the antisymmetry property of $\gamma_5$, we obtain
+\begin{align*}
+	\int \dd\Phi_2 \frac{\tr_5({p}_1{p}_4{\ell}_1{\ell}_2)}{(\ell_2-p_1)^2(\ell_1+p_4)^2}&= \int \dd\Phi_2  \frac{\tr_5({p}_1{p}_4(-{\ell}_1-p_4-P_a+p_1){P}_a)}{(-\ell_1-p_4)^2(-\ell_1-P_a+p_1)^2}\\
+	&=\int \dd\Phi_2  \frac{-\tr_5({p}_1{p}_4{\ell}_1{P}_a)}{(\ell_1+p_4)^2(\ell_1+P_a-p_1)^2}=- \int \dd\Phi_2 \frac{\tr_5({p}_1{p}_4{\ell}_1{\ell}_2)}{(\ell_2-p_1)^2(\ell_1+p_4)^2}.
+\end{align*}
+This computation shows that the $\tr_5$ contribution represents a spurious term. We are left with the following contribution,
+\begin{align*}
+	\frac{A^{2L}_{int}|_{\text{dcut A}}}{A^{1L}(\phi;1^+,2^+,3^+,4^+)}
+	%&=\frac{-\frac{1}{2}\tr(\slashed{p}_1\slashed{p}_4\slashed{\ell}_1\slashed{\ell}_2)}{(\ell_2-p_1)^2(\ell_1+p_4)^2}+\text{s.t.}=\frac{-\frac{1}{2}\tr(\slashed{p}_1\slashed{p}_4\slashed{\ell}_1\slashed{P}_a)}{(\ell_2-p_1)^2(\ell_1+p_4)^2}+\text{s.t.}=\\
+%	&=-\frac{2(p_1\cdot p_4)(\ell_1\cdot P_a)-2(p_1\cdot \ell_1)(p_4 \cdot P_a)+2(p_4\cdot \ell_1)(p_1 \cdot P_a)}{(\ell_2-p_1)^2(\ell_1+p_4)^2}+\text{s.t.}\\
+%	&=-\frac{(p_1\cdot p_4)(\ell_2^2-P_a^2)-2(p_1\cdot \ell_2-p_1\cdot P_a)(p_4 \cdot P_a)+2(p_4\cdot \ell_1)(p_1 \cdot P_a)}{(\ell_2-p_1)^2(\ell_1+p_4)^2}+\text{s.t.}\\
+	&=\frac{(p_1\cdot p_4)P_a^2-2(p_1\cdot P_a)(p_4\cdot P_a)}{(\ell_2-p_1)^2(\ell_1+p_4)^2}-\frac{p_4\cdot P_a}{(\ell_1+p_4)^2}-\frac{p_1\cdot P_a}{(\ell_2-p_1)^2}+\text{s.t.}
+\end{align*}
+where $"\text{s.t.}"$ implies the presence of spurious terms which vanish after the phase-space integration.\newpage
+We represent the result diagrammatically
+\begin{eqnarray*}	
+&&\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+  \begin{feynman}
+    \diagram [baseline=(b.base),horizontal=b to c] {
+      b [blob] --  [white] db -- [white] c [myblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(2^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(3^+\)] -- [gluon] b,
+      d2 [particle=\(1^+\)] -- [gluon] b,
+      d3 [particle=\(4^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 1.5)$) -- ($(midpoint) + (0, -1.5)$);
+  \end{feynman}
+\end{tikzpicture}
+\rightarrow C^A_4	\left[
+         \begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=b to d] {
+      			a -- [momentum={\tiny\(\ell_2-p_1\)}] b
+        			-- [momentum={\tiny\(\ell_1+p_4\)}] c
+        			-- [momentum={\tiny\(\ell_1\)}] d -- [momentum={\tiny\(\ell_2\)}] a,
+			d3  [particle=\(3\)]-- [] b,
+			d2 [particle=\(2\)]-- [] b,
+      			d1 [particle=\(1\)]-- [] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		\draw [dashed] ($(midpoint) + (0, 1.5)$) -- ($(midpoint) + (0, -1.5)$);
+  	\end{feynman}
+	\end{tikzpicture}
+	\right]+\\
+	&&\hspace{2.5cm}
+	+ C^A_{3,1} \left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [vertical=c to d] {
+      			d2 [particle=\(4\)]-- b -- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_2\)}] d -- [momentum={[label distance=-3.5pt]\tiny\(\ell_2-p_1\)}] b,
+      			d1 [particle=\(3\)]-- [] b,
+			d3  [particle=\(2\)]-- [] b,
+      			d4 [particle=\(\phi\)]-- [] c,
+      			d -- [] s [particle=\(1\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.5!(d)$);
+		\coordinate (midpoint2) at ($(c)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint2) + (1, -0.25)$) to[out=180, in=-90] ($(midpoint) + (-0.25, 1.75)$);
+  	\end{feynman}
+	\end{tikzpicture}	\right]
+	+ C^A_{3,2} \left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [vertical=c to d] {
+      			d2 [particle=\(3\)]-- b -- [momentum={[label distance=-3.5pt]\tiny\(\ell_1+p_4\)}] c
+        			-- [momentum={\tiny\(\ell_1\)}] d -- [momentum={\tiny\(\ell_2\)}] b,
+      			d1 [particle=\(2\)]-- [] b,
+			d3  [particle=\(1\)]-- [] b,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.5!(d)$);
+		\coordinate (midpoint2) at ($(c)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint2) + (1, 0.25)$) to[out=180, in=90] ($(midpoint) + (-0.25, -1.15)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]
+ \end{eqnarray*}
+ where the coefficients in front of scalar integrals are
+ \begin{align*}
+ 	C^A_4&\coloneqq A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[(p_1\cdot p_4) P_a^2-2(p_1\cdot P) (p_4 \cdot P_a)\right]\\
+	&=\frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[s_{14}s_{\phi}-(s_{1\phi}-s_{\phi})(s_{\phi4}-s_\phi)\right]\\
+	C^A_{3,1}&\coloneqq A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[-p_1\cdot P_a\right]=\frac{1}{2}(s_{\phi1}-s_\phi)A^{1L}(\phi;1^+,2^+,3^+,4^+)\\
+	C^A_{3,2}&\coloneqq A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[-p_4\cdot P_a\right]=\frac{1}{2}(s_{4\phi}-s_\phi)A^{1L}(\phi;1^+,2^+,3^+,4^+).
+ \end{align*}
+ In a more compact form, we have
+ \begin{align*}
+ 	A^{2L}|_{\text{dcut A}}\equiv\int \dd \Phi_2 \ A^{2L}_{int}|_{\text{dcut A}}=&C^A_4 \left.I_4^{2me}(s_{\phi4},s_{1\phi};m_1^2=s_{23},m_2^2=s_\phi)\right|_{s_{\phi}\text{-cut}}\\
+	&+C^A_{3,1}I_3^{2m}(s_{1\phi},s_\phi)|_{s_{\phi}\text{-cut}}+C^A_{3,2}I_3^{2m}(s_{\phi4},s_\phi)|_{s_{\phi}\text{-cut}}
+ \end{align*}
+where we have introduced the easy two-mass box and the three-point integral with two massive vertices whose expressions can be found in App. [\ref{appB}].\\
+ %$$
+ %	I_3^{2m}(m_1^2,m_2^2)=\frac{1}{\epsilon^2}\frac{\left(-m_1^2\right)^{-\epsilon}-\left(-m_2^2\right)^{-\epsilon}}{(-m_1^2)-(-m_2^2)}.
+ %$$
+% As expected from quadruple cuts, we did not find in the $s_\phi$ channel a contribution proportional to the hard two-mass box and we can check the correctness of the coefficient in front of the easy two-mass four-point integral using the property $P_a=-p_{\phi}$:
+%\begin{align*}
+%	C^A_4&=A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[(p_1\cdot p_4) P^2-2(p_1\cdot P) (p_4 \cdot P)\right]\\
+%	&=A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[\frac{1}{2}s_{14}s_\phi-2(p_1\cdot p_\phi)(p_4 \cdot p_\phi)\right]\\
+%	&=\frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[s_{14}s_{\phi}-(s_{1\phi}-s_{\phi})(s_{\phi4}-s_\phi)\right]=d_1^{(2me)}.
+%\end{align*}
+The coefficient $C^A_4$ is consistent with the result from quadruple cuts (\ref{eq:2meboxcoef}).
+Investigating the amplitude using the double cut, we were able to extract more information: we obtained the coefficients of three-point two-mass integrals and the absence of other triangles or bubbles.
+\subsection{Double cut in $s_{\phi1}$ channel}	\label{sec:dcutB}
+The next double cut concerns the $s_{\phi1}$ channel (\ref{dcut B}).
+The discontinuities along this channel are related to the phase-space integration of the following quantity.
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut B}}&=\sum_{\lambda_1=\pm}\sum_{\lambda_2=\pm}A^{tree}(2^+,3^+,4^+,\ell_1^{\lambda_1},(-\ell_2)^{\lambda_2})A^{1L}(\phi;1^+,\ell_2^{-\lambda_2},(-\ell_1)^{-\lambda_1})\\
+	&=A^{tree}(2^+,3^+,4^+,\ell_1^{-},(-\ell_2)^{-})A^{1L}(\phi;1^+,\ell_2^{+},(-\ell_1)^{+})\\
+	&=\frac{-2m_H^4}{\langle 23 \rangle\langle 34 \rangle}\frac{\langle \ell_1\ell_2 \rangle^2}{\langle 1 \ell_1 \rangle \langle 1 \ell_2 \rangle \langle 2 \ell_2 \rangle\langle 4 \ell_1 \rangle}
+\end{align*}
+In this step of the calculation, we find the Schouten identity very useful in reducing the complexity of the object.
+%We can rewrite this property in the following way:
+%$$
+%	\frac{\langle \lambda a \rangle}{\langle \lambda b \rangle \langle \lambda c \rangle}=\frac{\langle ba \rangle}{\langle bc \rangle \langle \lambda b \rangle}+\frac{\langle ac \rangle}{\langle bc\rangle\langle \lambda c \rangle}
+%$$
+In our case we apply the substitution
+\begin{align*}
+	\frac{\langle\ell_1 \ell_2 \rangle}{\langle 1\ell_1 \rangle \langle 4\ell_1 \rangle}&=\frac{1}{\langle 14 \rangle}\left(\frac{\langle 1 \ell_2 \rangle}{\langle \ell_1 1\rangle}+\frac{\langle \ell_2 4 \rangle}{\langle \ell_1 4 \rangle}\right).
+\end{align*}
+and a similar expression holds for the reduction of spinors with $\ell_2$ at denominator. We obtain
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut B}}&=A^{1L}(\phi;1^+,2^+,3^+,4^+)(-1+\Sigma_1+\Sigma_2+\Sigma_3)
+\end{align*}
+where
+\begin{align*}
+	\Sigma_1\coloneqq\frac{\langle 1 \ell_1 \rangle \langle 4\ell_2 \rangle}{\langle \ell_2 1 \rangle \langle \ell_1 4 \rangle},\ \ \ \ \Sigma_2\coloneqq\frac{\langle \ell_1 2 \rangle \langle \ell_2 1 \rangle}{\langle \ell_2 2 \rangle \langle \ell_1 1 \rangle},\ \ \ \ \Sigma_3\coloneqq\frac{\langle \ell_1 2 \rangle \langle 4 \ell_2 \rangle}{\langle \ell_2 2 \rangle\langle \ell_1 4 \rangle}.
+\end{align*}
+We can easily simplify every addend reconstructing the propagators at the denominator. For example, let us focus on the term
+$$
+	 \Sigma_1=\frac{\langle 1 \ell_1 4] \langle 4 \ell_2 1]}{\langle 1 \ell_2 1]\langle 4 \ell_14]}=\frac{\tr_-\left({p}_1{\ell}_1{p}_4{\ell}_2\right)}{(\ell_2+p_1)^2(\ell_1+p_4)^2}.
+$$
+Avoiding terms which vanish after the integration, we obtain
+\begin{align*}
+	\Sigma_1&=1-\frac{\frac{1}{2}\tr\left(\slashed{p}_1\slashed{p}_4\slashed{\ell}_1\slashed{\ell}_2\right)}{(\ell_2+p_1)^2(\ell_1+p_4)^2}+\text{s.t.}=1-\frac{\frac{1}{2}\tr\left(\slashed{p}_1\slashed{p}_4\slashed{\ell}_1\slashed{P}_b\right)}{(\ell_2+p_1)^2(\ell_1+p_4)^2}+\text{s.t.}
+\end{align*}
+where in the last passage we introduced $P_b=p_2+p_3+p_4=-p_1-p_\phi$ and we used the on-shell condition $\ell_2^2=0$. 
+Expanding the trace of four Gamma matrices, we have
+$$
+	\Sigma_1=1-\frac{2(p_1\cdot P_b)(p_4 \cdot P_b)-(p_1\cdotp_4)P_b^2}{(\ell_2+p_1)^2(\ell_1+p_4)^2}+\frac{p_4\cdot P_b}{(\ell_1+p_4)^2}-\frac{p_1\cdot P_b}{(\ell_2+p_1)^2}+\text{s.t.}.
+$$
+Similarly, one can compute the other two addends,
+\begin{align*}
+	\Sigma_2&=1-\frac{2(p_2\cdot P_b)(p_1 \cdot P_b)-(p_1\cdot p_2)P_b^2}{(\ell_2-p_2)^2(\ell_1-p_1)^2}-\frac{p_1\cdot P_b}{(\ell_1-p_1)^2}+\frac{p_2\cdot P_b}{(\ell_2-p_2)^2}+\text{s.t.},\\
+	\Sigma_3&=-1-\frac{2(p_2\cdot P_b)(p_4 \cdot P_b)-(p_2\cdot p_4)P_b^2}{(\ell_2-p_2)^2(\ell_1+p_4)^2}-\frac{p_4\cdot P_b}{(\ell_1+p_4)^2}-\frac{p_2\cdot P_b}{(\ell_2-p_2)^2}+\text{s.t.}
+\end{align*}
+Summing the contributions, we find
+\begin{align*}
+	A^{2L}|_{\text{dcut B}}\int \dd \Phi_2 A^{2L}_{int}|_{\text{dcut B}}=&C^B_{4,1} I_4^{2me}(s_{\phi4},s_{1\phi};s_{23},s_\phi)|_{s_{\phi1}\text{-cut}}+C^B_{4,2} I_4^{2me}(s_{1\phi},s_{\phi2};s_{34},s_\phi)|_{s_{\phi1}\text{-cut}}+\\
+	&C^B_{4,3} I_4^{1m}(s_{23},s_{34};s_{1\phi})|_{s_{\phi1}\text{-cut}}+2C^B_{3} I_3^{2m}(s_{1\phi},s_\phi)|_{s_{\phi1}\text{-cut}}	\numthis \label{eq:risdcB}
+\end{align*}
+with the coefficients
+\begin{align*}
+	C^B_{4,1}&\coloneqq \frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[s_{14}s_{\phi}-(s_{1\phi}-s_\phi)(s_{4\phi}-s_{\phi})\right],\\
+	C^B_{4,2}&\coloneqq \frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[s_{12}s_{\phi}-(s_{1\phi}-s_\phi)(s_{2\phi}-s_{\phi})\right],\\
+	C^B_{4,3}&\coloneqq -\frac{1}{2}s_{23}s_{34}A^{1L}(\phi;1^+,2^+,3^+,4^+),\\
+	C^B_{3}&\coloneqq A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[-p_1\cdot P_b\right]=\frac{1}{2}(s_{\phi1}-s_{\phi})A^{1L}(\phi;1^+,2^+,3^+,4^+).
+\end{align*}
+We have two easy boxes with only a different organization of legs. Indeed $\phi$ is unordered, therefore investigating the $s_{\phi1}$ channel we find two four-point contributions with different orders, but with the same relative positions between gluons.
+\begin{eqnarray*}
+	 I_4^{2me}(s_{\phi4},s_{1\phi};s_{23},s_\phi)|_{s_{\phi1}\text{-cut}}=
+	 \begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=b to d] {
+      			a -- [momentum={\tiny\(\ell_2\)}] b
+        			-- [momentum={\tiny\(\ell_1+p_4\)}] c
+        			-- [momentum={\tiny\(\ell_1\)}] d -- [momentum={\tiny\(\ell_2+p_1\)}] a,
+			d3  [particle=\(3\)]-- [] b,
+			d2 [particle=\(2\)]-- [] b,
+      			d1 [particle=\(1\)]-- [] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}
+	\\
+	I_4^{2me}(s_{1\phi},s_{\phi2};s_{34},s_\phi)|_{s_{\phi1}\text{-cut}}=
+	 \begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=b to d] {
+      			a -- [momentum={\tiny\(\ell_2-p_2\)}] b
+        			-- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_1-p_1\)}] d -- [momentum={\tiny\(\ell_2\)}] a,
+			d3  [particle=\(4\)]-- [] b,
+			d2 [particle=\(3\)]-- [] b,
+      			d1 [particle=\(2\)]-- [] a,
+      			d4 [particle=\(1\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		\draw [dashed] ($(midpoint) + (0.75, -1.3)$) -- ($(midpoint) + (-1.6, 1.2)$);
+  	\end{feynman}
+	\end{tikzpicture}
+\end{eqnarray*}
+The coefficients $C^B_{4,1}$ and $C^B_{4,2}$ are consistent with the results from quadruple cuts (\ref{eq:2meboxcoef}).\\
+In this cut, we also observe the presence of a contribution proportional to the one-mass box
+$$
+	 I_4^{1m}(s_{23},s_{34};s_{1\phi})|_{s_{\phi1}\text{-cut}}=
+	 \begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=b to d] {
+      			a -- [momentum={\tiny\(\ell_1\)}] b
+        			-- [momentum={\tiny\(\ell_2\)}] c
+        			-- [momentum={\tiny\(\ell_2-p_2\)}] d -- [momentum={\tiny\(\ell_1+p_4\)}] a,
+			d3  [particle=\(1\)]-- [] b,
+			d2 [particle=\(\phi\)]-- [] b,
+      			d1 [particle=\(4\)]-- [] a,
+      			d4 [particle=\(2\)]-- [] c,
+      			d -- [] s [particle=\(3\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.25!(d)$);
+   		\draw [dashed] ($(midpoint) + (0, -1.5)$) -- ($(midpoint) + (0, 1.5)$);
+  	\end{feynman}
+	\end{tikzpicture}
+$$
+which cannot be seen studying the double cut in the $s_\phi$ channel. The coefficient corresponds to the result (\ref{eq:d11m}) from the quadruple cut for the one-mass box.\\
+
+From the double cuts we are able to extract information about triangles and bubbles. We observe that the only non-vanishing three-point contribution in this channel is $I_3^{2m}(s_{1\phi},s_\phi)$ which comes from the following two diagrams.
+$$
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [scale=0.9,vertical=c to d] {
+      			d2 [particle=\(4\)]-- b -- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_2+p_1\)}] d -- [momentum={\tiny\(\ell_2\)}] b,
+      			d1 [particle=\(3\)]-- [] b,
+			d3  [particle=\(2\)]-- [] b,
+      			d4 [particle=\(\phi\)]-- [] c,
+      			d -- [] s [particle=\(1\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint) + (0, -1.25)$) to($(midpoint) + (0, 1.75)$);
+  	\end{feynman}
+	\end{tikzpicture}
+	\hspace{1cm}
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [scale=0.9,vertical=c to d] {
+      			d2 [particle=\(4\)]-- b -- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_1-p_1\)}] d -- [momentum={\tiny\(\ell_2\)}] b,
+      			d1 [particle=\(3\)]-- [] b,
+			d3  [particle=\(2\)]-- [] b,
+      			d4 [particle=\(1\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint) + (0, -1.25)$) to($(midpoint) + (0, 1.75)$);
+  	\end{feynman}
+	\end{tikzpicture}
+$$
+These two equivalent contributions proportional to the three-point integral are related to the switch of the legs $\phi$ and $1$. Although the topology of these contributions is not the same, the scalar integrals can be mapped in each other through a simple change of variables: for this reason, we collect together the two objects.\\
+Obviously the other triangle $I_3^{2m}(s_{4\phi},s_\phi)$, detected using the first double cut, cannot be obtained in the $s_{\phi1}$ channel. However, using the present double cut, we could expect other three-point contributions, for example in the intermediate steps we observe the presence of terms like the following which emerges in $\Sigma_1$,
+\begin{eqnarray*}
+	\frac{p_4\cdot P_b}{(\ell_1+p_4)^2} \rightarrow (p_4\cdot P_b)\left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [scale=0.7,horizontal=s to d] {
+      			d2 [particle=\(\phi\)]-- b -- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_1-p_1\)}] d -- [momentum={\tiny\(\ell_2\)}] b,
+      			d1 [particle=\(1\)]-- [] b,
+			d3  [particle=\(2\)]-- [] c,
+      			d4 [particle=\(3\)]-- [] c,
+      			d -- [] s [particle=\(4\)],
+   		 };
+    		\coordinate (midpoint2) at ($(b)!0.5!(d)$);
+		\coordinate (midpoint) at ($(c)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint2) + (1.5, -0.55)$) to[out=180, in=-90] ($(midpoint) + (-0.35, 1.65)$);
+  	\end{feynman}
+	\end{tikzpicture}\right].
+\end{eqnarray*}
+The same contribution with an opposite kinematical coefficient comes from $\Sigma_3$, so there is no contribution proportional to $I_3^{2m}(s_{23},s_{\phi1})$ in the amplitude. The same fact holds for the integral $I_{3}^{2m}(s_{34},s_{\phi1})$ which appears in intermediate steps, but vanishes in the sum. In conclusion we observe simplifications so that in the result (\ref{eq:risdcB}) three-point contributions with a $s_{\phi1}$ vertex are absent.\\
+We end pointing out that in $s_{\phi1}$ channel the double cut does not show bubble contributions.
+\subsection{Double cut in $s_{34}$ channel}
+Using Schouten identity in the first step of the double cut in $s_{\phi1}$ channel, we were able to reduce the amplitude in terms of boxes, triangles and (absent) bubbles.\\
+We want to use the same method for the double cut in $s_{34}$ channel (\ref{dcut C}).
+We have to compute
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut C}}&=\sum_{\lambda_1=\pm}\sum_{\lambda_2=\pm}A^{tree}(3^+,4^+,\ell_1^{\lambda_1},(-\ell_2)^{\lambda_2})A^{1L}(\phi;1^+,2^+,\ell_2^{-\lambda_2},(-\ell_1)^{-\lambda_1})\\
+	&=A^{tree}(3^+,4^+,\ell_1^{-},(-\ell_2)^{-})A^{1L}(\phi;1^+,2^+,\ell_2^{+},(-\ell_1)^{+})\\
+	%&=\frac{-2m_H^4}{\langle 12 \rangle\langle 34 \rangle}\frac{\langle \ell_2 \ell_1 \rangle}{\langle \ell_2 3 \rangle  \langle \ell_2 2 \rangle}\frac{ \langle \ell_1\ell_2 \rangle}{\langle \ell_1 4 \rangle\langle \ell_1 1\rangle}\\
+	%&=\frac{-2m_H^4}{\langle 12 \rangle\langle 23 \rangle\langle 34 \rangle\langle 41 \rangle}\left(\frac{\langle 2\ell_1 \rangle}{\langle \ell_2 2 \rangle}+\frac{\langle \ell_1 3 \rangle}{\langle \ell_2 3 \rangle}\right)\left(\frac{\langle 4 \ell_2 \rangle}{\langle \ell_1 4 \rangle}+\frac{\langle \ell_2 1 \rangle}{\langle \ell_1 1 \rangle}\right)\\
+	&=A^{1L}(\phi;1^+,2^+,3^+,4^+)\left(\Sigma'_1+\Sigma'_2+\Sigma'_3+\Sigma'_4\right)
+\end{align*}
+where
+\begin{align*}
+	\Sigma'_1=\frac{\langle 2 \ell_1 \rangle\langle 4 \ell_2 \rangle}{\langle\ell_2 2\rangle\langle \ell_1 4 \rangle},\ \ \ \ \ \Sigma'_2=\frac{\langle 2 \ell_1 \rangle\ell_2 1 \rangle}{\langle\ell_2 2\rangle\langle \ell_1 1 \rangle},\\
+	\Sigma'_3=\frac{\langle \ell_1 3 \rangle\langle 4 \ell_2 \rangle}{\langle\ell_2 3\rangle\langle \ell_1 4 \rangle}, \ \ \ \ \ 
+	\Sigma'_4=\frac{\langle \ell_1 3 \rangle\langle \ell_2 1 \rangle}{\langle\ell_2 3\rangle\langle \ell_1 1 \rangle}.
+\end{align*}
+Reconstructing the propagators and using trace identities, we can expand $\Sigma'_i$,
+\begin{align*}
+	\Sigma'_1&=1-\frac{2(p_2\cdot P_c)(p_4\cdot P_c)-(p_2\cdot p_4)P_c^2}{(\ell_2+p_2)^2(\ell_1+p_4)^2}+\frac{p_4\cdot P_c}{(\ell_1+p_4)^2}-\frac{p_2\cdot P_c}{(\ell_2+p_2)^2}+\text{s.t.},\\
+	\Sigma'_2&=-1-\frac{2(p_2\cdot P_c)(p_1\cdot P_c)-(p_1\cdot p_2)P_c^2}{(\ell_2+p_2)^2(\ell_1-p_1)^2}+\frac{p_1\cdot P_c}{(\ell_1-p_1)^2}+\frac{p_2\cdot P_c}{(\ell_2+p_2)^2}+\text{s.t.},\\
+	\Sigma'_3&=-1-\frac{2p_3\cdot p_4}{(\ell_2-p_3)^2},\\
+	\Sigma'_4&=1-\frac{2(p_1\cdot P_c)(p_3\cdot P_c)-(p_1\cdot p_3)P_c^2}{(\ell_2-p_3)^2(\ell_1-p_1)^2}-\frac{p_1\cdot P_c}{(\ell_1-p_1)^2}+\frac{p_3\cdot P_c}{(\ell_2-p_3)^2}+\text{s.t.},
+\end{align*}
+where we introduced $P_c=p_3+p_4=-p_\phi-p_1-p_2$.\\
+$\Sigma'_1$ and $\Sigma'_4$ produce one-mass four-point contributions and triangles, while $\Sigma'_2$ shows the $s_{34}$-cut of an easy two-mass box $I_4^{2me}(s_{\phi1},s_{\phi2};s_{34},s_{\phi})$ in addition to three-point integrals with one uncut propagator.\\
+The addend $\Sigma'_3$ brings out a different structure. For this reason, let us show the calculation explicitly to demonstrate the interesting simplification. After some simple spinor algebra, it yields
+\begin{align*}
+	\Sigma'_3&=-\frac{\langle 3 \ell_1 4]\langle 4 \ell_2 3]}{\langle 3 \ell_2 3]\langle 4 \ell_1 4]}%=\frac{\tr_-\left(\slashed{p}_3\slashed{\ell}_1\slashed{p}_4\slashed{\ell}_2\right)}{(\ell_2+p_3)^2(\ell_1+p_4)^2}=-1+\frac{\tr_-\left(\slashed{p}_3\slashed{p}_4\slashed{\ell}_1\slashed{\ell}_2\right)}{(\ell_2+p_3)^2(\ell_1+p_4)^2}\\
+	%&=-1+\frac{\Tr_-\left(\slashed{p}_3\slashed{p}_4\slashed{\ell}_1\slashed{P}_c\right)}{(\ell_2+p_3)^2(\ell_1+p_4)^2}=-1+\frac{\frac{1}{2}\Tr\left(\slashed{p}_3\slashed{p}_4\slashed{\ell}_1\slashed{P}_c\right)}{(\ell_2+p_3)^2(\ell_1+p_4)^2}\\
+	=-1+\frac{2(p_3\cdot P_c)(p_4\cdot P_c)-(p_{3}\cdot p_4)P_c^2}{(\ell_2+p_3)^2(\ell_1+p_4)^2}-\frac{p_4\cdot P_c}{(\ell_1+p_4)^2}+\frac{p_3\cdot P_c}{(\ell_2+p_3)^2}.
+\end{align*}
+Remembering that $P_c=p_3+p_4=\ell_2-\ell_1$, the second term vanishes and the other two triangular contributions sum together:
+\begin{align*}
+	\Sigma'_3&=-1-\frac{p_4\cdot p_3}{(\ell_2-P_c+p_4)^2}+\frac{p_3\cdot p_4}{(\ell_2+p_3)^2}=-1-\frac{p_4\cdot p_3}{(\ell_2-p_3)^2}+\frac{p_3\cdot p_4}{(\ell_2+p_3)^2}=-1-\frac{p_3\cdot p_4}{(\ell_2-p_3)^2}.
+\end{align*}
+Knowing the expression for $\Sigma'_i$, we can compute the resulting discontinuities in this channel:
+\begin{align*}
+	A^{2L}|_{\text{dcut C}}=\int\dd\Phi_2 \, A^{2L}_{int}|_{\text{dcut C}} = &C^C_{4,1}I_4^{1m}(s_{23},s_{34};s_{1\phi})|_{s_{34}\text{-cut}}+C^C_{4,2}I_4^{2me}(s_{1\phi},s_{\phi2};s_{34},s_{\phi})|_{s_{34}\text{-cut}}\\*
+	&+C^C_{4,3}I_4^{1m}(s_{34},s_{41};s_{2\phi})|_{s_{34}\text{-cut}} 	\numthis \label{eq:doublecutcres}
+\end{align*}
+where 
+\begin{align*}
+	C^C_{4,1}&=A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[(p_2\cdot p_4)P_c^2-2(p_2\cdot P_c)(p_4\cdot P_c) \right]\\
+	&=-\frac{1}{2}s_{23}s_{34}A^{1L}(\phi;1^+,2^+,3^+,4^+),\\
+	C^C_{4,2}&=A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[(p_1\cdot p_2)P_c^2-2(p_2\cdot P_c)(p_1\cdot P_c))\right]\\
+	&=\frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[s_{12}s_\phi-(s_{1\phi}-s_{\phi})(s_{4\phi}-s_\phi)\right],\\
+	C^C_{4,3}&=A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[(p_3\cdot p_1)P_c^2-2(p_3\cdot P_c)(p_1\cdot P_c) \right]\\
+	&=-\frac{1}{2}s_{34}s_{41}A^{1L}(\phi;1^+,2^+,3^+,4^+).
+\end{align*}
+These coefficients are consistent with the results from quadruple cut investigations.\\
+Looking at the equation (\ref{eq:doublecutcres}), we observe a curious simplicity due to large cancellations in the sum $\Sigma'_1+\Sigma'_2+\Sigma'_3+\Sigma'_4$. We observe the absence of constant terms, which represent bubbles in a double cut computation. We also see that some three-point structures which emerge in the intermediate steps vanish in the final result.
+\subsection{Summary of the results}
+Computing the double cut in the $s_\phi$ channel, we found the following terms,
+\begin{align*}
+	\frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[ \left(s_{14}s_\phi-(s_{1\phi}-s_\phi)(s_{\phi4}-s_\phi)\right)I_4^{2me}(s_{\phi4},s_{1\phi};s_{23},s_\phi)\right.\\
+	\left.+(s_{\phi1}-s_{\phi})I_3^{2m}(s_{1\phi},s_{\phi})+(s_{4\phi}-s_{\phi})I_3^{2m}(s_{4\phi},s_{\phi})\right].
+\end{align*}
+By studying the second channel $s_{\phi1}$, we were able to investigate the following contributions for the two-loop amplitude,
+\begin{align*}
+	\frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[\left(s_{14}s_\phi-(s_{1\phi}-s_\phi)(s_{4\phi}-s_\phi)\right)I_4^{2me}(s_{\phi4,s_{1\phi}};s_{23},s_{\phi})\right.\\
+	\left.+\left(s_{12}s_\phi-(s_{1\phi}-s_\phi)(s_{2\phi}-s_\phi)\right)I_4^{2me}(s_{\phi2},s_{1\phi};s_{34},s_{\phi})\right.\\
+	\left. -s_{23}s_{34} I_4^{1m}(s_{23},s_{34};s_{1\phi})+2(s_{\phi1}-s_\phi)I_3^{2m}(s_{1\phi},s_\phi)\right].
+\end{align*}
+While in the last double cut we obtained the following discontinuities written in terms of scalar integrals,
+\begin{align*}
+	\frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[\left(s_{12}s_\phi-(s_{1\phi}-s_\phi)(s_{4\phi}-s_\phi)\right)I_4^{2me}(s_{1\phi},s_{\phi2};s_{34},s_\phi)\right.\\
+	\left.-s_{23}s_{34}I_4^{1m}(s_{23},s_{34};s_{1\phi})-s_{34}s_{41}I_4^{1m}(s_{34},s_{41};s_{2\phi})\right].	\numthis \label{miserve}
+\end{align*}
+We checked the consistency of the box coefficients found in the double cuts with the results obtained using the quadruple cuts. We saw the absence of bubbles in every computation and the only non-vanishing three-point coefficients are observed in triangles with the $\phi$ field present alone in a vertex.
+\subsection{IR structure}
+We want to check the IR structure of the cut-constructible part of the amplitude that can be predicted in term of the one-loop result. We can already observe the presence of the IR universal poles by studying only the first sector of the cut-constructible pieces.\\ %Subtracting these poles, we will be able to express the finite remainder contribution in this sector.\\
+
+We can summarise the discontinuities of the two-loop amplitude with a one-loop $\phi$+gluon sub-amplitude keeping in mind all the possible cyclic permutations of gluons. Computing the double cuts, we have already observed similar contributions connected by a $\mathbb{Z}_4$ transformation. For example, in the expression (\ref{miserve}), we observed two one-mass boxes which are connected by a cyclic permutation of gluons. If we consider the $s_{41}$ channel, we obtain the contribution proportional to $I_4^{1m}(s_{41},s_{12};s_{3\phi})$ in addition to the term $I_4^{1m}(s_{34},s_{41};s_{2\phi})$. Considering all the possible positions for the $\phi$ field, we can obtain all the four-point contributions with a single external mass and similar observations hold for the other topologies.\\
+Then the unrenormalized cut-constructible part of the two-loop amplitude in this sector is 
+\begin{align*}
+A_{cc(I)}^{2L}=&\sum_{\sigma\in\mathbb{Z}_4}d_{\sigma(1)}^{2me}\left[
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(\sigma(3)\)]-- [] b,
+			d2 [particle=\(\sigma(2)\)]-- [] b,
+      			d1 [particle=\(\sigma(1)\)]-- [] a,
+      			d4 [particle=\(\sigma(4)\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}	\right]+
+	\sum_{\sigma\in\mathbb{Z}_4}d_{\sigma(1)}^{1m}\left[
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(\sigma(1)\)]-- [] b,
+			d2 [particle=\(\,\,\phi\)]-- [] b,
+      			d1 [particle=\(\sigma(4)\)]-- [] a,
+      			d4 [particle=\(\sigma(2)\)]-- [] c,
+      			d -- [] s [particle=\(\sigma(3)\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]+\\
+	&\sum_{\sigma\in\mathbb{Z}_4}c_{\sigma(1)}^{2m}\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,vertical=c to d] {
+      			d2 [particle=\(\sigma(2)\)]-- b -- [] c
+        			-- [] d -- [] b,
+      			d1 [particle=\(\sigma(3)\)]-- [] b,
+			d3  [particle=\(\sigma(4)\)]-- [] b,
+      			d4 [particle=\(\sigma(1)\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+  	\end{feynman}
+	\end{tikzpicture}\right]+\sum_{\sigma\in\mathbb{Z}_4}c_{\sigma(1)}^{2mr}\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,vertical=c to d] {
+      			d2 [particle=\(\sigma(2)\)]-- b -- [] c
+        			-- [] d -- [] b,
+      			d1 [particle=\(\sigma(3)\)]-- [] b,
+			d3  [particle=\(\sigma(4)\)]-- [] b,
+      			d4 [particle=\(\phi\)]-- [] c,
+      			d -- [] s [particle=\(\sigma(1)\)],
+   		 };
+  	\end{feynman}
+	\end{tikzpicture}\right]
+\end{align*}
+where
+\begin{align*}
+	&d_{\sigma(1)}^{2me}=\frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left(s_{\sigma(1)\sigma(4)}s_\phi-(s_{\sigma(4)\phi}-s_\phi)(s_{\sigma(1)\phi}-s_\phi)\right)\\
+	&d_{\sigma(1)}^{1m}=\frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+)(-s_{\sigma(2)\sigma(3)}s_{\sigma(3)\sigma(4)})\\
+	&c_{\sigma(1)}^{2m}=c_{\sigma(1)}^{2mr}=\frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+)(s_{\phi\sigma(1)}-s_\phi).
+\end{align*}
+We can extract the poles in $\epsilon$ from the scalar integrals to check the universal infrared structure of the amplitude.
+\begin{align*}
+	\left[\frac{A_{cc(I)}^{2L}}{A^{1L}}\right]_{\text{poles}}=&\sum_{\sigma\in\mathbb{Z}_4} \left\{d_{\sigma(1)}^{2me} \left[I_4^{2me}(s_{\phi\sigma(4)},s_{\sigma(1)\phi};s_{\sigma(2)\sigma(3)},s_\phi)\right]_{IR}+d_{\sigma(1)}^{1m} \left[I_4^{1m}(s_{\sigma(2)\sigma(3)},s_{\sigma(3)\sigma(4)};s_{\sigma(1)\phi})\right]_{IR}\right.\\ &\left.
++	\left(c_{\sigma(1)}^{2m}+c_{\sigma(1)}^{2mr}\right)\left[I_3^{2m}(s_{\phi\sigma(1)},s_\phi)\right]_{IR}\right\}=-\sum_{i=1}^4\frac{1}{\epsilon^2}(-s_{i,i+1})^{-\epsilon} \numthis \label{IRdiv1}
+%=&\sum_{\sigma\in\mathbb{Z}_4} \left\{-\frac{1}{\epsilon^2}\left[(-s_{\sigma(1)\phi})^{-\epsilon}+(-s_{\sigma(4)\phi})^{-\epsilon}-(-s_{\sigma(2)\sigma(3)})^{-\epsilon}-(-s_\phi)^{-\epsilon}\right]+\right.\\&
+%\left. -\frac{1}{\epsilon^2}\left[(-s_{\sigma(2)\sigma(3)})^{-\epsilon}+(-s_{\sigma(3)\sigma(4)})^{-\epsilon}-(-s_{\sigma(1)\phi})^{-\epsilon}\right]+\right.\\
+%&+\left.\frac{1}{\epsilon^2}\left[(-s_{\sigma(1)\phi})^{-\epsilon}-(-s_\phi)^{-\epsilon}\right]\right\}\\
+%=&\sum_{\sigma\in\mathbb{Z}_4} \frac{1}{\epsilon^2}\left[{\color{orange}-(-s_{\sigma(4)\phi})^{-\epsilon}}-(-s_{\sigma(3)\sigma(4)})^{-\epsilon}{\color{orange}+(-s_{\sigma(1)\phi})^{-\epsilon}}\right]=-\sum_{i=1}^4\frac{1}{\epsilon^2}(-s_{i,i+1})^{-\epsilon}
+\end{align*}
+After the cancellation of all the poles which involve the self-dual Higgs, we remain with a divergent structure depending only by the Mandelstam variables associated to massless external legs. This is exactly the expectation from the universal IR structure of amplitudes, as we will see in Section [\ref{divpoles}].
+%\\
+%Subtracting the divergences, we can obtain the remainder part expressed in terms of weight-two functions,
+%\begin{align*}
+%	\left[A_{cc(I)}^{2L}\right]_{\text{finite}}=A^{1L}(\phi;1^+2^+3^+4^+)\sum_{\sigma\in \mathbb{Z}_4} \left[2\,\text{Li}_2\left(1-\frac{s_\phi}{s_{\sigma(1)\phi}}\right)+\text{Li}_2\left(1-\frac{s_{\sigma(2)\sigma(3)}}{s_{\sigma(1)\phi}}\right)\right.\\
+%	\left. +\text{Li}_2\left(1-\frac{s_{\sigma(2)\sigma(3)}}{s_{\sigma(4)\phi}}\right)+\text{Li}_2\left(1-\frac{s_{\sigma(4)\phi}}{s_{\sigma(1)\sigma(2)}}\right)+\text{Li}_2\left(1-\frac{s_{\sigma(4)\phi}}{s_{\sigma(2)\sigma(3)}}\right)\right.\\ \left.-\text{Li}_2\left(1-\frac{s_\phi s_{\sigma(2)\sigma(3)}}{s_{\sigma(1)\phi} s_{\sigma(4)\phi}}\right)+ \frac{1}{2}\ln^2\left(\frac{s_{\sigma(1)\phi}}{s_{\sigma(4)\phi}}\right)+\frac{1}{2}\ln^2\left(\frac{s_{\sigma(1)\sigma(2)}}{s_{\sigma(2)\sigma(3)}}\right)+\frac{\pi^2}{6} \right].	\numthis
+%\end{align*}
+\section{Double cuts with tree $\phi$ amplitudes and 1L YM amplitudes}
+The aim of this section is the computation of the double cuts which factorize in a product of a tree level $\phi+$gluon amplitude and a one-loop gluon amplitude. We will follow the same procedure as in the other sector. In App. [\ref{appC}] the quadruple cuts were computed and we proceed with the double cut computations.
+As already observed in the first sector, we have to study three different channels.\\
+\vspace{-0.2cm}
+\noindent
+\begin{tabularx}{\linewidth}{XX}
+\begin{equation}  \tag{dcut D}
+    \begin{aligned}	\label{dcut D}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [scale=0.95, large, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(4^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(1^+\)] -- [gluon] b,
+      d2 [particle=\(3^+\)] -- [gluon] b,
+      d3 [particle=\(2^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.2)$) -- ($(midpoint) + (0, -2.2)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+&
+\vspace{-0.4cm}
+\begin{equation} \tag{dcut E}
+    \begin{aligned}	\label{dcut E}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [large, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(4^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(2^+\)] -- [gluon] b,
+      d3 [particle=\(3^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d2 [particle=\(1^+\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.1)$) -- ($(midpoint) + (0, -2.1)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+\end{tabularx}
+\newcolumntype{b}{>{\hsize=2.3\hsize}X}
+\newcolumntype{s}{>{\hsize=.45\hsize}X}
+\begin{tabularx}{\textwidth}{sbs}
+&
+ \begin{equation} \tag{dcut F}
+\text{\hspace{1.1cm}}\,\,
+\begin{aligned}	\label{dcut F}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [scale=1, transform shape, large, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(3^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(4^+\)] -- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d3 [particle=\(1^+\)],
+      c -- [gluon] d2 [particle=\(2^+\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2)$) -- ($(midpoint) + (0, -2)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+ \end{equation} &
+ \end{tabularx}
+\\We will need to use QCD partial amplitudes at one-loop level in the all-plus sector.
+In (\ref{dcut F}) we will compute the product between the tree-level $\phi$+gluon and the one-loop four gluon amplitude which presents only one contribution
+$$
+	A^{1L}_{n,1}(\ell_1^+,(-\ell_2)^+,3^+,4^+)=\frac{1}{3}\frac{\langle 4 \ell_1 (-\ell_2)34]}{\langle \ell_1 (-\ell_2) \rangle \langle (-\ell_2) 3\rangle \langle 34 \rangle \langle \ell_1 4\rangle}.
+$$
+This double cut computation is simpler than the other two calculations. Indeed, if we consider (\ref{dcut E}) and (\ref{dcut D}), we have to study respectively five and fifteen contributions as one can see considering the expression (\ref{1LQCD}).\\
+For simplicity, we will start to reduce the product of the two sub-amplitudes in $s_{34}$ channel in order to write it in terms of scalar integrals and capture the coefficient of the boxes, triangles and bubbles. Next, we will procede with the most complex double cuts.
+\subsection{Double cut in $s_{34}$ channel}
+In $s_{34}$ channel, we have to consider the product between a tree $\phi$+gluon vertex and a sub-amplitude involving four gluons. Explicitly, we have to reduce the following product
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut F}}&=A^{1L}(3^+,4^+,\ell_1^+,(-\ell_2)^+) A^{tree}(\phi;1^+,2^+,\ell_2^-,(-\ell_1)^-)\\
+	&=\frac{1}{3}\frac{[\ell_1\ell_2][34]}{\langle \ell_1\ell_2 \rangle\langle 34 \rangle}\frac{\langle \ell_1 \ell_2 \rangle^4}{\langle 1 2 \rangle \langle 2 \ell_2 \rangle \langle \ell_2 \ell_1 \rangle \langle \ell_1 1 \rangle}
+\end{align*}
+where we used the analytic continuation of the spinors (\ref{analcont_spinors}).\\
+Using the property
+$$
+	[\ell_1\ell_2]\langle \ell_2 \ell_1\rangle=2 \ell_1 \cdot \ell_2=-(\ell_2-\ell_1)^2=-(p_3+p_4)^2=-s_{34},
+$$
+we obtain
+\begin{align}
+	A^{2L}_{int}|_{\text{dcut F}}&=-\frac{1}{3}\frac{[34]^2}{\langle 12 \rangle}\frac{[1\ell_1\ell_2 2]}{\langle 2\ell_2 2]\langle 1 \ell_1 1]}.	\label{intstep34}
+\end{align}
+Neglecting spurious terms,
+%\begin{align*}
+%	\langle 21\ell_1\ell_2 2]&=\text{tr}_-\left(\slashed{p}_2\slashed{p}_1\slashed{\ell}_1\slashed{\ell}_2\right)=\frac{1}{2}\text{tr}\left(\slashed{p}_2\slashed{p}_1\slashed{\ell}_1\slashed{\ell}_2\right)+\text{s.t.}\\
+%	&=-p_1\cdot p_2\, P_d^2+2(p_1\cdot P_d)(p_2\cdot P_d)-(2\ell_2\cdot p_2)(p_1 \cdot P_d)+(2 \ell_1 \cdot p_1)(p_2 \cdot %P_d)+\text{s.t.}
+%\end{align*}
+%Inserting it in the expression (\ref{intstep34}), 
+we have
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut F}}=\frac{1}{3}\frac{[34]^2}{\langle 12 \rangle^2} \left[\frac{p_1\cdot p_2\, P_d^2-2(p_1\cdot P_d)(p_2\cdot P_d)}{(\ell_2+p_2)^2(\ell_1-p_1)^2}+\frac{p_1\cdot P_d}{(\ell_1-p_1)^2}+\frac{p_2\cdot P_d}{(\ell_2+p_2)^2}\right].
+\end{align*}
+After the phase-space integration, we obtain
+\begin{align*}
+	A^{2L}|_{\text{dcut F}}&=\int \dd\Phi_2\, A^{2L}|_{\text{dcut D}}\\&=C_4^F\,I_4^{2me}(s_{1\phi},s_{2\phi};s_{34},s_\phi)|_{s_{34}\text{-cut}}+C_{3,1}^F\,I_3^{2m}(s_{34},s_{2\phi})|_{s_{34}\text{-cut}}
+	+C_{3,2}^F\,I_3^{2m}(s_{34},s_{1\phi})|_{s_{34}\text{-cut}}
+\end{align*}
+with the coefficients
+\begin{align*}
+	&C_4^F=\frac{1}{6}\frac{[34]^2}{\langle 12 \rangle^2}(-s_{1\phi}s_{2\phi}+s_\phi s_{34}),\\
+	&C_{3,1}^F=\frac{1}{6}\frac{[34]^2}{\langle 12 \rangle^2}(s_{13}+s_{14})=\frac{1}{6}\frac{[34]^2}{\langle 12 \rangle^2}(s_{2\phi}-s_{34}),\\
+	&C_{3,2}^F=\frac{1}{6}\frac{[34]^2}{\langle 12 \rangle^2}(s_{23}+s_{24})=\frac{1}{6}\frac{[34]^2}{\langle 12 \rangle^2}(s_{1\phi}-s_{34}).
+\end{align*}
+The coefficient of the four-point integral is consistent with the result from the quadruple cuts.\\
+We show in the following picture the result of the reduction process for the double cut just computed.
+\begin{eqnarray*}	
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+  \begin{feynman}
+    \diagram [inline=(d3.base), large, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(3^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(4^+\)] -- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d3 [particle=\(1^+\)],
+      c -- [gluon] d2 [particle=\(2^+\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2)$) -- ($(midpoint) + (0, -2)$);
+  \end{feynman}
+\end{tikzpicture}
+\rightarrow &&C^F_4	\left[
+         \begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=b to d] {
+      			a -- [momentum={\tiny\(\ell_2\)}] b
+        			-- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_1-p_1\)}] d -- [momentum={\tiny\(\ell_2+p_2\)}] a,
+			d3  [particle=\(4\)]-- [] b,
+			d2 [particle=\(3\)]-- [] b,
+      			d1 [particle=\(2\)]-- [] a,
+      			d4 [particle=\(1\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.25!(d)$);
+   		\draw [dashed] ($(midpoint) + (0, 1.5)$) -- ($(midpoint) + (0, -1.5)$);
+  	\end{feynman}
+	\end{tikzpicture}
+	\right]\\
+	+ C^F_{3,1} \left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=s to d] {
+      			d2 [particle=\(\phi\)]-- b -- [momentum={\tiny\(\ell_2\)}] c
+        			-- [momentum={\tiny\(\ell_1\)}] d -- [momentum={\tiny\(\ell_1-p_1\)}] b,
+      			d1 [particle=\(2\)]-- [] b,
+			d3  [particle=\(3\)]-- [] c,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [] s [particle=\(1\)],
+   		 };
+    		\coordinate (midpoint2) at ($(b)!0.5!(d)$);
+		\coordinate (midpoint) at ($(c)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint2) + (1.5, -0.15)$) to[out=180, in=90] ($(midpoint) + (-0.35, -1)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]
+	&&
+	+ C^F_{3,2} \left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=s to d] {
+      			d2 [particle=\(3\)]-- b -- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_2+p_2\)}] d -- [momentum={\tiny\(\ell_2\)}] b,
+      			d1 [particle=\(4\)]-- [] b,
+			d3  [particle=\(\phi\)]-- [] c,
+      			d4 [particle=\(1\)]-- [] c,
+      			d -- [] s [particle=\(2\)],
+   		 };
+    		\coordinate (midpoint2) at ($(b)!0.5!(d)$);
+		\coordinate (midpoint) at ($(c)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint2) + (1.5, -0.55)$) to[out=180, in=-90] ($(midpoint) + (-0.35, 1.65)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]
+ \end{eqnarray*}
+\subsection{Double cut in $s_{\phi1}$ channel}	\label{sec:sphi1_2ndsec}
+Considering the double cut (\ref{dcut E}), we have to simplify the following integrand,
+\begin{align*}
+	\sum_{\lambda_1=\pm1}\sum_{\lambda_2=\pm1} A^{tree}\left(\phi;1^+,\ell_2^{\lambda_2},(-\ell_1)^{\lambda_1}\right)A^{1L}\left(\ell_1^{-\lambda_1},(-\ell_2)^{-\lambda_2},2^+,3^+,4^+\right).
+\end{align*}
+In order to have a non-vanishing result from the tree-level vertex, we select the helicity of the inner gluons. Then we have to reduce the following expression,
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut E}}&=A^{tree}\left(\phi;1^+,\ell_2^{-},(-\ell_1)^{-}\right)A^{1L}\left(\ell_1^{+},(-\ell_2)^{+},2^+,3^+,4^+\right)\\
+	%&=\frac{\langle \ell_2 \ell_1 \rangle^3}{\langle \ell_1 1 \rangle\langle 1 \ell_2 \rangle} \frac{\sum_i \text{Tr}_-(x_i)}{3\langle 23 \rangle \langle 34 \rangle \langle 4 \ell_1 \rangle \langle \ell_1 \ell_2 \rangle \langle \ell_2 2 \rangle}\\
+	&=\frac{1}{3}\frac{1}{\langle 23 \rangle \langle 34 \rangle}\left(\sum_{i=1}^5  \tr_-(x_i)\right) \frac{\langle \ell_2\ell_1 \rangle^2}{\langle 4 \ell_1 \rangle \langle 1 \ell_1 \rangle \langle 1 \ell_2 \rangle \langle \ell_2 2 \rangle} \numthis \label{sumtr}
+\end{align*}
+where the possible arguments of the trace correspond to the allowed combinations of four gluons in the one-loop sub-amplitude which respect the color order. Precisely, we have to consider the sum
+\begin{align*}
+\sum_{i=1}^5 \tr_-(x_i)=&\tr_-( 3 4 \ell_1 2)+\tr_-( 3 \ell_1 (- \ell_2) 2)+\tr_-( 3 4 (- \ell_2) 2)+\tr_-( 4  \ell_1 (- \ell_2) 2)+\tr_-( 3  4  \ell_1 (- \ell_2)). \numthis
+\label{sum5}
+\end{align*}
+We can reorganise the sum using the momentum conservation in order to have at numerator spinor angle products with $\ell_1$ or $\ell_2$ which can be simplified with the denominator. In other words, we rewrite the sum in order to reduce directly as much as possible the number of loop momenta. We consider an alternative form of (\ref{sum5}),
+\begin{align*}
+	\sum_i\tr_-(x_i)=&\tr_-( 3 4(\ell_2-3)2)+\tr_-( 3(- 2- 4)(-\ell_2)2)+\tr_-( 3  4 (-\ell_2) 2)\\
+	&+\tr_-(4(-2-3)(- \ell_2) 2)-\tr_-( \ell_1 4  2 ( 3+ 4))-\tr_-( \ell_1 4 3 ( 2+  4))\\
+	&-\tr_-( 2  \ell_2 ( 2+ 4) 3)-\tr_-( 2  \ell_2 ( 2 + 3) 4)+\tr_-( 2  3  4 ( \ell_1+ 3))+\tr_-( 2 3  2  \ell_2).
+\end{align*}
+Then, we expand the traces in terms of spinor products. The next step is the reduction of the number spinor products with loop momenta using Schouten identities. We applied the following substitution,
+\begin{align}
+	&\frac{\langle \ell_1 \ell_2 \rangle}{\langle a \ell_1 \rangle\langle b \ell_1 \rangle}=\frac{1}{\langle ab \rangle}\left(\frac{\langle b \ell_2\rangle }{\langle b \ell_1\rangle}-\frac{\langle a \ell_2 \rangle}{\langle a \ell_1\rangle}\right)	\label{schouten_cutred}
+	%\\
+	%&\frac{\langle \ell_1 \ell_2 \rangle}{\langle a \ell_2 \rangle \langle b \ell_2 \rangle}=\frac{1}{\langle ba \rangle}\left(\frac{\langle b \ell_1 \rangle}{\langle b \ell_2 \rangle}-\frac{\langle a \ell_1 \rangle}{\langle a \ell_2\rangle}\right)
+\end{align}
+where $a$ and $b$ are generic labels for gluons. Similar expressions arise for the contributions which involve spinors associated to $\ell_2$.\\
+In conclusion, we can also use momentum conservation to simplify some spinor products. Using Mathematica to apply each step, we obtained an expression which contains a linear combination of terms with the following structure,
+\begin{align*}
+	\left\{\frac{\langle \ell_1 \ell_2 \rangle}{\langle a \ell_1 \rangle \langle b \ell_2 \rangle},\frac{\langle a \ell_2 \rangle \langle b \ell_1 \rangle}{\langle a \ell_1 \rangle \langle b\ell_2 \rangle},\frac{\langle a \ell_1 \rangle}{\langle b \ell_1 \rangle},\frac{\langle a \ell_2 \rangle}{\langle b \ell_2 \rangle}\right\}.
+\end{align*}
+Using simple properties for traces of Gamma matrices and avoiding spurious terms, we can reduce the first two terms.
+\begin{align*}
+	\frac{\langle \ell_1 \ell_2 \rangle}{\langle a \ell_1 \rangle \langle b \ell_2 \rangle}&=\frac{1}{\langle ab\rangle}\frac{\langle b a \ell_1 \ell_2 b]}{\langle a\ell_1 a]\langle b \ell_2 b]}=\frac{1}{\langle ab\rangle}\frac{\tfrac{1}{2} \tr\left(\slashed b \slashed a \slashed \ell_1 \slashed \ell_2 \right)}{(2\ell_1 \cdot a)(2\ell_2 \cdot b)}+\text{spurious terms}\\
+	&=\frac{1}{\langle ab \rangle}\left(\frac{2 (p_b\cdot P_e)(p_a \cdot P_e)-P_e^2 (p_b\cdot p_a)}{(2p_a\cdot \ell_1)(2 p_b\cdot \ell_2)}+\frac{p_b\cdot P_e}{2p_b\cdot \ell_2}-\frac{p_a\cdot P_e}{2p_a\cdot \ell_1}\right)+\text{s.t.} \numthis \label{sub1}\\
+	\frac{\langle a \ell_2 \rangle \langle b \ell_1 \rangle}{\langle a \ell_1 \rangle \langle b \ell_2 \rangle}&=\frac{\langle a\ell_2 b\ell_1 a]}{\langle a \ell_1 a]\langle b \ell_2 b]}=\frac{\tfrac{1}{2}\tr\left(\slashed a \slashed \ell_2 \slashed b \slashed \ell_1\right)}{(2p_a\cdot \ell_1)(2p_b\cdot \ell_2)}+\text{s.t.}\\
+	&=\frac{-2(p_a\cdot P_e)(p_b\cdot P_e)+P_e^2(p_a\cdot p_b)}{(2p_a\cdot \ell_1)(2p_b\cdot \ell_2)}-\frac{p_b\cdot P_e}{2p_b\cdot \ell_2}+\frac{p_a\cdot P_e}{2p_a\cdot \ell_1}+\text{s.t.}		\numthis \label{sub2}
+\end{align*}
+where $P_e=p_2+p_3+p_4=-p_1-p_\phi$.\\
+For what concerns the the last structures which involve only single spinor products at denominator, we can apply the reduction method at integrand level to write the tensor tree-point integrand in terms of the arguments of scalar triangles and bubbles. Focusing on the term
+\begin{align}
+	\frac{\langle a\ell_1 \rangle}{\langle b \ell_1 \rangle}=\frac{\langle a \ell_1 b]}{\langle b \ell_1 b]}=\langle a| \frac{\ell_1^\mu}{2\ell_1\cdot p_b}\gamma_\mu |b],	\label{redexpr}
+\end{align}
+we can restore the implicit presence of cut propagators at denominator and we can try to reduce the integrand
+$$
+	\frac{\ell_1^\mu}{(\ell_1+p_b)^2\ell_1^2(\ell_1+P_e)^2}
+$$
+of a tensor three-point integral whose kinematics is described diagrammatically as follow.
+$$
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,vertical=c to d] {
+      			d2 [particle=\(-P_e\)]-- b -- [rmomentum'={\tiny\(\ell_1\)}] c
+        			-- [rmomentum'={\tiny\(\ell_1+p_b\)}] d -- [rmomentum'={\tiny\(\ell_1+P_e\)}] b,
+      			d4 [particle=\(b\)]-- [] c,
+      			d -- [] s [],
+   		 };
+  	\end{feynman}
+	\end{tikzpicture}
+$$
+Then we can decompose the loop momenta in a basis composed by the external momenta $b^\mu$ and $P_e^\mu$ and two vectors which span the orthogonal space,
+$$
+	\ell_1^\mu=\alpha P_e^\mu+\beta p_b^\mu +\gamma \omega_1^\mu+\delta \omega_2^\mu
+$$
+with $\omega_i\cdot P_e^\mu=\omega_i\cdot b^\mu=0$ for $i=1,2$. The contributions proportional to the vectors $\omega_i^\mu$ vanish after the integration, for this reason we will neglect their spurious presence at the integrand level. We can write the coefficients $\alpha$ and $\beta$ in terms of external kinematics and propagators by solving the following system.
+\begin{align*}
+	&\begin{cases}
+		\ell_1\cdot p_b= \alpha P_e \cdot p_b\\
+		\ell_1 \cdot P_e=\alpha P_e^2 +\beta p_b\cdot P_e
+	\end{cases}
+	%\begin{cases}
+	%	-\tfrac{1}{2}\left(\ell_1-b\right)^2= \alpha P \cdot b\\
+	%	\tfrac{1}{2}\left((\ell_1+P_e)^2-P_e^2-\ell_1^2\right)=\alpha P_e^2 +\beta b\cdot P_e
+	%\end{cases}\\
+	\begin{cases}
+		\alpha=\frac{1}{2P_e\cdot p_b}(\ell_1+p_b)^2\\
+		\beta=-\frac{P_e^2}{2p_b\cdot P_e}\left(1+\frac{(\ell_1+p_b)^2}{P_e\cdot p_b}\right)
+	\end{cases}
+\end{align*}
+In the last passage we used the on-shell constraint $(\ell_1+P)^2=\ell_1^2=0$ for the loop momenta in the cut. We are interested in the computation of (\ref{redexpr}), then we will contract the reduced integrand with a spinor of the momentum $p_b$. Using Dirac equation, we can observe the vanishing behavior of the contribution proportional to $\beta$. Consequently, the result only depends on $\alpha$ which is proportional to the uncut propagator and gives a bubble contribution,
+\begin{align}
+	\frac{\langle a\ell_1\rangle}{\langle b \ell_1 \rangle}=\frac{\langle a (\alpha P_e+\beta b) b]}{2\ell_1\cdot p_b}=\frac{\alpha \langle a P_e b]}{2\ell_1\cdot p_b}=\frac{\langle aP_e b]}{2P_e\cdot p_b}=\frac{\langle aP_eb]}{\langle b P_e b]}.	\label{sub3}
+\end{align}
+A similar computation holds for the last structure,
+\begin{align}
+	\frac{\langle a \ell_2 \rangle}{\langle b \ell_2 \rangle}=\frac{\langle a \ell_2 b]}{\langle b \ell_2 b]}=\frac{\langle a P_e b]}{\langle b P_e b]}.	\label{sub4}
+\end{align}
+Applying the substitutions (\ref{sub1}, \ref{sub2}, \ref{sub3}, \ref{sub4}), we can write the double cut of the amplitude in terms of scalar integrals as shown pictorially.
+\begin{align*}
+	&\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, }, baseline=(current bounding box.center) }
+	\begin{tikzpicture}
+ 	\begin{feynman}
+    	\diagram [large, horizontal=b to c] {
+     	 b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      	b -- [white] ds -- [white] c,
+      a [particle=\(4^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(2^+\)] -- [gluon] b,
+      d3 [particle=\(3^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d2 [particle=\(1^+\)],
+    };
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.1)$) -- ($(midpoint) + (0, -2.1)$);
+  \end{feynman}
+  \end{tikzpicture}\rightarrow 
+	C_{4,1}^E \left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=b to d] {
+      			a -- [momentum={\tiny\(\ell_2\)}] b
+        			-- [momentum={\tiny\(\ell_1+p_4\)}] c
+        			-- [momentum={\tiny\(\ell_1\)}] d -- [momentum={\tiny\(\ell_2+p_1\)}] a,
+			d3  [particle=\(3\)]-- [] b,
+			d2 [particle=\(2\)]-- [] b,
+      			d1 [particle=\(1\)]-- [] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]\\
+	&+C_{4,2}^E \left[
+	 \begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=b to d] {
+      			a -- [momentum={\tiny\(\ell_2-p_2\)}] b
+        			-- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_1-p_1\)}] d -- [momentum={\tiny\(\ell_2\)}] a,
+			d3  [particle=\(4\)]-- [] b,
+			d2 [particle=\(3\)]-- [] b,
+      			d1 [particle=\(2\)]-- [] a,
+      			d4 [particle=\(1\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		\draw [dashed] ($(midpoint) + (0.75, -1.3)$) -- ($(midpoint) + (-1.6, 1.2)$);
+  	\end{feynman}
+	\end{tikzpicture}
+	\right]+C_{3,1}^E
+	\left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=s to d] {
+      			d2 [particle=\(\phi\)]-- b -- [momentum={\tiny\(\ell_2\)}] c
+        			-- [momentum={\tiny\(\ell_1+p_4\)}] d -- [momentum={\tiny\(\ell_1\)}] b,
+      			d1 [particle=\(1\)]-- [] b,
+			d3  [particle=\(2\)]-- [] c,
+      			d4 [particle=\(3\)]-- [] c,
+      			d -- [] s [particle=\(4\)],
+   		 };
+    		\coordinate (midpoint2) at ($(b)!0.5!(d)$);
+		\coordinate (midpoint) at ($(c)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint2) + (1.5, -0.55)$) to[out=180, in=-90] ($(midpoint) + (-0.35, 1.65)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]\\
+	&+C_{3,2}^E
+	\left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=s to d] {
+      			d2 [particle=\(3\)]-- b -- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_2\)}] d -- [momentum={\tiny\(\ell_2-p_2\)}] b,
+      			d1 [particle=\(4\)]-- [] b,
+			d3  [particle=\(\phi\)]-- [] c,
+      			d4 [particle=\(1\)]-- [] c,
+      			d -- [] s [particle=\(2\)],
+   		 };
+    		\coordinate (midpoint2) at ($(b)!0.5!(d)$);
+		\coordinate (midpoint) at ($(c)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint2) + (1.5, -0.15)$) to[out=180, in=90] ($(midpoint) + (-0.35, -1)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]+C_{3,3}^E\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [vertical=c to d] {
+      			d2 [particle=\(4\)]-- b -- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_2+p_1\)}] d -- [momentum={\tiny\(\ell_2\)}] b,
+      			d1 [particle=\(3\)]-- [] b,
+			d3  [particle=\(2\)]-- [] b,
+      			d4 [particle=\(\phi\)]-- [] c,
+      			d -- [] s [particle=\(1\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint) + (0, -1.25)$) to($(midpoint) + (0, 1.75)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]
+\end{align*}
+with the coefficients
+\begin{align*}
+	&C_{4,1}^E=\frac{1}{6}\frac{[23]^2}{\langle 14 \rangle^2}(-s_{1\phi}s_{4\phi}+s_{\phi}s_{23}), \\
+	&C_{4,2}^E=\frac{1}{6}\frac{[34]^2}{\langle 12 \rangle^2}(-s_{2\phi}s_{1\phi}+s_{\phi}s_{34}), \\
+	&C_{3,1}^E=\frac{1}{6}\frac{[23]^2}{\langle 14 \rangle^2}(s_{1\phi}-s_{23}), \\
+	&C_{3,2}^E=\frac{1}{6}\frac{[34]^2}{\langle 12 \rangle^2}(s_{1\phi}-s_{34}), \\
+	&C_{3,3}^E=\frac{1}{6}\left(\frac{[23]^2}{\langle 14 \rangle^2}+\frac{[34]^2}{\langle 12 \rangle^2}\right)(s_{1\phi}-s_\phi).
+\end{align*}
+In the intermediate steps some bubbles emerge but, summing together these contributions, we observe the cancellation of the terms proportional to the two-point scalar integrals.\\
+This result was checked by an independent computation with a different approach. Starting from (\ref{sumtr}), firstly we can apply Schouten identities to avoid spurious poles in the expression
+$$
+	\frac{\langle \ell_1 \ell_2 \rangle}{\langle 1 \ell_1 \rangle \langle 1 \ell_2\rangle}.
+$$
+We can reconstruct the propagators at denominator to obtain a sum of tensor integrals. We reduced these contributions in a sum of scalar boxes, triangles and bubbles using a general approach at the integrand level. Indeed, we decomposed the loop momentum at numerator in terms of external kinematics and vectors from the orthogonal space. We used momentum twistor parametrization to reduce the expressions making explicit the momentum conservation.\\
+During the computation we have to treat carefully the contribution which comes from the spurious direction. For example, if we consider a four-point tensor integral with propagators $D_i$, we can decompose the loop momenta at numerator in terms of three external vectors and an orthogonal direction $\omega$. In the reduction process, we have to consider that
+\begin{align*}
+	\int_\ell \frac{\ell\cdot \omega}{D_0 D_1 D_2 D_3}=0, \text{ but }
+	\int_\ell \frac{(\ell\cdot \omega)^2}{D_0 D_1 D_2 D_3}\not =0.
+\end{align*}
+For this reason, we cannot neglect the contributions proportional to the orthogonal directions in the decomposition of the numerator because their products could generate a non-vanishing result.\\
+Until now, we have not seen similar effects since we only reduced integrands with a single loop momentum at numerator in each addend. Then, the only products in the orthogonal direction we obtained were proportional to $\ell\cdot \omega$.\\
+Keeping in mind this technical observation, we wrote the double cut in terms of scalar integrals and we checked the consistency of the result from the first less general reduction method. 
+\subsection{Double cut in $s_{\phi}$ channel}	\label{sec:sphi1_3rdsec}
+The last double cut (\ref{dcut D}) investigates the discontinuity in $s_\phi$ channel. The non-vanishing condition of the tree level $\phi+$gluon vertex fixes the helicity of the inner gluons, then we have to consider the all-pus six gluon sub-amplitude which is the sum of fifteen traces (\ref{1LQCD}).
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut D}}&=A^{tree}(\phi;\ell_2^-,(-\ell_1)^-)A^{1L}(\ell_1^+,(-\ell_2)^+,1^+,2^+,3^+,4^+)\\
+	&=\frac{1}{3}\frac{1}{\langle 12 \rangle \langle 23 \rangle \langle 34 \rangle}\left(\sum_{i=1}^{15} \tr_-(x_i)\right)\frac{\langle \ell_1 \ell_2 \rangle}{\langle 4 \ell_1 \rangle \langle 1 \ell_2 \rangle}
+\end{align*}
+Before the expansion of traces in terms of spinor products, we use momentum conservation to have at most one loop momentum ($\ell_1$ or $\ell_2$) in every trace. For example, we apply the substitution
+$$
+	\tr_-( 1 \slashed 4 \ell_1 \ell_2)=\tr_-( 1  4 \ell_1  2)+\tr_-( 1  4  \ell_1  3)+\tr_-( 1  4 \ell_1  4).
+$$
+We immediately use the property $[\ell_1 \ell_2]\langle \ell_2 \ell_1\rangle=2\ell_1\cdot \ell_2=-(\ell_2-\ell_1)^2=-s_\phi$.
+Moreover, we consider an additional use of momentum conservation for the numerators which present the following structure,
+$$
+	[a \ell_1]\langle \ell_1 \ell_2\rangle=[a(\ell_2-1-2-3-4)\ell_2\rangle=-[a(1+2+3+4)\ell_2\rangle,
+$$
+where $a=1,2,3,4$ represents a generic external gluon. A similar reduction holds for $[a \ell_2]\langle \ell_1\ell_2 \rangle$.\\
+The next step is the use of Schouten identities in order to reduce the number of loop momenta for the  addends with more than two angle brackets involving $\ell_1$ or $\ell_2$ at denominator. We obtain contributions which present only one of the following structures,
+$$
+	\left\{\frac{\langle \ell_1 \ell_2 \rangle}{\langle a \ell_1 \rangle\langle b \ell_2\rangle},\frac{\langle a \ell_1 \rangle}{\langle b \ell_1 \rangle}, \frac{\langle a \ell_2 \rangle}{\langle b\ell_2\rangle}\right\}.
+$$
+We have already computed the explicit expansion of these objects in terms of scalar integrands (\ref{sub1}, \ref{sub3}, \ref{sub4}). Obviously, we only have to perform the substitution of $P_e$ with the loop momentum $P_d=p_1+p_2+p_3+p_4=-p_\phi$ in this channel. 
+\iffalse
+We can summarize the result pictorially with the following diagrams.
+\begin{align*}
+	\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+  \begin{feynman}
+    \diagram [scale=0.95, large, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(4^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(1^+\)] -- [gluon] b,
+      d2 [particle=\(3^+\)] -- [gluon] b,
+      d3 [particle=\(2^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.2)$) -- ($(midpoint) + (0, -2.2)$);
+  \end{feynman}
+\end{tikzpicture}
+\rightarrow \,\, C_{4}^D\left[
+         \begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=b to d] {
+      			a -- [momentum={\tiny\(\ell_2-p_1\)}] b
+        			-- [momentum={\tiny\(\ell_1+p_4\)}] c
+        			-- [momentum={\tiny\(\ell_1\)}] d -- [momentum={\tiny\(\ell_2\)}] a,
+			d3  [particle=\(3\)]-- [] b,
+			d2 [particle=\(2\)]-- [] b,
+      			d1 [particle=\(1\)]-- [] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		\draw [dashed] ($(midpoint) + (0, 1.5)$) -- ($(midpoint) + (0, -1.5)$);
+  	\end{feynman}
+	\end{tikzpicture}
+	\right]\\
+	+C_{3,1}^D\left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [vertical=c to d] {
+      			d2 [particle=\(4\)]-- b -- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_2\)}] d -- [momentum={[label distance=-3.5pt]\tiny\(\ell_2-p_1\)}] b,
+      			d1 [particle=\(3\)]-- [] b,
+			d3  [particle=\(2\)]-- [] b,
+      			d4 [particle=\(\phi\)]-- [] c,
+      			d -- [] s [particle=\(1\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.5!(d)$);
+		\coordinate (midpoint2) at ($(c)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint2) + (1, -0.25)$) to[out=180, in=-90] ($(midpoint) + (-0.25, 1.75)$);
+  	\end{feynman}
+	\end{tikzpicture}	\right]+ C_{3,2}^D\left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [vertical=c to d] {
+      			d2 [particle=\(3\)]-- b -- [momentum={[label distance=-3.5pt]\tiny\(\ell_1+p_4\)}] c
+        			-- [momentum={\tiny\(\ell_1\)}] d -- [momentum={\tiny\(\ell_2\)}] b,
+      			d1 [particle=\(2\)]-- [] b,
+			d3  [particle=\(1\)]-- [] b,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.5!(d)$);
+		\coordinate (midpoint2) at ($(c)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint2) + (1, 0.25)$) to[out=180, in=90] ($(midpoint) + (-0.25, -1.15)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]\\
+	+C_2^D
+	\left[
+\begin{tikzpicture}[scale=0.9, transform shape, baseline=(current  bounding  box.center)]
+     \begin{feynman}
+    \vertex (x);
+    \vertex[right=of x] (y);
+    \path (x) ++ (180:1.5) node[vertex, label=left:$\phi$] (a);
+    \path (y) ++ (-60:1.9) node[vertex, label=right:$4$] (b);
+    \path (y) ++ (-30:1.9) node[vertex, label=right:$3$] (c);
+    \path (y) ++ (30:1.9) node[vertex, label=right:$2$] (d);
+    \path (y) ++ (60:1.9) node[vertex, label=right:$1$] (e);
+    \diagram*{
+        (x) --[half left, rmomentum={\tiny\(\ell_1\)}] (y),
+        (x) --[half right, momentum'={\tiny\(\ell_2\)}] (y),
+        (a) --(x),
+        (y.-60) -- (b),
+        (y.-30) --(c),
+        (y.30) --(d),
+        (y.60) -- (e),
+    };
+    \coordinate (midpoint) at ($(x)!0.5!(y)$);
+    \draw [dashed] ($(midpoint) + (0, 1.7)$) -- ($(midpoint) + (0, -1.7)$);
+    \end{feynman}
+    \end{tikzpicture}
+\right]
+\end{align*}
+\fi
+The result is
+\begin{align*}
+	A^{2L}|_{\text{dcut D}}=\int \dd\Phi_2 A^{2L}_{int}|_{\text{dcut D}}=&C_4^D I_4^{2me}(s_{1\phi},s_{4\phi};s_\phi,s_{23})|_{s_\phi\text{-cut}}+C_{3,1}^D I_3^{2m}(s_\phi,s_{1\phi})|_{s_\phi\text{-cut}}\\
+	&+C_{3,2}^D I_3^{2m}(s_\phi,s_{4\phi})_{s_\phi\text{-cut}}+C_2^D I_2(s_\phi)|_{s_\phi\text{-cut}}
+\end{align*}
+with the coefficients
+\begin{align*}
+	&C_{4}^D=C_{4,1}^E=\frac{1}{6}\frac{[23]^2}{\langle 14 \rangle^2}(-s_{1\phi}s_{4\phi}+s_\phi s_{23}),\\
+	&C_{3,1}^D=\frac{1}{6}\frac{[23]^2}{\langle 14 \rangle^2}(s_{1\phi}-s_\phi),\\
+	&C_{3,2}^D=\frac{1}{6}\frac{[23]^2}{\langle 14 \rangle^2}(s_{4\phi}-s_\phi),\\
+	&C_2^D=\frac{1}{3}\frac{s_\phi}{\langle 12 \rangle \langle 23 \rangle\langle 34 \rangle \langle 41 \rangle}\left[\frac{s_{12}s_{14}+s_{13}s_{14}+s_{14}^2-s_{13}s_{23}-s_{14}s_\phi-[13241\rangle}{s_{1\phi}-s_\phi}+\frac{s_{23}s_{34}-s_{14}s_\phi+[12341\rangle}{s_{4\phi}-s_\phi}\right].
+\end{align*}
+We observe the presence of bubbles in $s_\phi$ channel which represent the new information from this last double cut. The coefficient for the two-point scalar integral shows a strange structure with unphysical poles.\\This contribution can be simplified because we have to consider all the possible permutations of gluons which are in correspondence with the elements of the group $\mathbb{Z}_4$. The bubble integral $I_2(s_\phi)$ does not depend on the order of gluons then, in order to obtain the resulting bubble contribution, we have to sum directly the coefficients 
+$$
+	\sum_{\sigma\in\mathbb{Z}_4} \sigma\left\{C_2^D\right\}=\frac{2}{3}\frac{s_\phi^2}{\langle 12 \rangle \langle 23 \rangle\langle 34 \rangle \langle 41 \rangle}=-\frac{1}{3}A^{1L}(\phi;1^+2^+3^+4^+),
+$$
+where $\sigma$ cyclically shifts all indices of gluons. In conclusion, the UV divergence generated by the bubble is proportional to the one-loop amplitude.
+\subsection{Summary of the result}
+The simplest double cut in this sector permits us to extract the discontinuities in $s_{34}$-channel written in terms of scalar integrals in following way:
+$$
+	\frac{1}{6}\frac{[34]^2}{\langle 12 \rangle^2}\left[(-s_{1\phi}s_{2\phi}+s_\phi s_{34})I_4^{2me}(s_{1\phi},s_{2\phi};s_{34},s_\phi)+(s_{2\phi}-s_{34})I_3^{2m}(s_{34},s_{2\phi})+(s_{1\phi}-s_{34})I_3^{2m}(s_{34},s_{1\phi}) \right].
+$$
+In the $s_{\phi1}$-channel, we obtained two different structures related to different topologies due to the presence of the unordered $\phi$. Moreover, we observed the presence of a new three-point contribution $I_{3}^{2m}(s_\phi,s_{1\phi})$,
+\begin{align*}
+	&\frac{1}{6}\frac{[34]^2}{\langle 12\rangle}\left[(-s_{1\phi}s_{2\phi}+s_\phi s_{34})I_4^{2me}(s_{1\phi},s_{2\phi};s_{34},s_\phi)+(s_{1\phi}-s_{34}) I_3^{2m}(s_{34},s_{1\phi})+(s_{1\phi}-s{\phi})I_{3}^{2m}(s_\phi,s_{1\phi})\right]+\\
+	&\frac{1}{6}\frac{[23]^2}{\langle 14 \rangle^2} \left[(-s_{1\phi}s_{4\phi}+s_\phi s_{23})I_4^{2me}(s_{1\phi},s_{4\phi};s_{23},s_\phi)+(s_{1\phi}-s_{23}) I_3^{2m}(s_{23},s_{1\phi})+(s_{1\phi}-s{\phi})I_{3}^{2m}(s_\phi,s_{1\phi}) \right].
+\end{align*}
+In $s_{\phi}$-channel, we obtained contributions already observed in the previous channels,
+$$
+	\frac{1}{6}\frac{[23]^2}{\langle 14 \rangle^2}\left[(-s_{1\phi}s_{4\phi}+s_\phi s_{23}) I_4^{2me}(s_{1\phi},s_{2\phi},s_{34},s_\phi)+(s_{1\phi}-s_\phi)I_3^{2m}(s_\phi,s_{1\phi})+(s_{4\phi}-s_\phi) I_3^{2m}(s_\phi,s_{4\phi})\right],
+$$
+and we also found a term proportional to the bubble integral $I_2(s_{\phi})$ which assumes the following expression after the cyclic sum of gluons,
+$$
+	-\frac{1}{3}A^{1L}(\phi;1^+2^+3^+4^+) I_2(s_\phi).
+$$
+\subsection{IR structure}
+We can summarise the unrenormalized cut-constructible part of the two-loop amplitude in the sector in which we consider a one-loop sub-amplitude without the self-dual Higgs.
+\begin{align*}
+A_{cc(II)}^{2L}=&\sum_{\sigma\in\mathbb{Z}_4}d_{\sigma(1)}^{2me(II)}\left[
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(\sigma(3)\)]-- [] b,
+			d2 [particle=\(\sigma(2)\)]-- [] b,
+      			d1 [particle=\(\sigma(1)\)]-- [] a,
+      			d4 [particle=\(\sigma(4)\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}	\right]+
+	\sum_{\sigma\in\mathbb{Z}_4}c_{\sigma(1)}^{2m(IIa)}\left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,vertical=d to b] {
+      			d2 [particle=\(\sigma(4)\)]-- b -- [] c
+        			-- [] d -- [] b,
+      			d1 [particle=\(\sigma(3)\)]-- [] b,
+			d3  [particle=\(\sigma(1)\)]-- [] d,
+      			d4 [particle=\(\sigma(2)\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+  	\end{feynman}
+	\end{tikzpicture}\right]\\
+	&+
+	\sum_{\sigma\in\mathbb{Z}_4}c_{\sigma(1)}^{2m(IIb)}\left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,vertical=d to b] {
+      			d2 [particle=\(\sigma(2)\)]-- b -- [] c
+        			-- [] d -- [] b,
+      			d1 [particle=\(\sigma(3)\)]-- [] b,
+			d3  [particle=\(\phi\)]-- [] d,
+      			d4 [particle=\(\sigma(4)\)]-- [] c,
+      			d -- [] s [particle=\(\sigma(1)\)],
+   		 };
+  	\end{feynman}
+	\end{tikzpicture}\right]+\sum_{\sigma\in\mathbb{Z}_4}c_{\sigma(1)}^{2m(IIc)}\left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,vertical=c to d] {
+      			d2 [particle=\(\sigma(2)\)]-- b -- [] c
+        			-- [] d -- [] b,
+      			d1 [particle=\(\sigma(3)\)]-- [] b,
+			d3  [particle=\(\sigma(4)\)]-- [] b,
+      			d4 [particle=\(\sigma(1)\)]-- [] c,
+      			d -- [] s [particle=\(\phi\)],
+   		 };
+  	\end{feynman}
+	\end{tikzpicture}\right]\\
+	&-\frac{1}{3}A^{1L}(\phi;1^+2^+3^+4^+) \left[
+\begin{tikzpicture}[scale=0.8, transform shape, baseline=(current  bounding  box.center)]
+     \begin{feynman}
+    \vertex (x);
+    \vertex[right=of x] (y);
+    \path (x) ++ (180:1.5) node[vertex, label=left:$\phi$] (a);
+    \path (y) ++ (-60:1.9) node[vertex, label=right:$\sigma(4)$] (b);
+    \path (y) ++ (-30:1.9) node[vertex, label=right:$\sigma(3)$] (c);
+    \path (y) ++ (30:1.9) node[vertex, label=right:$\sigma(2)$] (d);
+    \path (y) ++ (60:1.9) node[vertex, label=right:$\sigma(1)$] (e);
+    \diagram*{
+        (x) --[half left] (y),
+        (x) --[half right] (y),
+        (a) --(x),
+        (y.-60) -- (b),
+        (y.-30) --(c),
+        (y.30) --(d),
+        (y.60) -- (e),
+    };
+    \end{feynman}
+    \end{tikzpicture}
+\right]
+\end{align*}
+where
+\begin{align*}
+	&d_{\sigma(1)}^{2me(II)}=\frac{1}{6}\frac{[\sigma(2)\sigma(3)]^2}{\langle \sigma(1)\sigma(4) \rangle^2}(-s_{\sigma(1)\phi}s_{\sigma(4)\phi}+s_\phi s_{\sigma(2)\sigma(3)}),\\
+	&c_{\sigma(1)}^{2m(IIa)}=\frac{1}{6}\frac{[\sigma(3)\sigma(4)]^2}{\langle \sigma(1)\sigma(2) \rangle^2}(s_{\sigma(1)\phi}-s_{\sigma(3)\sigma(4)}),\\
+	&c_{\sigma(1)}^{2m(IIb)}=\frac{1}{6}\frac{[\sigma(2)\sigma(3)]^2}{\langle \sigma(1)\sigma(4) \rangle^2}(s_{\sigma(1)\phi}-s_{\sigma(2)\sigma(3)}),\\
+	&c_{\sigma(1)}^{2m(IIc)}=\frac{1}{6}\left(\frac{[\sigma(2)\sigma(3)]^2}{\langle \sigma(1)\sigma(4)\rangle^2}+\frac{[\sigma(3)\sigma(4)]^2}{\langle \sigma(1)\sigma(2)\rangle^2}\right)(s_{\sigma(1)\phi}-s_\phi).
+\end{align*}
+Using the structure of divergences in the scalar integrals, we can extract the poles of the amplitude in this sector.
+\iffalse
+\begin{align*}
+	A_{cc(II)}^{2L}=&\sum_{\sigma} \frac{1}{6}\frac{[\sigma(2)\sigma(3)]^2}{\langle \sigma(1)\sigma(4)\rangle^2}\frac{-2}{\epsilon^2}\left((-s_{\sigma(1)\phi})^{-\epsilon}+(-s_{\sigma(4)\phi})^{-\epsilon}-(-s_{\sigma(2)\sigma(3)})^{-\epsilon}-(-s_\phi)^{-\epsilon}\right)\\
+	&+\sum_{\sigma}\frac{1}{6}\frac{[\sigma(3)\sigma(4)]^2}{\langle \sigma(1)\sigma(2)\rangle^2}\frac{-1}{\epsilon^2}\left((-s_{\sigma(3)\sigma(4)})^{-\epsilon}-(-s_{\sigma(1)\phi})^{-\epsilon}\right)\\
+	&+\sum_{\sigma}\frac{1}{6}\frac{[\sigma(2)\sigma(3)]^2}{\langle \sigma(1)\sigma(4) \rangle^2}\frac{-1}{\epsilon}\left((-s_{\sigma(2)\sigma(3)})^{-\epsilon}-(-s_{\sigma(1)\phi})^{-\epsilon}\right)\\
+	&+\sum_{\sigma}\frac{1}{6}\frac{[\sigma(2)\sigma(3)]^2}{\langle \sigma(1)\sigma(4)\rangle^2}\frac{1}{\epsilon^2}\left((-s_{\sigma(1)\phi})^{-\epsilon}-(-s_\phi)^{-\epsilon}\right)\\
+	&+\sum_{\sigma}\frac{1}{6}\frac{[\sigma(3)\sigma(4)]^2}{\langle \sigma(1)\sigma(2)\rangle^2}\frac{1}{\epsilon^2}\left((-s_{\sigma(1)\phi})^{-\epsilon}-(-s_\phi)^{-\epsilon}\right)\\
+	&-\frac{1}{3}A^{1L}(\phi;1^+2^+3^+4^+)\frac{1}{\epsilon}(-s_\phi)^{-\epsilon} + \mathcal{O}(1)
+\end{align*}
+The fourth and the fifth contribution come from the divergent structure of the integral
+$$I_3^{2m}(s_\phi,s_{\sigma(1)\phi}).$$
+In order to extract the poles, we can reorganize the second and the fifth sum with a cyclic permutation to obtain a unique prefactor in terms of spinor products,
+$$
+	\frac{[\sigma(2)\sigma(3)]^2}{\langle \sigma(1)\sigma(4)\rangle^2}.
+$$ 
+\fi
+We observe the cancellations of the whole divergent contribution of boxes and triangles. The sum of four-point and three-point integrals gives a finite contribution and the only divergent term comes from the bubble:
+\begin{align}
+	A^{2L}_{cc(II)}=-\frac{1}{3}A^{1L}(\phi;1^+2^+3^+4^+)\frac{1}{\epsilon}+\mathcal{O}(1).	\label{UVdiv}
+\end{align}
+
+The finite contribution that comes from the sum of boxes and triangles can be interpreted as the result of a scalar integral in higher dimensions. We can show that an $n$-point scalar integral can be expressed as a sum of $(n-1)$-point functions and an $n$-point integral evaluated in six dimensions \cite{Bern_1993},
+$$
+	I_n^{\{D=4-2\epsilon\}}=\frac{1}{2}\left[-\sum_{i=1}^n c_i I_{n-1}^{(i)}+(n-5+2\epsilon)c_0I_n^{\{D=6-2\epsilon\}}\right]
+$$
+where $I_{n-1}^{(i)}$ is the $(n-1)$-point scalar integral in $4-2\epsilon$ dimensions obtained from $I_n$ by removing the propagator between legs $(i-1)$ and $i$. The factor $c_0$ corresponds to the sum of the coefficients $c_i$ which can be related to the elements of the modified Cayley matrix. \\
+In our case, we can decompose the two-mass easy box in a sum of triangles and a remainder addend which is proportional to the four-point integral in six dimensions. The divergent structure of the four-dimensional box is encoded in the three-point integrals while the six-dimensional box represents the finite remainder part without poles,
+\begin{align*}
+	I_4^{2me\{D=4-2\epsilon\}}(s_{1\phi},s_{4\phi};s_{23},s_{\phi})=&-\sum_{i=1}^{4} \frac{c_i}{2}I_{3}^{(i)}-\frac{c_0}{2}I_4^{2me\{D=6\}}+\mathcal{O}(\epsilon)\\
+	=&-\frac{c_1}{2}I_3^{2m\{D=4-2\epsilon\}}(s_{1\phi},s_{23})-\frac{c_2}{2}I_3^{2m\{D=4-2\epsilon\}}(s_{\phi},s_{\phi4})\\
+	&-\frac{c_3}{2} I_3^{2m\{D=4-2\epsilon\}}(s_{\phi},s_{1\phi})-\frac{c_4}{2} I_3^{2m\{D=4-2\epsilon\}}(s_{4\phi},s_{23})\\
+	&-\frac{c_0}{2} I_4^{2me\{D=6\}}(s_{1\phi},s_{4\phi};s_{23},s_\phi)+\mathcal{O}(\epsilon).
+\end{align*}
+The coefficients $c_i$ can be set in order to catch the divergences. They are the ratio of the Gram determinants, for instance
+$$
+	\frac{c_1}{2}=\frac{s_{1\phi}-s_{23}}{-s_{1\phi}s_{4\phi}+s_\phi s_{23}}.
+$$
+Then we can compute the coefficient of the six-dimensional easy box,
+$$c_0=\sum_{i=1}^4 c_i=-\frac{2\,s_{14}}{-s_{1\phi}s_{4\phi}+s_\phi s_{23}},$$
+which allows us to write the finite part in a compact way,
+$$
+	(-s_{1\phi}s_{4\phi}+s_\phi s_{23})\left(I_4^{2me\{D=4-2\epsilon\}}+\sum_{i=1}^4\frac{c_i}{2}I_3^{(i)}\right)=s_{14}I_4^{2me\{D=6\}}+\mathcal{O}(\epsilon).
+$$
+%In conclusion the finite remainder part can be obtained considering the contribution at $\mathcal{O}(1)$ from the boxes and the contribution proportional to the two-point integral. Explicitly, subtracting the divergence (\ref{UVdiv}) we remain with the following terms:
+%\begin{align*}
+%	\left[A^{2L}_{cc(I)}\right]_{\text{finite}}=&A^{2L}_{cc(I)}-\left[A^{2L}_{cc(I)}\right]_{1/\epsilon\text{ poles}}\\
+%	%=&\sum_{\sigma\in\mathbb{Z_4}} \frac{1}{6}\frac{[\sigma(2)\sigma(3)]^2}{\langle \sigma(1)\sigma(4)\rangle^2} s_{14} I_4^{2me\{D=6\}}(s_{\sigma(1)\phi},s_{\sigma(4)\phi};s_{\sigma(2)\sigma(3)},s_\phi)\\
+%	%&-\frac{1}{3}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[2+\log\left(\frac{\mu_R^2}{-s_\phi}\right)\right]+\mathcal{O}(\epsilon)\\
+%	=&\sum_{\sigma\in\mathbb{Z}_4}\frac{1}{3}\frac{[\sigma(2)\sigma(3)]^2}{\langle \sigma(1)\sigma(4)\rangle^2}\left[
+%\text{Li}_2\left(1-\frac{s_\phi}{s_{\sigma(1)\phi}}\right)+\text{Li}_2\left(1-\frac{s_\phi}{s_{\sigma(4)\phi}}\right)
+%+\text{Li}_2\left(1-\frac{s_{\sigma(2)\sigma(3)}}{s_{\sigma(1)\phi}}\right) \right.\\&\left.
+%+\text{Li}_2\left(1-\frac{s_{\sigma(2)\sigma(3)}}{s_{\sigma(4)\phi}}\right)-\text{Li}_2\left(1-\frac{s_\phi s_{\sigma(2)\sigma(3)}}{s_{\sigma(1)\phi}s_{\sigma(4)\phi}}\right)+\frac{1}{2}\log^2\left(\frac{s_{\sigma(1)\phi}}{s_{\sigma(4)\phi}}\right)
+%\right]\\
+%&-\frac{1}{3}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[2+\log\left(\frac{\mu_R^2}{-s_\phi}\right)\right]+\mathcal{O}(\epsilon).
+%\end{align*}
+\section{Results for the cut-constructible part}
+We can sum the contributions found using double cuts in the two sectors.
+\subsection{Divergences}	\label{divpoles}
+Using (\ref{IRdiv1}) and (\ref{UVdiv}), the divergent contribution for the cut-constructible part of the unrenomalized amplitude is
+\begin{align*}
+	A^{2L}_{cc}=-\sum_{i=1}^4 \frac{1}{\epsilon^2}(-s_{i,i+1})^{-\epsilon}-\frac{1}{3}A^{1L}(\phi;1^+2^+3^+4^+)\frac{1}{\epsilon}+\mathcal{O}(1).
+\end{align*}
+From the universal factorization of infrared and ultraviolet terms in scattering amplitude, at two-loops, the structure of $\epsilon$-poles is predicted in terms of the one-loop amplitude \cite{Catani:1998bh}. Due to the vanishing behavior of the tree-level amplitude, the IR structure of the UV renormalized two-loop amplitude is
+$$
+	A^{2L}_{ren}(\phi;1^+2^+\dots n^+)=\mathcal{I}^{(1)}_{\phi+n}A^{1L}(\phi;1^+2^+\dots n^+)+\mathcal{O}(1).
+$$
+Indeed soft and collinear factorization properties guarantee that all the IR poles can be absorbed in the operator $\mathcal{I}^{(1)}$. Explicitly, the operator is
+$$
+	\mathcal{I}^{(1)}_{\phi+n}=-\left[\frac{1}{\epsilon^2}\sum_{i=1}^n (-s_{i,i+1})^{-\epsilon}+n\frac{\gamma_g}{\epsilon}\right]=-\left[\frac{1}{\epsilon^2}\sum_{i=1}^n (-s_{i,i+1})^{-\epsilon}+n\frac{\beta_0}{2\epsilon}\right]
+$$
+where $\gamma_g$ is the gluon anomalous dimension and $\beta_0$ is the leading term of QCD Callan-Symanzik function. The structure is the same observed in pure QCD for the two-loop amplitudes in the all-plus sector. The difference between the pure QCD case and the self-dual Higgs model is the presence of an effective coupling which scales as two powers of the gluon coupling. Then, the structure of the unrenormalized amplitude should be in this case
+\begin{align*}
+	A^{2L}&=\mathcal{I}^{(1)}_{\phi+n}A^{1L}(\phi;1^+2^+\dots n^+)+(n+2)\frac{\beta_0}{2\epsilon}A^{1L}(\phi;1^+2^+\dots n^+)+\mathcal{O}(\epsilon^0)\\
+	&=\left[-\frac{1}{\epsilon^2}\sum_{i=1}^n (-s_{i,i+1})^{-\epsilon}+\frac{\beta_0}{\epsilon}\right]A^{1L}(\phi;1^+2^+\dots n^+)+\mathcal{O}(\epsilon^0).	\numthis \label{div2L}
+\end{align*}
+This argument for the unrenormalized amplitude yields a simple pole which should not depend on the number $n$ of gluons coupled with the self-dual Higgs. We considered the double cuts in $s_\phi$ channel at lower multiplicity in order to check this statement,
+\begin{align*}
+	\sum_{\sigma\in\mathbb{Z}_3} \left[
+	\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}[baseline=(current  bounding  box.center)]
+  \begin{feynman}
+    \diagram [small, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      b  -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(\sigma(2)^+\)] -- [gluon] b,
+      d2 [particle=\(\sigma(1)^+\)] -- [gluon] b,
+      d3 [particle=\(\sigma(3)^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 1.2)$) -- ($(midpoint) + (0, -1.2)$);
+  \end{feynman}
+\end{tikzpicture} \right], \hspace{0.5cm} 
+		\sum_{\sigma\in \mathbb{Z}_2} \left[
+	\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}[baseline=(current  bounding  box.center)]
+  \begin{feynman}
+    \diagram [small, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+        b -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(\sigma(2)^+\)] -- [gluon] b,
+      d3 [particle=\(\sigma(1)^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 1.2)$) -- ($(midpoint) + (0, -1.2)$);
+  \end{feynman}
+\end{tikzpicture}\right].
+\end{align*}
+In these simple computations, we observed the same UV divergence found in the unitarity computation for the self-dual Higgs plus four gluon amplitude. As we will see in Section [\ref{coll}], the connection between the $1/\epsilon$ pole at different multiplicity is also supported by the requirement of the correct collinear limit for the cut-constructible part.\\
+
+The pole structure could be modified by the renormalisation process. The effective operator and the Wilson coefficient must be renormalised and this process should be different if we consider in the Lagrangian the sector which contains the self-dual Higgs $\phi$ instead of $H$ in HEFT. Studying the full amplitude in the case of only two gluons, we have observed a characteristic presence of poles $1/\epsilon$ in $A^{2L}(\phi;1^+,2^+)$ and $A^{2L}(\phi^\dagger;1^+,2^+)=\left[A^{2L}(\phi;1^-,2^-)\right]^*$ which cancel together when we sum the two contribution in order to obtain the Higgs amplitude. Then the observed pole structure is universal but it seems that the coefficient of the $1/\epsilon$ shows effects due to the self-duality. A possible continuation of this project can be the study of the pole structure at higher multiplicity for the full amplitude and the connection with the renormalisation of the self-dual field strength.
+
+%We have included the dependence on $d_s$ which appears in the normalisation of the one-loop amplitudes though the full dependence of the amplitude on $d_s$ may follow a different structure. We observe the presence of a UV divergence computing a double cut in a sector with a one-loop YM sub-amplitude which is proportional to $(d_s-2)$. For pure gluon corrections, the Callan-Symanzik function is
+%\begin{align}
+%	\beta_0=4-\frac{(d_s-2)}{6}.	\label{QCDbeta}
+%\end{align}
+%Hence, the UV divergence observed in the $s_\phi$ channel could be a partial contribution for the expected pole proportional to the QCD $\beta_0$. 
+
+\iffalse
+Before checking the correctness of the prefactor for the $1/\epsilon$ pole, we have to carefully organised the contributions in the amplitude. We can treat $d_s$ as the number of dimensions in which we allow the polarization directions of internal gluons as a free parameter. Then we can expand the amplitude,
+\begin{align*}
+	A^{2L}(\phi;1^+2^+\dots n^+)=&A^{2L[0]}(\phi;1^+2^+\dots n^+)+(d_s-2)A^{2L[1]}(\phi;1^+2^+\dots n^+)\\
+	&+(d_s-2)^2A^{2L[2]}(\phi;1^+2^+\dots n^+).	\label{dec_d_s}
+\end{align*}
+We observe the presence of a UV divergence computing a double cut in a sector with a one-loop YM sub-amplitude which is proportional to $(d_s-2)$. For pure gluon corrections, the Callan-Symanzik function is
+\begin{align}
+	\beta_0=4-\frac{(d_s-2)}{6}.	\label{QCDbeta}
+\end{align}
+Hence, using (\ref{div2L}-\ref{QCDbeta}), our guess for the pole structure of $A^{2L[1]}$ is
+$$
+	(d_s-2)\left[A^{2L[1]}(\phi;1^+2^+\dots n^+)\right]_{poles}=-\frac{(d_s-2)}{6}\frac{1}{\epsilon} A^{1L}(\phi;1^+2^+\dots n^+).
+$$
+This is exaclty the divergent contribution observed in the second sector due to the presence of the bubble integral in $s_\phi$-channel. 
+\fi
+\iffalse
+\begin{align*}
+	\feynmandiagram [horizontal=a to b] {
+	i1  -- [scalar] a [crossed dot] -- [gluon] i2 ,
+	a -- [gluon] b,
+	f1 -- [gluon] b -- [gluon] f2 [gluon],
+	};
+\end{align*}
+\begin{align*}
+	\feynmandiagram [horizontal=a to b] {
+	i1  -- [scalar] a [crossed dot] -- [gluon] d -- [gluon] i2 ,
+	d -- [gluon] c -- [gluon] f2,
+	c -- [gluon] b -- [gluon] f1,
+	a -- [gluon] b,
+	};
+\end{align*}
+\begin{eqnarray*}
+	\sum_{\sigma\in\mathbb{Z}_3}\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}[baseline=(current  bounding  box.center)]
+  \begin{feynman}
+    \diagram [scale=0.75, large, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      b  -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(\sigma(2)^+\)] -- [gluon] b,
+      d2 [particle=\(\sigma(1)^+\)] -- [gluon] b,
+      d3 [particle=\(\sigma(3)^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.2)$) -- ($(midpoint) + (0, -2.2)$);
+  \end{feynman}
+\end{tikzpicture} &&\rightarrow\sum_\sigma\left[-\frac{1}{6} \, A^{1L} \left(-\frac{s_{\sigma(1)\sigma(2)}s_{\sigma(1)\sigma(3)}}{s_{\phi\sigma(3)}-s_\phi}-\frac{s_{\sigma(1)\sigma(3)}s_\phi}{s_{\phi\sigma(1)}-s_\phi}\right)I_2(s_\phi)\right]\\
+&&\rightarrow -\frac{1}{3} A^{1L}(\phi;1^+2^+3^+) I_2(s_\phi)\\
+&&\rightarrow -\frac{1}{3\epsilon} A^{1L}(\phi;1^+2^+3^+) +\mathcal{O}(1)
+\end{eqnarray*}
+$$
+	\sum_{\sigma\in \mathbb{Z}_2}
+	\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}[baseline=(current  bounding  box.center)]
+  \begin{feynman}
+    \diagram [scale=0.95, large, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+        b -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(\sigma(1)^+\)] -- [gluon] b,
+      d3 [particle=\(\sigma(2)^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.2)$) -- ($(midpoint) + (0, -2.2)$);
+  \end{feynman}
+\end{tikzpicture}\rightarrow \sum_{\sigma}\left[-\frac{1}{6} \, A^{1L}(\phi;1^+2^+) \,I_2(s_\phi)\right]=-\frac{1}{3}\,A^{1L}(\phi;1^+,2^+)\,I_2(s_\phi)
+$$
+\fi
+\subsection{Finite remainder part}
+Subtracting the divergences, the finite remainder expression of the cut-constructible part for the two-loop $\phi$+four gluon amplitude is obtained from the finite contributions of boxes and bubbles. In the first sector, we observed some simplifications which arise when we sum over all the possible permutations of gluons and use Euler's property,
+\begin{align}
+	\text{Li}_2(z)+\text{Li}_2(1-z)=\frac{\pi^2}{6}-\ln(1-z)\ln(z).
+\end{align}
+Summing the finite contributions from the two sectors, we obtain the following result,
+\begin{align*}
+	\left[A^{2L}_{cc}\right]_{finite}&=A^{1L}(\phi;1^+\dots 4^+)
+\left[2 \text{Li}_2\left(1-\frac{s_\phi}{s_{1\phi}}\right)+2
+   \text{Li}_2\left(1-\frac{s_\phi}{s_{2\phi}}\right)+2
+   \text{Li}_2\left(1-\frac{s_\phi}{s_{3\phi}}\right)+2
+   \text{Li}_2\left(1-\frac{s_\phi}{s_{4\phi}}\right) \right.\\ &\left.-\text{Li}_2\left(1-\frac{s_\phi
+   s_{34}}{s_{1\phi} s_{2\phi}}\right)   -\text{Li}_2\left(1-\frac{s_\phi
+   s_{41}}{s_{2\phi} s_{3\phi}}\right) -\text{Li}_2\left(1-\frac{s_\phi
+   s_{23}}{s_{1\phi} s_{4\phi}}\right)-\text{Li}_2\left(1-\frac{s_\phi s_{12}}{s_{3\phi}
+   s_{4\phi}}\right)
+   \right.\\ &\left.+\frac{1}{2} \ln ^2\left(\frac{s_{12}}{s_{23}}\right) +\frac{1}{2} \ln
+   ^2\left(\frac{s_{1\phi}}{s_{23}}\right)+\frac{1}{2} \ln
+   ^2\left(\frac{s_{2\phi}}{s_{1\phi}}\right)   +\frac{1}{2} \ln
+   ^2\left(\frac{s_{1\phi}}{s_{34}}\right)+ \frac{1}{2}\ln
+   ^2\left(\frac{s_{23}}{s_{34}}\right) 
+   \right.\\ &\left. +\frac{1}{2} \ln
+   ^2\left(\frac{s_{2\phi}}{s_{34}}\right)  +\frac{1}{2} \ln
+   ^2\left(\frac{s_{12}}{s_{3\phi}}\right)  +\frac{1}{2} \ln
+   ^2\left(\frac{s_{3\phi}}{s_{2\phi}}\right)+\frac{1}{2} \ln
+   ^2\left(\frac{s_{2\phi}}{s_{41}}\right) +\frac{1}{2} \ln
+   ^2\left(\frac{s_{34}}{s_{41}}\right)  
+   \right.\\ &\left.+\frac{1}{2} \ln
+   ^2\left(\frac{s_{3\phi}}{s_{41}}\right) +\frac{1}{2} \ln
+   ^2\left(\frac{s_{41}}{s_{12}}\right)  +\frac{1}{2} \ln
+   ^2\left(\frac{s_{12}}{s_{4\phi}}\right)  +\frac{1}{2} \ln
+   ^2\left(\frac{s_{1\phi}}{s_{4\phi}}\right) +\frac{1}{2} \ln
+   ^2\left(\frac{s_{23}}{s_{4\phi}}\right)  \right.\\ &\left. +\frac{1}{2} \ln
+   ^2\left(\frac{s_{4\phi}}{s_{3\phi}}\right)+\frac{2 \pi ^2}{3}\right]+
+	\sum_{\sigma\in\mathbb{Z}_4}\frac{1}{3}\frac{[\sigma(2)\sigma(3)]^2}{\langle \sigma(1)\sigma(4)\rangle^2}\left[
+\text{Li}_2\left(1-\frac{s_\phi}{s_{\sigma(1)\phi}}\right) \right.\\&\left. +\text{Li}_2\left(1-\frac{s_\phi}{s_{\sigma(4)\phi}}\right)
++\text{Li}_2\left(1-\frac{s_{\sigma(2)\sigma(3)}}{s_{\sigma(1)\phi}}\right) 
++\text{Li}_2\left(1-\frac{s_{\sigma(2)\sigma(3)}}{s_{\sigma(4)\phi}}\right)-\text{Li}_2\left(1-\frac{s_\phi s_{\sigma(2)\sigma(3)}}{s_{\sigma(1)\phi}s_{\sigma(4)\phi}}\right)
+\right.\\&\left.+\frac{1}{2}\ln^2\left(\frac{s_{\sigma(1)\phi}}{s_{\sigma(4)\phi}}\right)
+\right]-\frac{1}{3}A^{1L}(\phi;1^+,2^+,3^+,4^+)\left[2+\ln\left(\frac{\mu_R^2}{-s_\phi}\right)\right]+\mathcal{O}(\epsilon).	\numthis \label{discnew}
+\end{align*}
+\subsection{Collinear limit}	\label{coll}
+Scattering amplitudes show universal factorization properties in the limit in which two particles are collinear. Before studying the behavior of the two-loop amplitude, let us consider a tree-level example. If we consider five gluons in the MHV configuration, $A^{tree}(1^+,2^-,3^-,4^+,5^+)$, we can take the limit in which $p_4$ is parallel to $p_5$. In this case the Parke-Taylor formula factorizes in the following way,
+$$
+	\frac{\langle 23 \rangle^3}{\langle 12 \rangle \langle 34 \rangle \langle 45 \rangle \langle 51 \rangle} \xrightarrow[]{4\parallel 5} \frac{\langle 23 \rangle^3}{\langle 12 \rangle \langle 3 P \rangle \langle P 1 \rangle} \frac{1}{\sqrt{z(1-z)} \langle 45 \rangle},
+$$
+where we introduced the parametrization $p_4=zP$ and $p_5=(1-z)P$. The five-point amplitude becomes the non-radiative amplitude $A^{tree}(1^+,2^-,3^-,P^+)$ multiplied by a factor, known as gluon splitting function,
+\begin{align}
+	\text{Split}^{tree}(-P^-,a^+,b^+)=\frac{1}{\sqrt{z(1-z)}\langle ab \rangle}.
+\end{align}
+The splitting functions depend on the nature and the helicity of the collinear particles.\footnote{These amplitudes are related to the Altarelli-Parisi splitting functions which appear in the DGLAP evolution equations considering the sum of the squares for the modulus of the helicity splitting amplitudes.}\\
+These objects are independent by the particular process. The universal splitting amplitudes for QCD was known up to two-loop \cite{Bern_1995, Bern_1999, Badger_2004}.\\
+The general factorization of a two-loop amplitude is \cite{Kosower_1999}
+\begin{align*}
+	A^{2L}_{\phi+n}(\dots, i^{\lambda_i}, &(i+1)^{\lambda_{i+1}},\dots) \xrightarrow[]{i\parallel i+1} \\
+	&\sum_{h=\pm} \left[ A^{2L}_{\phi+(n-1)}(\dots, (i-1)^{\lambda_{i-1}},P^h, (i+2)^{\lambda_{i+2}},\dots) \text{Split}^{tree}(-P^{-h},i^{\lambda_i}, (i+1)^{\lambda_{i+1}})+\right.\\
+	&\left.A^{1L}_{\phi+(n-1)}(\dots, (i-1)^{\lambda_{i-1}},P^h, (i+2)^{\lambda_{i+2}},\dots) \text{Split}^{1L}(-P^{-h},i^{\lambda_i}, (i+1)^{\lambda_{i+1}})+\right.\\
+	&\left.A^{tree}_{\phi+(n-1)}(\dots, (i-1)^{\lambda_{i-1}},P^h, (i+2)^{\lambda_{i+2}},\dots) \text{Split}^{2L}(-P^{-h},i^{\lambda_i}, (i+1)^{\lambda_{i+1}})\right].
+\end{align*}
+Thanks to the vanishing behavior of the tree-level $\phi$+gluon amplitudes (\ref{vanamp}), we do not need two-loop correction for the splitting functions. As already done for the collinear limit of one-loop $\phi$+gluon amplitudes \cite{Badger_2007}, we can divide the one-loop splitting functions isolating the cut-constructible and rational components, 
+$$
+	\text{Split}^{1L}(-P^{-h},1^+,2^+)=\text{Split}^{1L(C)}(-P^{-h},1^+,2^+)+\text{Split}^{1L(R)}(-P^{-h},1^+,2^+),
+$$
+where the cut-constructible pieces are proportional to the tree-level splitting amplitudes,
+\begin{align*}
+	&\text{Split}^{1L(C)}(-P^{-},1^+,2^+)=&\\
+	&\hspace{0.5cm}=\text{Split}^{tree}(-P^{-},1^+,2^+)\left[\frac{1}{\epsilon^2}\left(-s_{12}\right)^{-\epsilon}\left(-\Gamma(1-\epsilon)\Gamma(1+\epsilon)\left(\frac{z}{1-z}\right)^\epsilon-2\epsilon \ln\frac{1}{z}\right)+\mathcal{O}(\epsilon)\right]&\\
+	&\hspace{0.5cm}=\text{Split}^{tree}(-P^{-},1^+,2^+)\left[-\frac{1}{\epsilon^2}\left(-s_{12}\right)^{-\epsilon}+\frac{\ln(1-z)+\ln z}{\epsilon}-\left(\ln(1-z)+\ln z\right)\ln(-s_{12})\right.\\
+	&\hspace{0.9cm}\left.-\frac{\pi^2}{6}-\frac{1}{2}\ln^2 \frac{z}{1-z}+\mathcal{O}(\epsilon)\right],&\\
+	&\text{Split}^{1L(C)}(-P^{+},1^+,2^+)=0.&
+\end{align*}
+Since in the cut-constructible part each one-loop scalar integral appears with a prefactor proportional to the Gram determinant, we can introduce the following scalar functions in which this coefficient is pulled out.
+\begin{align*}
+	F^{1m}_4(s_{12},s_{23};s_{45})&=\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small, horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(4\)]-- [] b,
+			d2 [particle=\(5\)]-- [] b,
+      			d1 [particle=\(1\)]-- [] a,
+      			d4 [particle=\(3\)]-- [] c,
+      			d -- [] s [particle=\(2\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]_F:=-\frac{s_{12}s_{23}}{2}I^{1m}_4(s_{12},s_{23};s_{45}),\\
+	F^{2m}_4(s_{1\phi},s_{4\phi};s_\phi,s_{23})&=\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(3\)]-- [] b,
+			d2 [particle=\(2\)]-- [] b,
+      			d1 [particle=\(1\)]-- [] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [very thick] s [particle=\(\phi\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]_F:=-\frac{s_{1\phi}s_{4\phi}-s_{23}s_\phi}{2}I^{2m}_4(s_{1\phi},s_{4\phi};s_\phi,s_{23}).
+\end{align*}
+In the collinear limit there is an interesting property of scalar boxes \cite{Bern_Collinear},
+\begin{align*}
+	\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(3\)]-- [] b,
+			d2 [particle=\(2\)]-- [] b,
+      			d1 [particle=\(1\)]-- [] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [very thick] s [particle=\(\phi\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]_F+\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small, horizontal=d to b] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d2  [particle=\(1\)]-- [] b,
+			d3 [particle=\(\phi\)]-- [very thick] b,
+      			d1 [particle=\(4\)]-- [] a,
+      			d4 [particle=\(2\)]-- [] c,
+      			d -- [] s [particle=\(3\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]_F \xrightarrow[]{1\parallel 2} \left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small, horizontal=b to d, scale=0.7] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(3\)]-- [] b,
+      			d1 [particle=\(4\)]-- [] a,
+      			d4 [particle=\(P\)]-- [] c,
+      			d -- [very thick] s [particle=\(\phi\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]_F
+\end{align*}
+We checked the previous relation. In order to reduce the dilogarithms which depend on the variable $z$, we used Abel's identity,
+\begin{align*}
+	\text{Li}_2\left(\frac{x}{1-y}\right)+\text{Li}_2\left(\frac{y}{1-x}\right)-\text{Li}_2\left(\frac{xy}{(1-x)(1-y)}\right)-\text{Li}_2\left(x\right)-\text{Li}_2\left(y\right)=\ln\left[(1-x)(1-y)\right],
+\end{align*}
+where in our case we considered
+\begin{align*}
+	x=\left(1-\frac{s_\phi}{s_{34}}\right)(1-z), \hspace{0.6cm} y=z.
+\end{align*}
+Similarly, we can show that \cite{Bern_Collinear}
+\begin{align*}
+	&\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(2\)]-- [] b,
+			d2 [particle=\(1\)]-- [] b,
+      			d1 [particle=\(4\)]-- [] a,
+      			d4 [particle=\(3\)]-- [] c,
+      			d -- [very thick] s [particle=\(\phi\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]_F+\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small, horizontal=d to b] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d2  [particle=\(4\)]-- [] b,
+			d3 [particle=\(\phi\)]-- [very thick] b,
+      			d1 [particle=\(3\)]-- [] a,
+      			d4 [particle=\(1\)]-- [] c,
+      			d -- [] s [particle=\(2\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]_F + \left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small, horizontal=d to b] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d2 [particle=\(\phi\)]-- [very thick] b,
+			d3  [particle=\(3\)]-- [] b,
+      			d1 [particle=\(2\)]-- [] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [] s [particle=\(1\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]_F \xrightarrow[]{1 \parallel 2} \\
+	&
+	\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small, horizontal=b to d, scale=0.7] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(P\)]-- [] b,
+      			d1 [particle=\(3\)]-- [] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [very thick] s [particle=\(\phi\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]_F+\frac{1}{\epsilon^2}(-s_{12})^{-\epsilon}-\frac{1}{\epsilon^2}\left(-(1-z)s_{12}\right)^{-\epsilon}-\frac{1}{\epsilon^2}\left(-z s_{12}\right)^{-\epsilon}-\text{Li}_2(z)-\text{Li}_2(1-z).
+\end{align*}
+Using Spence's property,
+\begin{align*}
+	&\text{Li}_2\left(\frac{b}{b-1}\right)+\text{Li}_2\left(\frac{a}{a-1}\right)+\text{Li}_2\left(\frac{a}{1-b}\right)+\text{Li}_2\left(\frac{b}{1-a}\right)+\frac{1}{2}\ln^2\left(\frac{1-a}{1-b}\right)=\text{Li}_2\left(\frac{ab}{(1-a)(1-b)}\right)\\
+	&\text{with}\hspace{0.6cm}a=(1-z)\left(1-\frac{s_{34}}{s_\phi}\right), \hspace{0.6cm}b=z\left(1-\frac{s_{34}}{s_\phi}\right),
+\end{align*}
+we can show that the finite part of the last box contribution vanishes,
+\begin{align}
+	\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(4\)]-- [] b,
+			d2 [particle=\(3\)]-- [] b,
+      			d1 [particle=\(2\)]-- [] a,
+      			d4 [particle=\(1\)]-- [] c,
+      			d -- [very thick] s [particle=\(\phi\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]_F  +\frac{1}{\epsilon^2}\left[(-s_{1\phi})^{-\epsilon}+(-s_{1\phi})^{-\epsilon}-(-s_{34})^{-\epsilon}-(-s_{\phi})^{-\epsilon}\right] \xrightarrow[]{1 \parallel 2}  0.	\label{col2me}
+\end{align}
+These relations help us to extract efficiently the collinear limit in the first sector. In the result, we observe the presence of one-mass boxes with different positions for the $\phi$ field. They represent the four-point contributions of the two-loop $\phi$ plus three gluon amplitude with the correct tree splitting functions which comes from the limit of the coefficients proportional to the one-loop amplitude,
+\begin{align*}
+	\frac{-2 s_\phi^2}{\langle 12 \rangle \langle 23 \rangle \langle 34 \rangle 41 \rangle}  \xrightarrow[]{1 \parallel 2} \frac{-2 s_\phi^2}{\langle P3 \rangle \langle 34 \rangle \langle 4P \rangle} \text{Split}^{tree}(-P^-,1^+,2^+).
+\end{align*}
+In the second sector, there are easy two-mass boxes with a particular spinor prefactors. These contributions vanish in the collinear limit considering the property (\ref{col2me}) and the vanishing behavior of the spinor products in front of the remainder boxes. For example,
+\begin{align*}
+	\frac{[23]^2}{\langle 14 \rangle^2}=\frac{1}{\langle 12 \rangle \langle 23 \rangle \langle 34 \rangle \langle 41 \rangle}\frac{s_{23}}{s_{41}}\tr_-(4123) \xrightarrow[]{1 \parallel 2}  0.
+\end{align*} 
+The only contribution of the second sector which survives in the collinear limit is proportional to the bubble $I_2(s_\phi)$.\\
+Summing all the contributions, we obtain the expected factorization,
+\begin{align*}
+	A^{2L}_{cc}(\phi;1^+,2^+,3^+,4^+)  \xrightarrow[]{1 \parallel 2} &\,A^{2L}_{cc}(\phi;P^+,3^+,4^+) \text{Split}^{tree}(-P^-,1^+,2^+)+\\
+	&A^{1L}(\phi;P^+,3^+,4^+)\text{Split}^{1L(C)}(-P^-,1^+,2^+).
+\end{align*}
+where $A^{2L}_{cc}(\phi;P^+,3^+,4^+)$ is computed in App. [\ref{phi+3g}].\\
+Thanks to the symmetry properties of the amplitude, the factorization holds also for the collinear limit of any other two adjacent gluons.
+\iffalse
+\begin{tabularx}{\linewidth}{XX}
+\begin{equation} 
+    \begin{aligned}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [scale=0.95, large, horizontal=b to c] {
+      b [blob] --  [white] db -- [white] c [myblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(2^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(1^+\)] -- [gluon] b,
+      d3 [particle=\(3^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.2)$) -- ($(midpoint) + (0, -2.2)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+&
+\vspace{-0.2cm}
+\begin{equation}
+    \begin{aligned}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [large, horizontal=b to c] {
+      b [blob] --  [white] db -- [white] c [myblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(3^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(2^+\)] -- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d2 [particle=\(1^+\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.1)$) -- ($(midpoint) + (0, -2.1)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{XX}
+\begin{equation} 
+    \begin{aligned}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [scale=0.95, large, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(2^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(1^+\)] -- [gluon] b,
+      d3 [particle=\(3^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.2)$) -- ($(midpoint) + (0, -2.2)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+&
+\vspace{-0.2cm}
+\begin{equation}
+    \begin{aligned}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [large, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(3^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(2^+\)] -- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d2 [particle=\(1^+\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.1)$) -- ($(midpoint) + (0, -2.1)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+\end{tabularx}
+\fi

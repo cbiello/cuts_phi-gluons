@@ -1,0 +1,311 @@
+%Tutoraggio1
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage[margin=3cm]{geometry}
+
+\usepackage{graphicx}
+\graphicspath{{./pics/}}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{cases}
+\usepackage{physics}
+%\usepackage{bbold} %caratteri speciali come matrice identità
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage{array} %per centrare tabelle
+\usepackage{array}
+\usepackage{tabularx} 
+\usepackage{longtable}
+\usepackage{sidecap}
+\usepackage{tikz}	%diagrammi di Feymann
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{marginnote}
+\usepackage[export]{adjustbox}
+\usepackage{booktabs,siunitx}
+\usepackage{adjustbox}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{csquotes}
+\usepackage{multicol}
+\usepackage[hidelinks,colorlinks]{hyperref}
+\usepackage{caption}
+\usepackage{hhline}
+\usepackage{makecell}
+\usepackage{dsfont}
+\usepackage{tensor}
+\usepackage[titletoc]{appendix}
+\usepackage{enumitem}
+\setenumerate[1]{label=\arabic*.}
+\newcounter{ResumeEnumerate}
+\usepackage{amsthm} %per le dimostrazioni
+% Uncomment the following line to allow the usage of graphics (.png, .jpg)
+%\usepackage{graphicx}
+
+\newtheorem*{lem}{Lemma}
+\newtheorem*{theorem}{Teorema}
+\newtheorem*{mydef}{Definizione}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=teal,
+	filecolor=teal,      
+	urlcolor=teal,
+	citecolor=teal,
+}
+
+\renewcommand\thefootnote{\textcolor{teal}{\arabic{footnote}}}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=teal,
+	filecolor=teal,      
+	urlcolor=teal,
+	citecolor=teal,
+}
+
+\usepackage{xcolor}
+\colorlet{eqlink}{teal}
+\newcommand*{\SavedEqref}{}
+\let\SavedEqref\eqref
+\renewcommand*{\eqref}[1]{%
+	\begingroup
+	\hypersetup{
+		linkcolor=eqlink,
+		linkbordercolor=eqlink,
+	}%
+	\SavedEqref{#1}%
+	\endgroup
+}
+
+\newenvironment{parteo}{\begin{quote} \captionsetup[figure]{font=footnotesize,labelfont=footnotesize} \footnotesize}{\end{quote}}
+\newcommand{\quantities}[1]{%
+	\begin{tabular}{@{}c@{}}\strut#1\strut\end{tabular}%	\\per andare a capo nelle tabelle
+}
+
+\newenvironment{result}{\begin{flushright}
+		\vspace{-0.3cm}\small[}{] \end{flushright}}
+	
+\newcommand\numthis{\addtocounter{equation}{1}\tag{\theequation}}
+	\numberwithin{equation}{section}
+	
+	\newcommand{\Ie}{\textit{i.e. }}
+	\newcommand{\eg}{e.g. }
+	\newcommand{\NB}{\textit{N.B.:}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\wrt}{w.r.t. }
+	\newcommand{\rhs}{r.h.s. }
+	\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+	
+	\usepackage{afterpage}
+	\newcommand\blankpage{%
+		\null
+		\thispagestyle{empty}%
+		\addtocounter{page}{-1}%
+		\newpage
+	}
+
+\markboth{$\phi+3g^+$ cc}{$\phi+3g^+$ cc}
+\pagestyle{myheadings}
+
+% Start the document
+\begin{document}
+\renewcommand{\abstractname}{\vspace{-\baselineskip}}
+\newpage
+%\newgeometry{margin=2.7cm}
+\begin{center}
+\vspace{0.5cm}
+	\textbf{\Large $\phi+3g^+$}\\\vspace{0.1cm}
+	\textbf{\large Cut-constructible part}
+	\vspace{0.5cm}
+\end{center}
+{
+	\hypersetup{linkcolor=teal,linktoc=page}
+	%\tableofcontents
+	\thispagestyle{empty}
+}
+\numberwithin{equation}{section}
+
+\noindent We have four different double-cuts which can be divided into two sectors.
+Computing the double cuts, we obtained the cut-constructible part of the amplitude,
+\begin{align*}
+A^{2L}_{cc}(\phi;1^+2^+3^+)=&\, A^{1L}(\phi;1^+,2^+,3^+)\sum_{\sigma\in \mathbb{Z}_3} d_{\sigma(i)} I_{4,\sigma(1)}^{1m}\,+A^{1L}(\phi;1^+,2^+,3^+)\sum_{\sigma\in \mathbb{Z}_3} c_{\sigma(1)} I_{3,\sigma(1)}^{2m}\\&-\frac{d_s-2}{6} A^{1L}(\phi;1^+2^+3^+)\, I_2(s_\phi)
+\end{align*}
+where
+\begin{align*}
+	d_{\sigma(1)}=-\frac{1}{2}s_{\phi \sigma(1)}s_{\phi\sigma(3)}, \hspace{0.5cm}c_{\sigma(1)}=2\frac{1}{2}(s_{\sigma(1)\phi}-s_\phi).
+\end{align*}
+Then the divergent part is
+\begin{align*}
+	\left[A^{2L}_{cc}(\phi;1^+,2^+,3^+)\right]_{IR+UV}=\left[-\frac{1}{\epsilon^2}\sum_{i=1}^3 \left(-s_{i,i+1}\right)^{-\epsilon}-\frac{d_s-2}{6\epsilon}\right].
+\end{align*}
+The remainder part comes from the finite contribution of one-mass boxes and from the bubble integral. We obtain
+\begin{align*}
+	\left[A^{2L}_{cc}(\phi;1^+2^+3^+)\right]_{finite}=A^{1L}(\phi;1^+2^+3^+)\left[2\,\text{Li}_2\left(1-\frac{s_\phi}{s_{12}}\right)+2\,\text{Li}_2\left(1-\frac{s_\phi}{s_{23}}\right)+2\,\text{Li}_2\left(1-\frac{s_\phi}{s_{31}}\right) \right.\\ \left.
++\frac{1}{2}\ln^2\frac{s_{12}}{s_{23}}+\frac{1}{2}\ln^2\frac{s_{23}}{s_{31}}+\frac{1}{2}\ln^2\frac{s_{31}}{s_{12}}+\frac{\pi^2}{2}-\frac{d_s-2}{6}\left(2+\ln\left(\frac{\mu_R^2}{-s_\phi}\right)\right)\right].
+\end{align*}
+As soon as possible, I will write the cut-constructible pieces in terms of one-loop MI.\\
+In the following sections there are some details about the computation.
+\section{Cuts with a 1L $\phi+g$ sub-amplitude}
+\begin{tabularx}{\linewidth}{XX}
+\vspace{-1cm}
+\begin{equation}	\tag{\text{dcut A}} 
+    \begin{aligned}
+\tikzfeynmanset{ whiteblob/.style={ shape=circle, typeset=$1L$,
+draw=black, } }
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$tree$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [scale=0.9, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [whiteblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(2^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, rmomentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, rmomentum=\(\ell_2\)] b ,
+      d1 [particle=\(1^+\)] -- [gluon] b,
+      d3 [particle=\(3^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.2)$) -- ($(midpoint) + (0, -2.2)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}	
+\end{equation}
+&
+\vspace{-1cm}
+
+\begin{equation}	\tag{\text{dcut B}} 
+    \begin{aligned}
+\tikzfeynmanset{ whiteblob/.style={ shape=circle, typeset=$1L$,
+draw=black, } }
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$tree$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [ horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [whiteblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(3^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, rmomentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, rmomentum=\(\ell_2\)] b ,
+      d1 [particle=\(2^+\)] -- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d2 [particle=\(1^+\)],
+    };
+	\label{sphi1}
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.1)$) -- ($(midpoint) + (0, -2.1)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+\end{tabularx}
+In $s_\phi$-channel, the integrand for the double cut computation is
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut A}}&=-2  A^{tree}(\phi^\dagger;\ell_1^+,(-\ell_2)^+)\frac{\langle \ell_1 \ell_2 \rangle^3}{\langle 12 \rangle \langle 23 \rangle \langle 3 \ell_1 \rangle \langle \ell_2 1 \rangle}\\
+	&=A^{1L}(\phi;1^+,2^+,3^+)\frac{\tr_-(13\ell_1 \ell_2)}{\langle 3 \ell_1 3]\langle 1 \ell_2 1]}
+\end{align*}
+\begin{align*}
+	\int \dd \Phi_2 A^{2L}_{int}|_{\text{dcut A}}&=A^{1L}(\phi;1^+,2^+,3^+) \left[\frac{1}{2}(-s_{1\phi} s_{3\phi}) I_4^{1m}(s_{1\phi},s_{3\phi};s_\phi)|_{s_\phi\text{-cut}}\right.\\
+	&\hspace{0.5cm}\left.+ \frac{1}{2}(s_{1\phi}-s_\phi)I_3^{2m}(s_{1\phi},s_\phi)|_{s_\phi\text{-cut}}+ \frac{1}{2}(s_{3\phi}-s_{\phi})I_3^{2m}(s_{3\phi},s_\phi)|_{s_\phi\text{-cut}}\right].
+\end{align*}
+In $s_{\phi1}$-channel the double cut can be easily computed using Schouten identity,
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut B}}&=-2 s_\phi^2 A^{tree}(\phi^\dagger;1^+,\ell_1^+,(-\ell_2)^+)\frac{\langle \ell_1 \ell_2 \rangle^3}{\langle 23 \rangle \langle 3 \ell_1 \rangle \langle \ell_2 2 \rangle}\\
+	&=A^{1L}(\phi;1^+,2^+,3^+)\left(\frac{\langle 1 \ell_2 \rangle}{\langle \ell_1 1 \rangle}+\frac{\langle \ell_2 3 \rangle}{\langle \ell_1 3 \rangle}\right)\left(\frac{\langle 1 \ell_1 \rangle}{\langle \ell_2 1 \rangle}+\frac{\langle \ell_1 2 \rangle}{\langle \ell_2 2 \rangle}\right)\\
+	&=A^{1L}(\phi;1^+,2^+,3^+)\left[\frac{1}{2}(-s_{1\phi}s_{3\phi})I_4^{1m}(s_{1\phi},s_{3\phi};s_\phi)|_{s_{\phi1}\text{-cut}}+\right.\\
+	&\hspace{0.5cm}\left.\frac{1}{2}(-s_{1\phi}s_{2\phi})I_4^{1m}(s_{1\phi},s_{2\phi};s_\phi)|_{s_{\phi1}\text{-cut}} +2\frac{1}{2}(s_{1\phi}-s_\phi) I_3^{2m}(s_{1\phi},s_\phi)|_{s_{\phi1}\text{-cut}}\right]
+\end{align*}
+The self-dual Higgs is unordered and this is the motivation of the presence of two boxes with a different configuration of gluons.
+We do not observe the presence of contributions in this channel that cannot be investigated in the previous one. Hence, we only have one-mass boxes and two-mass triangles with $\phi$ alone.
+\section{Cuts with a 1L YM sub-amplitude}
+\begin{tabularx}{\linewidth}{XX}
+\vspace{-1cm}
+\begin{equation}	\tag{\text{dcut C}} 
+    \begin{aligned}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$1L$,
+draw=black, } }
+\tikzfeynmanset{ whiteblob/.style={ shape=circle, typeset=$tree$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [ horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [whiteblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(3^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, rmomentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, rmomentum=\(\ell_2\)] b ,
+      d1 [particle=\(2^+\)] -- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d2 [particle=\(1^+\)],
+    };
+	\label{sphi1}
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.1)$) -- ($(midpoint) + (0, -2.1)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+&
+\vspace{-1cm}
+\begin{equation}	\tag{\text{dcut D}} 
+    \begin{aligned}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$1L$,
+draw=black, } }
+\tikzfeynmanset{ whiteblob/.style={ shape=circle, typeset=$tree$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [scale=0.9, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [whiteblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(2^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(1^+\)] -- [gluon] b,
+      d3 [particle=\(3^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2.2)$) -- ($(midpoint) + (0, -2.2)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}	
+\end{equation}
+\end{tabularx}
+In $s_{\phi 1}$-channel, the product of sub-amplitude is
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut C}}&=\left[\frac{\langle \ell_1 \ell_2 \rangle^3}{\langle 1 \ell_1 \rangle \langle \ell_2 1 \rangle}\right] \left[ \frac{d_s-2}{2}\frac{1}{3}\frac{[\ell_1\ell_2][23]}{-\langle \ell_1 \ell_2 \rangle\langle 23 \rangle}\right]\\
+	&=-\frac{d_s-2}{2}\frac{1}{3}[23]^2 \frac{\langle \ell_1 \ell_2 \rangle}{\langle \ell_1 1 \rangle \langle 1 \ell_2 \rangle}=-\frac{d_s-2}{2}\frac{1}{3}[23]^2 \frac{1}{\langle 12 \rangle}\left(-\frac{\langle 2 \ell_2 1]}{\langle 1 \ell_2 1]}+\frac{\langle 2 \ell_2 1 ]}{\langle 1 \ell_1 1]}\right)\\
+	&=-\frac{d_s-2}{2}\frac{1}{3}[23]^2 \frac{1}{\langle 12 \rangle}\left(-\frac{\langle 2 P_{12} 1]}{\langle 1 P_{12} 1]}+\frac{\langle 2 P_{12} 1 ]}{\langle 1 P_{12} 1]}\right)=0.
+\end{align*}
+The last passage can be shown using the explicit integrand reduction of 3-pts tensor integrals.\\
+
+\noindent The double cut in $s_\phi$-channel was computed in the attached Mathematica notebook. We obtain only a bubble. Because of the colorless of $\phi$, we sum over the three possible configurations of gluons and we obtain a coefficient proportional to the one-loop amplitude,
+$$
+	-\frac{d_s-2}{6} A^{1L}(\phi;1^+,2^+,3^+) I_2(s_\phi).
+$$
+% Uncmment the following two lines if you want to have a bibliography
+%\bibliographystyle{apalik%\bibliography{document}
+\end{document}

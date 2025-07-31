@@ -1,0 +1,375 @@
+\chapter{All-plus sector in Yang-Mills theory} \label{secYM}
+\section{One-loop level}
+For the computation of the discontinuities of the two-loop amplitude for a self-dual Higgs boson and four gluons, we will need to know the one-loop all-plus helicity amplitude in pure QCD. 
+\subsection{Color decomposition}
+We introduce the color decomposition for a one-loop amplitude with $SU(N_C)$ gauge group,
+$$
+	\mathcal{A}^{1L}(1,2,\dots,n)=g^n c_\Gamma \sum_{c=1}^{\lfloor n/2 \rfloor+1} \sum_{\sigma\in S_n/C_n} Gr_{n;c}(\sigma) A^{1L}_{n,c}\left(\sigma(1,2,\dots,n)\right)
+$$
+where $\lfloor x \rfloor$ is the largest integer less than or equal to $x$. $S_n$ and $C_n$ are the symmetric and cyclic groups of $n$ elements. Furthermore, we organised the trace-based color decompositions inserting in the definition the standard loop factor
+\begin{align}
+	c_\Gamma\coloneqq \frac{1}{(4\pi)^{2-\epsilon}} \frac{\Gamma(1+\epsilon)\Gamma^2(1-\epsilon)}{\Gamma(1-2\epsilon)}=\frac{1}{(4\pi)^2}+\mathcal{O}(\epsilon).	\label{defcg}
+\end{align}
+The leading color structure is
+$
+	Gr_{n,1}(\mathbb{1})=N_C \tr(T^{a_1}\dots T^{a_n}),
+$
+where $N_C$ can be interpreted as the trace of the identity $\mathbb{1}_{N_C}$. The sub-leading terms contain double traces,
+$
+	Gr_{n,c}(\mathbb{1})=\tr(T^{a_1}\dots T^{a_{c-1}})\tr(T^{a_c}\dots T^{a_n})
+$.\\
+
+We will focus on the partial amplitude which capture the kinematical dependence of the leading color term,
+$
+	A_{n,1}^{1L}(1,2,\dots,n),
+$
+whose notation will be $A^{1L}(1,2,\dots,n)$ for simplicity. We are interested only in this contribution beacuse the subleading partial amplitudes are completely determined by the leading ones using the relation \cite{Bern:1990ux}
+\begin{align*}
+	A^{1L}_{n,c}(1,2,\dots, c ,c+1,\dots, n)=\sum_{\sigma\in COP\{\alpha\}\{\beta\}}A^{1L}_{n,1}(\sigma(1,2,\dots, c ,c+1,\dots, n)),
+\end{align*}
+where we introduced the cyclic ordered permutation (COP) of two sets. It represents the shuffle of the two sets without changing the relative order between the elements of $\{\alpha\}=\{1,2,\dots,c\}$ and similarly for $\{\beta\}=\{c+1,\dots,n\}$.\\
+
+This color decomposition is string-inspired. Indeed $\ell$-loop amplitudes can be seen as open string interaction in the infinite tension limit. The decomposition naturally emerges understanding string perturbation theory as a topological expansion \cite{Blumenhagen:2013fgp}. Open string amplitudes are constructed introducing vertex operators on the boundaries of the world-sheet, which is an annulus at one-loop level. The boundary states have additional degrees of freedom encoded by Chan-Paton factors which realize non-abelian algebras. Two adjacent boundary operators share an index and, if we sum over all the possible index values, we obtain the traces of the color decomposition,
+\begin{align*}
+	T^{1}_{a_1a_2} T^2_{a_2a_3} \dots T^n_{a_n a_1}=\tr(T^1T^2\dots T^n).
+\end{align*}
+Hence each boundary produces one trace, then for an annulus we observe double traces. Also the leading color can be interpreted as a double trace since $N_C=\tr(\mathbb{1})$ is the result from a boundary without open string insertions.\\
+
+The one-loop gluon amplitude with maximally helicity violation was conjectured requiring the correct behavior in the collinear limit \cite{Bern_1994},
+\begin{align}
+	A^{1L}_{n,1}(1^+,2^+,\dots,n^+)=\frac{1}{3}\sum_{1\leq k_1<k_2<k_3<k_4\leq n}\frac{\langle k_1k_2k_3k_4k_1]}{\langle 12 \rangle \langle 23 \rangle \dots \langle n1 \rangle}+\mathcal{O}(\epsilon).	\label{1LQCD}
+\end{align}
+In $\mathcal{N}=4$ super Yang-Mills, all-plus amplitudes vanishes at all order in perturbation theory as a consequence of SUSY Ward Identity \cite{2014}. This implies a relation between loop contributions from gluons, scalars and fermions in a massless adjoint representation,
+\begin{align}
+	A^{1L}_{scalar}(1^+,2^+,\dots,n^+)=-A^{1L}_{fermion}(1^+,2^+,\dots,n^+)=A^{1L}_{gluon}(1^+,2^+,\dots,n^+)
+		\label{susyrel}
+\end{align}
+where the subscript denotes the particle circulating in the loop of the gluon amplitude. In the pure QCD case obviously only the gluon loop contribution is present.\\
+Bern, Dixon, Dunbar, Kosower conjectured a relation between QCD all-plus amplitudes and MHV $\mathcal{N}=4$ ones known as dimension-shift formula  \cite{1997}. They proved it up to the six-point amplitude by an explicit computation of both amplitudes at all orders in $\epsilon$ using cuts in generic dimensions. The complete proof was found recently in \cite{Britto:2021tez}.\\
+
+However we focus on QCD amplitudes and we recalculate these rational objects at low multiplicity and compare it with the formula for a generic number of gluons (\ref{1LQCD}).
+
+\subsection{Four gluon amplitude}
+One-loop amplitudes are rational when gluons are in the all-plus configuration. There are no discontinuities because every cuts vanish in four dimensions. In order to extract the missing information from $d$-dimensional integrands, we need trees in generic dimension depending on the loop order. At one-loop we only need an extra variable $\mu^2$ which capture the norm of the $(-2\epsilon)$-dimensional component of the loop momentum. Then, we can work in an embedding space with dimension $5$\footnote{In order to include fermions, we shoud consider even dimensions. Six-dimensional trees are sufficient to study one-loop and two-loop amplitudes.}, but we have to develop spinor-helicity in high dimension.\\
+
+For one-loop amplitude we have an alternative approach. We can use cuts in generic dimensions to extract the amplitude treating the extra-dimensional part of the loop momentum $\mu^2$ as a mass-like parameter. Using (\ref{susyrel}), we can extract the gluon contribution considering scalars circulating in the loop. Then we can compute the following double cut in which the trees describe interactions between gluons and massive scalars.
+\begin{equation}
+c_\Gamma A(1^+,2^+,3^+,4^+)|_{s_{12}\text{-cut}}=\int \dd \Phi_2\,
+\begin{aligned}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [horizontal=b to c] {
+      b [blob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(4^+\)] -- [gluon] b
+        -- [scalar, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [scalar, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(3^+\)] -- [gluon] b,
+      c -- [gluon] d3 [particle=\(1^+\)],
+      c -- [gluon] d2 [particle=\(2^+\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 2)$) -- ($(midpoint) + (0, -2)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned} \label{ddimcut}
+ \end{equation}
+We need the tree level amplitude with two gluons and two scalars, $A^{tree}(1^+,2_s, 3_{s},4^+)$. We compute it using a generalisation of BCFW recursion relation in the case of massime inner propagators \cite{Badger_2005}. We realize the complex shift,
+\begin{align*}
+	\begin{cases}
+		\hat p_1(z)=p_1-z\eta,\\
+		\hat p_4(z)=p_4+z\eta,
+	\end{cases}\,
+	\begin{cases}
+		| \hat 1 ] = | 1] - z | 4 ],\\
+		| \hat 4 \rangle = | 4 \rangle + z | 4 \rangle.
+	\end{cases}
+	\label{shiftscalar}
+\end{align*}
+Then the amplitude is constructed by the relation
+\begin{align}
+	A^{tree}(1^+,2_s, 3_{s},4^+)=A^{tree}(\hat 1^+,2_s,(-\hat P_{34})_s) \frac{1}{P_{34}^2-\mu^2} A^{tree}({(\hat P_{34})}_s,3_{s}, 4^+).	\label{BCFW1ll4}
+\end{align}
+where $P_{34}\equiv p_3+p_4$ is the momentum of the inner scalar. The three-point amplitude is
+$$
+		A^{tree}(\hat 1^+,2_s,(-\hat P_{34})_s)= \frac{\langle q |\ell_1 |p]}{\langle qp \rangle }, \text{ where $q$ is a reference vector.}		
+$$
+These building blocks in (\ref{BCFW1ll4}) are evaluated at the point in which $\hat P(z)$ goes on-shell, i.e. $\hat P^2=\mu^2$,
+$$z=\frac{P_{34}^2-\mu^2}{\langle 4 |P_{34}|1]}.$$
+Using simple spinor algebra, we obtain the desired four point amplitude,
+\begin{align}
+	A^{tree}(1^+,2_s,3_{ s}, 4^+)=\frac{\mu^2 [14]}{\langle 14 \rangle [(p_1+p_2)^2-\mu^2]}.	\label{need}
+\end{align}
+Finally we can proceed with the computation of the double cut (\ref{ddimcut}),
+\begin{align*}
+	c_\Gamma A(1^+,2^+,3^+,4^+)|_{s_{12}\text{-cut}}&=\int \frac{\dd^{4-2\epsilon}\ell_1}{(2\pi)^{4-2\epsilon}} A^{tree}(-\ell_1,1^+,2^+,\ell_2) A^{tree}(-\ell_2,3^+,4^+,\ell_1)\\
+	&=\int  \frac{\dd ^4 \bar{\ell_1}}{(2\pi)^4} \frac{\dd^{-2\epsilon}\mu}{(2\pi)^{-2\epsilon}} A^{tree}(-\ell_1,1^+,2^+,\ell_2) A^{tree}(-\ell_2,3^+,4^+,\ell_1),
+\end{align*}
+where we split the loop momentum into two vectors which capture the four-dimensional part $\bar {\ell_1}^\nu$ and the extra-dimensional components $\mu^\nu$. Inserting (\ref{need}), we obtain
+\begin{align*}
+	c_\Gamma A(1^+,2^+,3^+,4^+)|_{s_{12}\text{-cut}}=\frac{2 s_{12}s_{23}}{\langle 12 \rangle \langle 23 \rangle \langle 34 \rangle \langle 41 \rangle } \frac{1}{(4\pi)^{2-\epsilon}} I_4^{[d=4-2\epsilon]}[\mu^4]|_{s_{12}\text{-cut}}
+\end{align*}
+where we identify the scalar box integral with an additional $\mu^4$ at numerator,
+$$
+	I_4^{[d]}[\mu^4]=(4\pi)^{d/2}\int \frac{\dd ^4 \bar{ \ell_1}}{(2\pi)^4} \frac{\dd^{-2\epsilon}\mu}{(2\pi)^{-2\epsilon}} \frac{\mu^4}{[\bar \ell_1^2-\mu^2][(\bar \ell_1-p_1)^2-\mu^2][(\bar \ell_1-p_1-p_2)^2-\mu^2][(\bar \ell_1+p_4)^2-\mu^2]}.
+$$
+This integral can be related to an higher-dimensional one without insertions at numerator\footnote{The relation can be shown using polar coordinates for the extra-dimensional part. The numerator $\mu^{2r}$ acts increasing the power of $\mu^2$ which comes from the jacobian of polar coordinates and can be reinterpreted as the jacobian of a measure in higher dimension. For an explicit proof, see the appendix in \cite{Bern_1996}.},
+\begin{align}
+	I^{[d=4-2\epsilon]}_n[\mu^{2r}]=-\epsilon(1-\epsilon)\dots (r-1-\epsilon)I_n^{[d=4+2r-2\epsilon]}[1].	\label{dim-shift}
+\end{align}
+Since a similar computation in $s_{14}$ channel does not show new contributions, we are able to reconstruct the complete analytic form of the four-gluon one-loop amplitude at all-order in $\epsilon$,
+$$
+	A^{1L}(1^+,2^+,3^+,4^+)=\frac{-2 s_{12}s_{23}}{\langle 12 \rangle \langle 23 \rangle \langle 34 \rangle \langle 41 \rangle} \epsilon(1-\epsilon) \frac{\Gamma(1+\epsilon)\Gamma^2(1-\epsilon)}{\Gamma(1-2\epsilon)} I_4^{[d=8-2\epsilon]}.
+$$
+We will use the amplitude at $\mathcal{O}(\epsilon)$, then we need to know the divergence of the scalar integral,
+$$
+	I_4^{[d=8-2\epsilon]}=\frac{1}{6\epsilon} +\mathcal{O}(1).
+$$
+In conclusion, we obtain
+\begin{align}
+	A^{1L}(1^+,2^+,3^+,4^+)=\frac{1}{3} \frac{-s_{12}s_{23}}{\langle 12 \rangle \langle 23 \rangle \langle 34 \rangle \langle 41 \rangle}+\mathcal{O}(\epsilon)=\frac{1}{3} \frac{\langle 12341]}{\langle 12 \rangle \langle 23 \rangle \langle 34 \rangle \langle 41 \rangle}+\mathcal{O}(\epsilon)
+\end{align}
+which is consistent with (\ref{1LQCD}).
+\subsection{Five gluon amplitude}
+In order to compute the five gluon amplitude at one-loop level using the effective mass interpretation, we need to know the amplitude $A^{tree}(1^+,2^+,3^+,4_s,5_{\bar s})$. We computed it  implementing a complex shift for gluon momenta $p_1$ and $p_2$. In this case we have two contributions: the complex amplitude shows two poles respectively related to a scalar propagator in $s_{\hat 1 5}$ channel and a propagation of a massless gluon in $s_{\hat 23}$ channel. Then, the recursion relation is
+\begin{align*}
+	A^{tree}(1^+,2^+,3^+,4_s,5_{ s})=&A^{tree}(\hat 1^+,(\hat P_{15})_s, 5_{ s})\frac{1}{P_{15}^2-\mu^2} A^{tree}(\hat 2, 3, 4_s,  (-\hat P_{15})_s)+\\
+	&A^{tree}(\hat 1, 5_s, 4_s, (\hat P_{23})^+)\frac{1}{P_{23}^2} A^{tree}(\hat 2^+, 3^+, (-\hat P_{23})^-).
+\end{align*}
+The second addend vanishes indeed the three-point anti-MHV amplitude is proportional to
+$$
+	[\hat 2 3]=[23]+\frac{P_{23}^2}{\langle 2 P_{23} 1]}[13]=0.
+$$
+Using simple spinor algebra, we can compute the only non-trivial contribution and we obtain 
+\begin{align}
+	A^{tree}(1^+,2^+,3^+,4_s,5_{ s})=\frac{\mu^2 \sum_{j=1}^2 [3j]\langle j 5 1]}{\langle 12 \rangle \langle 23 \rangle \langle 1 5 1]\langle 4 3 4]}.	\label{ampsca5}
+\end{align}
+Knowing the needed trees with scalars (\ref{need}, \ref{ampsca5}), we can compute the double cuts for $A^{1L}(1^+,2^+,\dots,5^+)$. For example, in $s_{12}$ we have to reduce the following product,
+\begin{eqnarray*}
+	c_\Gamma A(1^+,2^+,3^+,4^+,5^+)|_{s_{12}\text{-cut}}&=&\int \dd \Phi_2\,
+\begin{aligned}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [horizontal=b to c] {
+      b [blob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a2 [particle=\(5^+\)] -- [gluon] b,
+      a [particle=\(4^+\)] -- [gluon] b
+        -- [scalar, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [scalar, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(3^+\)] -- [gluon] b,
+      c -- [gluon] d3 [particle=\(1^+\)],
+      c -- [gluon] d2 [particle=\(2^+\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 1.5)$) -- ($(midpoint) + (0, -1.5)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}\\
+&=&\frac{2[12]}{\langle 12 \rangle \langle 34 \rangle \langle 45 \rangle} [5 (\slashed p_3+\slashed p_4) \int \frac{\dd^{4-2\epsilon} \ell_2}{(2\pi)^{4-2\epsilon}} \frac{\mu^4 \bar \ell_2^\mu}{D_1 D_3 D_4}\gamma_\mu 3],
+\end{eqnarray*}
+where we adopt the following notation for the propagators,
+\begin{align*}
+	D_1&=[(\ell_2+p_2)^2-\mu^2],\\
+	D_2&=\ell_2^2-\mu^2=0,\\
+	D_3&=[(\ell_2-p_3)^2-\mu^2],\\
+	D_4&=[(\ell_2-p_{34})-\mu^2],\\
+	D_5&=[(\ell_2+p_{12})-\mu^2]=\ell_1^2-\mu^2=0.
+\end{align*}
+We need to reduce the integrand which represents a pentagon with two cut propagators. We can work at the integrand level and we rewrite the loop momentum at numerator in a basis of the four-dimensional space,
+$$
+	\bar \ell_2=\sum_{i=1}^{4} c_i p_i.
+$$
+The coefficient $c_i$ can be written in terms of the propagators, thus we write the tensor five-point integral in terms of a scalar pentagon and sub-topologies. The computation can be simplified using the on-shell conditions for the cut propagators $D_2$ and $D_5$ at numerator. The fundamental passage is to reduce the scalar five-point integrand. Indeed, we consider the constraint,
+\begin{align*}
+	&D_1-(\bar \ell_2^2+\mu^2)=0,\\
+	&D_1-\bar \ell_2^\mu \sum_{i=1}^4 c_i(D_1,\dots,D_5) p_{i\mu}-\mu^2=0.
+\end{align*}
+If we divide the equation by the five propagators $D_i$, we can isolate the contribution which represent the integrand of the scalar pentagon
+$$
+	\frac{1}{D_1D_2D_3D_4D_5}\propto \frac{\mu^2}{D_1D_2D_3D_4D_5} + \text{sub-topologies.}
+$$
+This shows us that in four dimension, the five-point scalar integral can be written in terms of boxes. In our case of generic dimension, there is an additional contribution: the $\mu^2$-pentagon. With the help of Mathematica in order to implement automatically the reduction, we obtain 
+$$
+	c_\Gamma A(1^+,2^+,3^+,4^+,5^+)|_{s_{12}\text{-cut}}=\frac{1}{(4\pi)^{2-\epsilon}}\frac{-2\tr_5(1234)}{\langle 12 \rangle \langle 23 \rangle \langle 34 \rangle \langle 45 \rangle \langle 51 \rangle}I_5^{[d=4-2\epsilon]}[\mu^6]|_{s_{12}-cut}+\text{sub-topologies.}.
+$$
+We can use the dimension-shift formula (\ref{dim-shift}) in order to remove $\mu$-insertions in the integral. Computing the d-dimensional cuts in all the channels we obtained the complete amplitude as found in \cite{1997}\footnote{The amplitude corresponds to eq. 15 in the quoted paper except for a global factor because of a different normalization of partial amplitudes.},
+\begin{align*}
+	&A(1^+,2^+,3^+,4^+,5^+)=\frac{1}{\langle 12 \rangle \langle 23 \rangle \langle 34 \rangle \langle 41 \rangle} \epsilon (1-\epsilon)\frac{\Gamma(1+\epsilon)\Gamma^2(1-\epsilon)}{\Gamma(1-2\epsilon)} \left[(4-2\epsilon)\tr_5(1234)I_5^{[d=10-2\epsilon]}\right.\\
+	&\hspace{0.5cm}\left.-s_{23}s_{34}I_4^{(1)[d=8-2\epsilon]}-s_{34}s_{45}I_4^{(2)[d=8-2\epsilon]}-s_{45}s_{51}I_4^{(3)[d=8-2\epsilon]}-s_{51}s_{12}I_4^{(4)[d=8-2\epsilon]}-s_{12}s_{23}I_4^{(5)[d=8-2\epsilon]}\right] 	\label{amp1l5g}
+\end{align*}
+where $I_4^{(i)}$ is the scalar box with at denominator the four propagators $D_j$ which are different to $D_i$.\\
+An alternative approach \cite{Brandhuber_2005} is the computation of quadruple cuts with massive scalars in the loop. This generalised unitarity method in generic dimension allows us to extract the contribution from boxes and five-point integral at all-order in $\epsilon$ with an extremely simple computation.\\
+From (\ref{amp1l5g}) we can extract the amplitude at $\mathcal{O}(\epsilon^0)$ using the UV limit of the scalar integral
+$$
+	I_5^{[d=10-2\epsilon]}=-\frac{1}{24\epsilon}+\mathcal{O}(1)
+$$
+and we checked the consistency with the formula (\ref{1LQCD}).\\
+The six-gluon amplitude in the all-plus configuration can be computed using cuts in generic dimensions with a similar computation which does not show new mechanism or need different methods, indeed it is only computationally more complicated.
+\section{Two-loop level}
+Obviously we do not need the amplitudes at two-loop level in Yang-Mills for the computation of our amplitude. Despite it, a short review of the methods used in the pure QCD case should be useful in order to know some possible approaches for the two-loop computations.
+\subsection{Color decomposition}
+The color decomposition for a two-loop amplitude with $SU(N_C)$ gauge group is \cite{PhysRevD.101.016009,Dalgleish_2020}
+\begin{align*}
+	&\mathcal{A}^{2L}(1,2,\dots,n)=g^{n+2} c_\Gamma^2 \left[N_C^2 \sum_{\sigma \in S_n/C_n} \tr(T^{a_{\sigma(1)}}\dots T^{a_{\sigma(n)}})A^{2L}_{n,1}(\sigma(1),\dots,\sigma(n)) \right. \\
+	&\hspace{0.1cm}\left. + N_C \sum_{r=3}^{\lfloor n/2 \rfloor +1} \sum_{\sigma \in S_n/P_{n:r}} \tr(T^{a_{\sigma(1)}}\dots T^{a_{\sigma(r-1)}})\tr(T^{a_{\sigma(r)}}\dots T^{a_{\sigma(n)}}) A^{2L}_{n,2}(\sigma(1)\dots \sigma(n))\right.\\
+	&\hspace{0.1cm}\left. +\sum_{r=2}^{\lfloor n/2 \rfloor} \sum_{k=r}^{\lfloor (n-r)/2\rfloor} \sum_{\sigma \in S_n/P_{n:r,k}} \tr(T^{a_{\sigma(1)}}\dots T^{a_{\sigma(r)}}) \tr(T^{a_{\sigma(r+1)}}\dots T^{a_{\sigma(r+k)}}) \tr(T^{a_{\sigma(r+k+1)}}\dots T^{a_{\sigma(n)}}) A^{2L}_{n,3}(\sigma(1)\dots \sigma(n)) \right.\\
+		&\hspace{0.1cm}\left.  +  \sum_{\sigma \in S_n/C_n} \tr(T^{a_{\sigma(1)}}\dots T^{a_{\sigma(n)}})A^{2L}_{n,1B}(\sigma(1),\dots,\sigma(n))  \right].
+\end{align*}
+We introduce the group $P_{n:r}$ whose elements permute the matrices without changing the result of the two traces. A similar effect is generated by $P_{n:r}$ which is the symmetry group of the product of the three traces with respectively $r$, $k$ and $n-k-r$ matrices.\\
+We observe the presence of four classes of partial amplitudes: the leading color $A_{n,1}$, the sub-leading color double and triple trace amplitudes $A_{n,2}$ and $A_{n,3}$ and the sub-leading color single trace $A_{n,1B}$. Differently from the one-loop case, the relations between the leading and sub-leading color amplitudes does not fix completely all the sub-leading contributions which should be computed separately.\\
+
+Once more the color decomposition can be understood by considering the two-loop amplitudes in this gauge theory as a limit of amplitudes for open strings \cite{PhysRevD.101.076001}. At this perturbative level, the world-sheet has genus 2 with some boundaries in which there are vertex operators associated to open string states. There are two possible surfaces:
+\begin{enumerate}
+	\item A disc with two punctures which has three boundaries. This topology brings out the contributions with the structure $N_C^2 \tr, N_C \tr^2, \tr^3$. Indeed if we consider $N_C$ as the trace of the identity, they represent all the possible organizations of $SU(N_C)$ matrices in three traces.
+	\item We can also have a punctured torus with a single boundary. It generates the sub-leading color single trace contributions.
+\end{enumerate}
+The simplest two-loop amplitude in pure QCD describes the interaction between four gluons with positive helicity. This amplitude was computed in \cite{2000} using unitarity cuts in generic dimensions. The authors firstly considered the contributions from an internal scalar loop circulating around one of the two loops, then they used the results in order to extract the pure gluon amplitude.  They computed the leading color amplitude from planar integrals and the sub-leading contribution calculating also the non-planar part.\\
+In the following section, we will analyze the reconstruction of the planar part for the five gluon amplitude in the all-plus sector of Yang-Mills.
+\subsection{Five gluon amplitude: planar part}
+The leading color contribution of the five gluon amplitude, $$\mathcal{A}^{2L}(1^+,2^+,3^+,4^+,5^+)|_{\text{leading color}}=g_s^7 N_C^2 \sum_{\sigma} \tr(T^{a_{\sigma(1)}}\dots T^{a_{\sigma(5)}})A^{2L}(\sigma(1^+,2^+,3^+,4^+,5^+)) ,$$ was firstly computed by investigating the coefficients of MIs through cuts in generic dimension \cite{2013}. The calculation of the planar MIs \cite{2016} allowed to find the analytical expression for the amplitude.
+\subsubsection{Cuts in generic dimension}
+At two-loop level, we have two independent loop momenta,
+\begin{align}
+	k_1=\bar k_1+k_1^{[-2\epsilon]},\hspace{0.5cm}k_2= \bar k_2+k_2^{[-2\epsilon]},
+\end{align}
+in which we separated the four-dimensional part from the extra-dimensional contribution. In addition to the ISPs constructed using the four-dimensional part of the loop momenta, i.e. $\bar k_i\cdot p_j$ and $\bar k_i \cdot \omega_j$, the amplitude can depend on the following ISPs,
+$$
+	\mu_{11}=-\left(k_1^{[-2\epsilon]}\cdot k_1^{[-2\epsilon]}\right), \hspace{0.5cm}\mu_{12}=-\left(k_1^{[-2\epsilon]}\cdot k_2^{[-2\epsilon]}\right) \hspace{0.5cm}\mu_{11}=-\left(k_2^{[-2\epsilon]}\cdot k_2^{[-2\epsilon]}\right).
+$$
+In order to embed these extra components $\mu_{ij}$, we need at least a six-dimensional space. Then, we have to consider a six-dimensional spinor-helicity formalism \cite{Cheung_2009} to describe momenta and polarization of vectors living in this space.\\
+For each topology of two-loop diagrams, we can impose the on-shell constraints for the inner propagators finding the solutions for the loop momenta parametrised by a set of parameter $\tau_i$. For example, we can consider the so-called \textit{pentabox}.
+$$
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [small, horizontal=b to c, vertical=c to g] {
+      b [blob] -- [gluon] c [blob] -- [gluon] d [blob] -- [gluon] e [blob] -- [gluon] f [blob] -- [gluon] g [blob] -- [gluon] a [blob] -- [gluon] b,
+      b -- [gluon] b1,
+      a -- [gluon] a1,
+      d -- [gluon] d1,
+      e -- [gluon] e1,
+      f -- [gluon]f1,
+      c -- [gluon] g,
+    };
+  \end{feynman}
+\end{tikzpicture}
+$$
+We can impose eight on-shell constraints and the solution can be parametrised in terms of three parameters $\tau_1, \tau_2, \tau_3$. We can insert this solution in the sum over the possible inner polarizations of the product of the seven six-dimensional trees.\\
+On the other hand, a generic pentabox integral can be written in the following form,
+$$
+	I=\int \frac{\dd^d k_1}{(2\pi)^d} \frac{\dd^d k_2}{(2\pi)^d} \frac{\mathcal{N}}{D_1 \dots D_8}.
+$$
+The numerator $\mathcal{N}$ can be decomposed in a maximal irreducible contribution $\Delta$ and a linear combination of propagators,
+$$
+	\mathcal{N}=\Delta+\sum_{i=1}^8 \alpha_i D_i
+$$
+where $\Delta$ vanishes if $\mathcal{N}\in \text{Span}(D_1,\dots,D_8)$.\\
+The irreducible numerator can be written in terms of ISPs with the help of algebraic geometry tools, in particular through the division over the Gr\"{o}bner basis \cite{Zhang_2012}. In \cite{2013}, the authors found the decomposition of the generic irreducible numerator and they inserted the solution of the eight on-shell constraints. This expression was compared with the result from the product of trees in order to find and solve a system of linear equations. This procedure fixed the coefficients of the ISPs and it was implemented for any planar topology with five external gluons.\\
+
+This approach is extremely general and powerful. It is able to produce the complete contribution to the leading color partial amplitudes. However, it requires some knowledge of of algebraic geometry to overcome the computational complexity and it is necessary a use of spinor helicity formalism and trees in six dimensions.
+\subsubsection{Cuts in four dimension and recursion relations}
+An alternative approach for the computation of the five gluon amplitude appeared in \cite{Dunbar_2016}. The first part of the amplitude was computed using four-dimensional cuts, while the missing information was reconstructed using recursion relations at loop level.\\
+
+The simplicity of the amplitude can be understood using unitarity methods in four dimensions, indeed in this case the tree amplitude vanishes in the all-plus sector. We computed the discontinuity of this two-loop amplitude using the unitarity approach. From (\ref{discamp}), we know that in principle three-particle cuts with tree sub-amplitudes can contribute to the discontinuity. However, these cuts vanish in the all-plus sector because of the vanishing behavior of trees with less than two negative gluons. Then, we have to compute only double cuts, in particular we have to study the following configurations.\\
+\vspace{-0.2cm}
+\noindent
+\begin{tabularx}{\linewidth}{XX}
+\begin{equation}  \tag{dcutYM A}
+    \begin{aligned}	\label{YMA}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [large, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(4^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(1^+\)] -- [gluon] c,
+      d3 [particle=\(5^+\)]-- [gluon] b,
+      c -- [gluon] d [particle=\(2^+\)],
+      c -- [gluon] d2 [particle=\(3^+\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 1.7)$) -- ($(midpoint) + (0, -1.7)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+&
+\vspace{-0.2cm}
+\begin{equation} \tag{dcutYM B}
+    \begin{aligned}	\label{YMB}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [large, horizontal=b to c] {
+      b [blob] --  [white] db -- [white] c [myblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(4^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(1^+\)] -- [gluon] c,
+      d3 [particle=\(5^+\)]-- [gluon] b,
+      c -- [gluon] d [particle=\(2^+\)],
+      c -- [gluon] d2 [particle=\(3^+\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 1.7)$) -- ($(midpoint) + (0, -1.7)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+\end{tabularx}
+The first one involves the one-loop sub-amplitude with four gluons in the all-plus configuration in order to have a non-vanishing tree on the right-hand side. Before the integration over the phase space of two particles, the cut presents the following structure,
+$$
+	A^{2L}_{int}|_{\text{dcutYM A}}=A^{1L}(4^+,5^+,(-\ell_2)^+,\ell_1^+)A^{tree}(1^+,2^+,3^+,(-\ell_1)^-,\ell_2^-),
+$$
+Explicitly, using (\ref{PT}) and (\ref{1LQCD}), we obtain
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcutYM A}}&=\frac{1}{3}\frac{[45]^2}{\langle 12 \rangle \langle 23 \rangle} \frac{\langle \ell_1 \ell_2 \rangle}{\langle 3 \ell_1 \rangle \langle 1 \ell_2 \rangle} =-\frac{1}{3}\frac{[45]^2}{\langle 12 \rangle \langle 23 \rangle \langle 31 \rangle} \frac{\langle 13 \ell_1 \ell_2 1]}{\langle 3 \ell_1 3] \langle 1 \ell_2 1]},
+\end{align*}
+It can be reduced in terms of the integrands of scalar boxes, triangles and bubbles computing the trace. Indeed, we can evaluate the numerator using properties of Gamma matrices and momentum conservations,
+\begin{align*}
+	\langle 13 \ell_1 \ell_2 1]&\equiv \frac{1}{2}\tr(\slashed 1 \slashed 3 \slashed \ell_1 \slashed \ell_2)+\frac{1}{2}\tr_5(13\ell_1\ell_2)\\
+	&=2(p_3 \cdot P_{45})(p_1 \cdot P_{45})-(p_1\cdot p_3)s_{45}-(p_3 \cdot P_{45}) (2p_1\cdot \ell_2)+(p_1\cdot P_{45})(2 p_1 \cdot \ell_2)+\frac{1}{2}\tr_5(13\ell_1\ell_2).
+\end{align*}
+As we will show in details during the new computation of the discontinuities for a two-loop amplitude in Section [\ref{sec:cutphi}], the contribution in $\tr_5$ vanishes after the integration. For this reason it represents a spurious term. Then, we obtain
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcutYM A}}&=-\frac{1}{3}\frac{[45]^2}{\langle 12 \rangle \langle 23 \rangle \langle 31 \rangle}\left(\frac{-\frac{1}{2}s_{23}s_{12}}{(\ell_1-p_3)^2(\ell_2+p_1)^2} +\frac{\frac{1}{2}(s_{12}+s_{23})}{(\ell_1-p_3)^2}+\frac{\frac{1}{2}(s_{12}+s_{13})}{(\ell_2+p_1)^2}\right).
+\end{align*}
+After the phase space integration, we identify the addends with the scalar integrals with two cut propagators. For example, the first contribution presents two uncut propagators, then it corresponds to a one-mass box where $s_{45}$ is the external scale. The others have an uncut propagator and, for this reason and for their topologies, they come from triangles with two masses. We can summarise the scalar integrals found with their coefficients,\\
+\begin{align*}
+	\int \dd\Phi_2 A^{2L}_{int}|_{\text{dcutYM A}}=&\frac{1}{6}\frac{[45]^2[23][12]}{\langle 31 \rangle} I_4^{1m}(s_{12},s_{23};s_{45})|_{\text{dcutYM A}}+\\
+	&+\frac{1}{6}\frac{[45]^2}{\langle 12 \rangle \langle 23 \rangle \langle 31 \rangle }(s_{13}+s_{23}) I_3^{2m}(s_{12},s_{45})|_{\text{dcutYM A}}+\\
+	&+\frac{1}{6}\frac{[45]^2}{\langle 12 \rangle \langle 23 \rangle \langle 31 \rangle} (s_{12}+s_{23}) I_3^{2m}(s_{23},s_{45})|_{\text{dcutYM A}},
+\end{align*}
+where $I_4^{1m}(s,t;m)$ is the four-point integral with an external mass $m$ and $I_3^{2m}(m_1,m_2)$ is the two-mass triangle. These integrals are defined in App. [\ref{appB}].\\
+
+We also computed the second cut (\ref{YMB}) which is more difficult than the previous one due to the presence of a one-loop sub-amplitude involving five gluons. The techniques used to reduce the double cut in terms of scalar integrals are the same that we will implement and discuss in details in Section [\ref{sec:sphi1_2ndsec}]. With the help of a symbolic calculator, we have reduced the second cut in terms of one-mass boxes and triangles with one or two external masses.\\
+
+The coefficients that we found are consistent with the paper \cite{Dunbar_2016} in which the authors extracted the information with a slightly different approach. Dunbar et al. used generalised unitarity methods. Firstly, they computed the quadruple cuts finding the box contributions. After that, they imposed three on-shell constraints and subtracted the boxes and associated spurious contributions in order to be sensible only to triangles. The same approach was used in double cuts to show the absence of bubbles.\\
+
+The rational part of the amplitude, which represents the missing information of the four-dimensional cuts, was computed using recursion relations. The authors constructed the desired amplitude from two contributions: the product of two one-loop amplitudes and the result from the four gluon two-loop amplitude multiplied by a tree-level vertex. The difficulty of this approach is encoded in the presence of possible double poles which were computed using axial gauge techniques \cite{Vaman_2008}.

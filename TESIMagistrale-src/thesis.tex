@@ -1,0 +1,145 @@
+%% Thesis template
+% Custom CADMO Template version used: v1.4
+
+\documentclass[10.4pt,a4paper,titlepage,oldfontcommands,oneside]{memoir}
+
+%% Packages
+%% ========
+
+\usepackage[OT1]{fontenc}
+\usepackage[british]{babel}
+\usepackage[utf8]{inputenc}
+
+%% Font
+%% ========s.
+
+\usepackage[sc]{mathpazo}
+
+% Margin
+\setlrmarginsandblock{2.5cm}{2.5cm}{*}
+\setulmarginsandblock{2.5cm}{2.5cm}{*}
+\checkandfixthelayout
+%\setlength{\evensidemargin}{\oddsidemargin}
+\usepackage{lipsum}
+
+%% Math Packages
+%% ========s.
+
+\usepackage{amsmath,amssymb,amsfonts,mathrsfs,physics,mathtools}
+\usepackage[amsmath,thmmarks]{ntheorem}
+\usepackage{bm,braket,cases}
+\usepackage{tikz-feynman}
+\usepackage{lscape}
+\tikzfeynmanset{compat=1.0.0}
+
+
+%% More Packages
+%% ========s.
+
+\usepackage{soul}
+\usepackage{pdfpages}
+\usepackage[hidelinks,colorlinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{tensor}
+\usepackage{paracol}
+
+%% Extra Packages
+%% ========s.
+
+\input{extrapackages}
+\usepackage{slashed}
+\usepackage{bigints}
+\usepackage{float} %fix figures and tables
+
+%% Setups
+%% ========s.
+
+\input{layoutsetup}
+
+\input{theoremsetup}
+
+\input{macrosetup}
+
+%% Document information
+%% ====================s.
+
+\title{A two-loop self-dual Higgs plus four gluon amplitude: the all-plus configuration}
+\author{Christian Biello}
+\thesistype{Master Thesis in Theoretical Physics}
+\advisors{\textit{Supervisor}\\ Prof. Simon David Badger\\ \vspace{0.5cm}
+\textit{Examiner}\\
+Prof. Paolo Torrielli}
+\department{\vspace{1cm}Department of Physics}
+\date{Academic Year 2021-2022}
+
+\graphicspath{{./figures/}}
+\allowdisplaybreaks
+%% ====================s.
+
+\DeclareMathOperator*{\SumInt}{%
+\mathchoice%
+  {\ooalign{$\displaystyle\sum$\cr\hidewidth$\displaystyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.14\height}{\scalebox{.7}{$\textstyle\sum$}}\cr\hidewidth$\textstyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+}
+
+\begin{document}
+
+\frontmatter
+
+\begin{titlingpage}
+  \calccentering{\unitlength}
+  \begin{adjustwidth*}{\unitlength-24pt}{-\unitlength-24pt}
+    \maketitle
+  \end{adjustwidth*}
+\end{titlingpage}
+
+%% Content
+%% ========s.
+
+\input{abstract}
+
+\input{acknowledgments}
+
+\cleartorecto
+{
+\hypersetup{linkcolor=black,linktoc=page}	%teal
+\tableofcontents
+}
+\mainmatter
+
+\input{introduction}
+
+\input{onshelltech}
+
+\input{YM}
+
+\input{selfdualH}
+
+\input{cuts}
+
+\input{conclusion}
+
+%\input{rational}
+
+%\input{introduction}
+%\input{theory}
+
+%% Appendix
+%% ========s.
+
+\input{appendix}
+
+
+
+%% ====================s.
+
+\backmatter
+
+\bibliographystyle{JHEP}
+\bibliography{refs}
+
+\end{document}
+
+%% ====================s.

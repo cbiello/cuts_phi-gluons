@@ -1,0 +1,68 @@
+%% Custom commands
+%% ===============
+
+\newcommand\numthis{\addtocounter{equation}{1}\tag{\theequation}}
+\newcommand{\Ie}{\textit{i.e. }}
+\newcommand{\eg}{e.g. }
+\newcommand{\NB}{\textit{N.B.:}}
+%\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\wrt}{w.r.t. }
+\newcommand{\rhs}{r.h.s. }
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\newcommand{\1}{\mathbb{1}}
+\newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
+\newcommand{\kap}{\frac{1}{\kappa^2}}
+\newcommand{\twokap}{\frac{1}{2\kappa^2}}
+\newcommand{\intdx}{\int\dd^D x }
+\newcommand{\eom}{e.o.m.}
+\newenvironment{widerequation}{%
+	\begin{adjustwidth}{-2cm}{-2cm}\begin{equation}}
+		{\end{equation}\end{adjustwidth}}
+\newenvironment{acknowledgments}
+{\renewcommand{\abstractname}{Acknowledgments}\abstract}
+{\endabstract}
+	
+%% Colour stuff
+%% ====================s.
+
+\definecolor{tealblue}{rgb}{0.21, 0.46, 0.53}
+\definecolor{pantone633}{HTML}{007A96}
+\colorlet{eqlink}{black} %pantone633
+\renewcommand\thefootnote{\textcolor{black}{\arabic{footnote}}} %teal
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black, %pant
+	filecolor=black, %pant
+	urlcolor=black, %magenta
+	citecolor=black, %magneta
+}
+\newcommand*{\SavedEqref}{}
+\let\SavedEqref\eqref
+\renewcommand*{\eqref}[1]{%
+	\begingroup
+	\hypersetup{
+		linkcolor=eqlink,
+		linkbordercolor=eqlink,
+	}%
+	\SavedEqref{#1}%
+	\endgroup}
+
+%% ====================s.
+
+%% Fixed/scaling delimiter examples (see mathtools documentation)
+%\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+%\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
+%% Use the alternative epsilon per default and define the old one as \oldepsilon
+%\let\oldepsilon\epsilon
+%\renewcommand{\epsilon}{\ensuremath\varepsilon}
+
+%% Also set the alternate phi as default.
+%\let\oldphi\phi
+%\renewcommand{\phi}{\ensuremath{\varphi}}

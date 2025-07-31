@@ -1,0 +1,16 @@
+# Fdb version 3
+["pdflatex"] 1657227132 "ETHlogo.sty" "ETHlogo.pdf" "ETHlogo" 1657227132
+  "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
+  "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/pdftex.def" 1585083172 17448 c8e20d5f7e69b0cbecf82ab29daeebd9 ""
+  "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty" 1580683321 16932 04729abe63b66ec59ea56edcd722b058 ""
+  "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty" 1580683321 9067 1b996612394a52e1efe89c8bfe8a5892 ""
+  "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty" 1580683321 2590 e3b24ff953e5b58d924f163d25380312 ""
+  "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty" 1580683321 3976 d7fa7d81d2870d509d25b17d0245e735 ""
+  "/usr/local/texlive/2020/texmf-dist/web2c/texmf.cnf" 1583102494 39451 60d7debd9ef8ece44cbe965493576c2d ""
+  "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1614090969 2432457 29c5888d15af8371e493b124f41a87fd ""
+  "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
+  "ETHlogo.aux" 1657226985 32 3985256e7290058c681f74d7a3565a19 ""
+  "ETHlogo.sty" 1657227132 265 61b014e068dc36fd7e68227e4959b73c ""
+  (generated)
+  "ETHlogo.log"
+  "ETHlogo.pdf"

@@ -1,0 +1,18 @@
+PWD /Users/christianbiello/Library/Mobile Documents/com~apple~CloudDocs/Physics/Thesis
+INPUT /usr/local/texlive/2020/texmf.cnf
+INPUT /usr/local/texlive/2020/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT ETHlogo.sty
+OUTPUT ETHlogo.log
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/pdftex.def

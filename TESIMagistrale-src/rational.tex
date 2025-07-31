@@ -1,0 +1,48 @@
+\chapter{Rational pieces (2L $\phi+4g^+$) from finite-field arithmetic [TO DO]}
+\begin{equation}
+	\tikzfeynmanset{ my2blob/.style={ shape=circle, typeset=$\bigcirc\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+  \begin{feynman}
+    \diagram [large, horizontal=b to c] {
+           b [my2blob] -- [gluon] a [particle=\(1^+\)], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [gluon] w1 [particle=\(2^+\)],
+      b  -- [gluon] d1 [particle=\(3^+\)],
+      b -- [gluon] w2 [particle=\(4^+\)],
+      b -- [scalar] d [ particle=\(\phi\)],
+    };
+  \end{feynman}
+\end{tikzpicture}
+\end{equation}
+
+\begin{equation}
+	\tikzfeynmanset{ my2blob/.style={ shape=circle, typeset=$\bigcirc\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+  \begin{feynman}
+    \diagram [small] {
+           b [my2blob] -- [gluon] a [particle=\(1^+\)], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [gluon] w1 [particle=\(3^+\)],
+      b  -- [gluon] d1 [particle=\(2^+\)],
+      b -- [gluon] w2 [particle=\(4^+\)],
+%      b -- [scalar] d [ particle=\(\phi\)],
+    };
+  \end{feynman}
+\end{tikzpicture}
+\end{equation}
+
+\begin{equation}
+	\tikzfeynmanset{ my2blob/.style={ shape=circle, typeset=$\bigcirc\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+  \begin{feynman}
+    \diagram [] {
+           b [my2blob] -- [gluon] a [particle=\(1^+\)], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [gluon] w1 [particle=\(3^+\)],
+      b  -- [gluon] d1 [particle=\(2^+\)],
+      b -- [gluon] w2 [particle=\(5^+\)],
+      b -- [gluon] d [ particle=\(4^+\)],
+    };
+  \end{feynman}
+\end{tikzpicture}
+\end{equation}

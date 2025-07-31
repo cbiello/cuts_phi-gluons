@@ -1,0 +1,826 @@
+\appendix
+\chapter{Scalar integrals with one or two external masses} \label{appB}
+We summarise the one-loop scalar integrals with massless internal lines which we need in the computations of the project. These integrals are well-known, both analytically and numerically \cite{Ellis_2008}.
+\section{Bubbles}
+\begin{align*}
+	I_2(s_\phi)=\left[
+\begin{tikzpicture}[scale=0.8, transform shape, baseline=(current  bounding  box.center)]
+     \begin{feynman}
+    \vertex (x);
+    \vertex[right=of x] (y);
+    \path (x) ++ (180:1.5) node[vertex, label=left:$\phi$] (a);
+    \path (y) ++ (-40:1.9) node[vertex] (b);
+    \path (y) ++ (-20:1.9) node[vertex] (c);
+    \path (y) ++ (20:1.9) node[vertex] (d);
+    \path (y) ++ (40:1.9) node[vertex] (e);
+    \diagram*{
+        (x) --[half left, momentum=\(k\)] (y),
+        (x) --[half right, rmomentum'=\(k+p_\phi\)] (y),
+        (a) -- [very thick] (x),
+        (y.-60) -- (b),
+        (y.-30) --(c),
+        (y.30) --(d),
+        (y.60) -- (e),
+    };
+    \end{feynman}
+    \end{tikzpicture}\right]=\frac{\mu^{4-d}}{i c_\Gamma}\int \frac{\dd^d k}{(2\pi)^d} \frac{1}{(k^2+i\delta)((k+p_\phi)^2+i\delta)}
+\end{align*}
+The parameter $\mu$ is a reference scale which guarantees the correct dimensionality, $c_\Gamma$ is defined in (\ref{defcg}) and $\delta\rightarrow 0^+$ is the standard shift of the propagators. \\
+After Wick rotation, we can compute the integral using a Feynman parametrization in terms of the parameter $x_1$. After a simple substitution, we have
+\begin{align*}
+I_2(s_\phi)
+&=\frac{\mu^{2\epsilon}}{c_\Gamma}\int_0^1 \dd x_1 \int  \frac{\dd^d k'}{(2\pi)^d} \frac{1}{[-k'^2-x_1(1-x_1)s_\phi-i\delta]}\\
+&=\frac{\mu^{2\epsilon}}{c_\Gamma}\frac{\Gamma(\epsilon)}{(4\pi)^{d/2}} \int_0^1 \dd x_1 \,[-x_1(1-x_1)s_\phi-i\delta]^{-\epsilon}=\frac{\mu^{2\epsilon}}{(-s_\phi-i\delta)^\epsilon}\left[\frac{1}{\epsilon}+2\right]+\mathcal{O}(\epsilon).
+\end{align*}
+\section{Triangles}
+In this project we need the analytic expressions for the triangles with one or two external scales and massless inner particles. Considering the one-mass triangle, 
+\begin{align*}
+I_3^{1m}(s_\phi)=\left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [scale=0.8, small,vertical=d to b] {
+      			d2 []-- [rmomentum=\(p_2\)] b --   c
+        			-- [rmomentum=\(k\)] d -- b,
+			d3  [particle=\(\phi\)]-- [very thick] d,
+      			d4 []-- [rmomentum=\(p_1\)] c,
+   		 };
+  	\end{feynman}
+	\end{tikzpicture}\right]=\frac{\mu^{4-d}}{i c_\Gamma}\int \frac{\dd^D k}{(2\pi)^D} \frac{1}{(k^2+i\delta)((k-p_1)^2+i\delta)((k-p_1-p_2)^2+i\delta)}
+\end{align*}
+The computation is similar to the previous one. After Wick rotation, we use a Feynman parametrization introducing two independent variables $x_1$ and $x_2$ and we perform the angular and radial integration in $d$-dimensions,
+\begin{align*}
+	I_3^{1m}(s_\phi)&=\mu^{2\epsilon}  \,\Gamma(3) \,\int_0^1 \dd x_1 \int_0^{1-x_1}\dd x_2 \int \frac{\dd^d k}{(2\pi)^d}\frac{1}{[-(1-x_1-x_2)k^2-x_1(k-p_1)^2-x_2(k-p_1-p_2)^2]^3}\\
+	&=\frac{\mu^{2\epsilon}}{\epsilon^2} \frac{(-s_\phi-i\delta)^{-\epsilon}}{s_\phi}.
+\end{align*}
+\newpage
+Similarly, we can compute the two-mass triangle,
+\begin{align*}
+	I_3^{2m}(s_1,s_2)=\left[
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [scale=0.8, small, vertical=d to b] {
+      			d2 [particle=\(2\)]-- [very thick] b --  c
+        			-- [] d -- [] b,
+			d3  [particle=\(1\)]-- [very thick] d,
+      			d4 []-- [] c,
+   		 };
+  	\end{feynman}
+	\end{tikzpicture}\right]=\frac{(-s_1-i\delta)^{-\epsilon}-(-s_2-i\delta)^{-\epsilon}}{s_1-s_2}\frac{1}{\epsilon^2}.
+\end{align*}
+\section{Boxes}
+We need the four point scalar integrals with an off-shell leg,
+\begin{align*}
+	&I_4^{1m}(s_{12},s_{23};s_{45})=\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small, horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [rmomentum=\(k\)] a,
+			d3  [particle=\(4\)]-- [] b,
+			d2 [particle=\(5\)]-- [] b,
+      			d1 [particle=\(1\)]-- [] a,
+      			d4 [particle=\(3\)]-- [] c,
+      			d -- [] s [particle=\(2\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]=\frac{\mu^{4-d}}{ic_\Gamma}\int \frac{\dd^d k}{(2\pi)^d} \frac{1}{D[k]D[k-p_2]D[k-P_{23}]D[k+p_1]}\\
+	&=\frac{2\mu^{2\epsilon}}{s_{12}s_{23}}\left[\frac{(-s_{12})^{-\epsilon}+(-s_{23})^{-\epsilon}-(-s_{4\phi})^{-\epsilon}}{\epsilon^2}-\text{Li}_2\left(1-\frac{s_{4\phi}}{s_{12}}\right)-\text{Li}_2\left(1-\frac{s_{4\phi}}{s_{23}}\right)-\frac{1}{2}\ln^2\left(\frac{s_{12}}{s_{23}}\right)-\frac{\pi^2}{6} \right]
+\end{align*}
+where $D[k]=k^2+i\delta$ and the correct analytical continuation of the integral is obtained by introducing the shift $s_{ij}\rightarrow s_{ij}+i\delta$.\\
+The integral can be computed with a simple change of variables for the Feynman parameters \cite{Karplus:1950zz}.\\
+The structure of the divergences can be easily understood by considering the soft limits \cite{Anastasiou:2018rib}. For example, if we consider the limit in which $k\rightarrow 0$, the integral becomes
+$$
+	\frac{\mu^{4-d}}{i c_\Gamma} \int \frac{\dd^d k}{(2\pi)^d} \frac{1}{(k^2+i\delta)(-2k\cdot p_2-i\delta)s_{23}(+2k \cdot p_1)}=\frac{I_3^{1m}(s_{12})}{s_{23}}=\frac{\mu^{2\epsilon}}{\epsilon^2}\frac{(-s_{12}-i\delta)^{-\epsilon}}{s_{12}s_{23}}.
+$$
+The remainder divergent contributions are obtained by considering the soft limit of the other propagators, imposing also the collinear limit $p_4\parallel p_5$ in the case of propagators attached to the off-shell leg.\\
+
+The other box that we have to consider has two external off-shell legs in opposite corners. This is called two-mass easy box because the computation is easier than the integral with two adjacent massive legs \cite{1994}. Indeed in this case we can perform the same substitution used to compute the one-mass box.
+\begin{align*}
+&I_4^{2me}(s_{1\phi},s_{4\phi};s_{\phi},s_{23})=\left[\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [small,horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [rmomentum=\(k\)] a,
+			d3  [particle=\(3\)]-- [] b,
+			d2 [particle=\(2\)]-- [] b,
+      			d1 [particle=\(1\)]-- [] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [very thick] s [particle=\(\phi\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}\right]=\frac{\mu^{4-d}}{ic_\Gamma} \int \frac{\dd^d k}{(2\pi)^d} \frac{1}{D[k]D[k-p_\phi]D[k-P_{4\phi}]D[k+p_1]}\\
+	&=\frac{2\mu^{2\epsilon}}{s_{1\phi}s_{4\phi}-s_{23}s_\phi}\left[\left((-s_{1\phi})^{-\epsilon}+(-s_{4\phi})^{-\epsilon}-(-s_{23})^{-\epsilon}-(-s_{\phi})^{-\epsilon}\right)\frac{1}{\epsilon^2}-\text{Li}_2\left(1-\frac{s_{\phi}}{s_{1\phi}}\right)-\text{Li}_2\left(1-\frac{s_{\phi}}{s_{4\phi}}\right)\right.\\
+	&\left.\hspace{0.2cm}-\text{Li}_2\left(1-\frac{s_{23}}{s_{1\phi}}\right)-\text{Li}_2\left(1-\frac{s_{23}}{s_{4\phi}}\right)+\text{Li}_2\left(1-\frac{s_{\phi}s_{23}}{s_{1\phi}s_{4\phi}}\right)-\frac{1}{2}\ln^2\left(\frac{s_{1\phi}}{s_{4\phi}}\right)\right]
+\end{align*}
+The infrared structure can be obtained by considering the soft and collinear limits as observed in the one-mass box.
+%%% QUADRUPLE CUTS %%%
+\chapter{Quadruple cuts} \label{appC}
+We explicitly compute the coefficients in front of the four-point scalar integrals in the decomposition of the two-loop amplitude. 
+We will refer to these integrals indicating Mandelstam variables $s$ and $t$ and the masses, using the convention introduced in App. [\ref{appB}]. The three possible scalar boxes potentially present in our amplitude are diagrammatically described as follows. Obviously, similar contributions can be also present considering cyclic permutations of the gluons.
+\begin{align}
+I^{2me}_4(s_{\phi4},s_{\phi 1};m_1^2=s_{23},m_3^2=s_{\phi})&=
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(3\)]-- [] b,
+			d2 [particle=\(2\)]-- [] b,
+      			d1 [particle=\(1\)]-- [] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [very thick] s [particle=\(\phi\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}	\label{sbox:2me}\\
+	I^{2mh}_4(s_{14},s_{\phi 1};m_1^2=s_{23},m_2^2=s_{\phi})&=
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(3\)]-- [] b,
+			d2 [particle=\(2\)]-- [] b,
+      			d1 [particle=\(\phi\)]-- [very thick] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [] s [particle=\(1\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}	 \label{sbox:2mh}\\
+	I^{1m}_4(s_{14},s_{12};m^2=s_{3\phi})&=
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [horizontal=b to d] {
+      			a -- [] b
+        			-- [] c
+        			-- [] d -- [] a,
+			d3  [particle=\(3\)]-- [] b,
+			d2 [particle=\(\phi\)]-- [very thick] b,
+      			d1 [particle=\(2\)]-- [] a,
+      			d4 [particle=\(4\)]-- [] c,
+      			d -- [] s [particle=\(1\)],
+   		 };
+    		%\coordinate (midpoint) at ($(b)!0.75!(d)$);
+   		%\draw [dashed] ($(midpoint) + (0.75, 1.35)$) -- ($(midpoint) + (-1.6, -1.3)$);
+  	\end{feynman}
+	\end{tikzpicture}	 \label{sbox:1m}
+\end{align}
+We have to study three different topologies in order to extract the coefficient in front of the two-mass easy box (\ref{sbox:2me}), the two-mass hard box (\ref{sbox:2mh}) and the four-point integral with an off-shell leg ( \ref{sbox:1m}).
+\section{First sector with a one-loop $\phi$+gluon sub-amplitude}
+We have to compute the quadruple cuts for the three possible four-point configurations imposing the four on-shell constraints for the inner gluons and studying all the possible helicity organizations of the sub-amplitudes. We start considering the first sector in which the $\phi$+gluon sub-amplitude is considered at one-loop level.
+\subsubsection{Easy two-mass box}
+We start considering the following quadruple cut in the two-mass easy configuration.
+\begin{center}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\feynmandiagram [] {
+a [particle=\(\phi\)] -- [scalar] t1 [myblob] -- [gluon, momentum=\(\ell_2\)] t2 [blob] -- [gluon,momentum=\(\ell_3\)] t3  [blob] -- [gluon, momentum=\(\ell_4\)] t4 [blob] -- [gluon, momentum=\(\ell_1\)] t1, t2 -- [gluon] p1 [particle=\(1^+\)],
+t3 -- [gluon] p2 [particle=\(2^+\)], t3 -- [gluon] p3 [particle=\(3^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+\end{center}
+The loop momenta are
+$$
+	\left\{\ell_1,\ \ell_2,\ \ell_3,\ \ell_4\right\}=\left\{\ell_1,\ \ell_1-p_\phi,\ \ell_1-p_\phi-p_1,\ \ell_1+p_4\right\}.
+$$
+We impose the on-shell conditions $\ell_i^2=0$ and we obtain
+\begin{align*}
+	&\left\{\ell_1^2=0,\ \ell_1\cdot p_\phi=\frac{m_H^2}{2},\ \ell_1\cdot p_4=0,\ \ell_1\cdot p_{\phi1}=\frac{s_{\phi1}}{2}\right\},\\
+	&\left\{\ell_1^2=0,\ \ell_1\cdot p_\phi=\frac{m_H^2}{2},\ \ell_1\cdot p_4=0,\ \ell_1\cdot p_{1}=\frac{s_{\phi1}-m_H^2}{2}\right\}. \numthis \label{eq:4cphicond}
+\end{align*}
+We consider the following decomposition of the loop momentum,
+$$
+	\ell_1^\mu=a_1 p_1^\mu+ a_4 p_4^\mu +d_1 \frac{\langle 1\sigma^\mu 4]}{2}+d_4\frac{\langle 4\sigma^\mu 1]}{2}
+$$
+where $a_1, a_4, d_1, d_4$ are coefficients we determine using on-shell conditions (\ref{eq:4cphicond}).\\We start considering the constraints
+\begin{align*}
+	&\ell_1\cdot p_4=a_1 p_1 \cdot p_4=0 \Rightarrow a_1=0 \\
+	&\ell_1\cdot p_1=a_4 p_4 \cdot p_1=\frac{s_{\phi1}-m_H^2}{2} \Rightarrow a_4=\frac{s_{\phi1}-m_H^2}{s_{41}}.
+\end{align*}
+Now we want to impose the condition $\ell_1^2=0$,
+\begin{align*}
+	&a_1 \ell_1 \cdot p_1+a_4 \ell_1\cdot p_4+d_1 \frac{\langle 1\ell_1 4]}{2}+d_4\frac{\langle 4 \ell_1 1]}{2}=0\\
+	&2a_1 a_4(\ell_1\cdot p_4)-2d_1d_4 p_{4}\cdot p_1=0\\
+	&d_1d_4=a_1a_2=0 \Rightarrow d_1=0 \text{ or } d_4=0.
+\end{align*}
+We have two possible solutions and the last constraint on the product $\ell_1\cdot p_\phi$ fixes the remainder non-vanishing coefficient. In conclusion we have the solutions,
+\begin{align*}
+	&\ell_1^{(1)}=a_4p_4^\mu +d_1\frac{\langle1\sigma^\mu4]}{2} \text{ with } \begin{cases}
+		a_4=\frac{s_{\phi1}-s_\phi}{s_{41}}\\d_1=\frac{1}{\langle 1\phi 4]}\left(s_\phi-\frac{(s_{\phi1}-s_\phi)(s_{\phi4}-s_\phi)}{s_{41}}\right)
+	\end{cases},\\
+	&\ell_1^{(2)}=a_4p_4^\mu +d_4\frac{\langle4\sigma^\mu1]}{2} \text{ with } \begin{cases}
+		a_4=\frac{s_{\phi1}-s_\phi}{s_{41}}\\d_4=\frac{1}{\langle 4\phi 1]}\left(s_\phi-\frac{(s_{\phi1}-s_\phi)(s_{\phi4}-s_\phi)}{s_{41}}\right)
+	\end{cases}.	\numthis \label{solveasyquadruplekin}
+\end{align*}
+Using the property $2\ell_1^\mu=\langle \ell_1|\sigma^\mu|\ell_1]$, we can write the spinors of the solutions in the following way.
+\begin{align}
+	&\begin{cases}
+		|\ell_1^{(1)}\rangle=a_4|4\rangle+d_1|1\rangle\\
+		|\ell_1^{(1)}]=|4]
+	\end{cases}\\
+	&\begin{cases}
+		|\ell_1^{(2)}\rangle=|4\rangle\\
+		|\ell_1^{(2)}]=a_4|4]+d_4|1]
+	\end{cases}	\label{eq:spin2}
+\end{align}
+After the kinematic considerations, we can study the quadruple cut of the two-loop amplitude which corresponds to the sum over the allowed helicity configurations of the products with trees and one-loop factors. There is only one allowed helicity configuration which has a non-vanishing tree-level four gluon amplitude. 
+%In addition to the two positive external gluons, we need the negative helicity for the two internal particles connected to the concerned sub-amplitude represented in the following figure with a violet vertex. This fact completely fixes the helicity of all the gluons.
+\definecolor{asparagus}{rgb}{0.53, 0.66, 0.42}
+\begin{center}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\feynmandiagram [] {
+a [particle=\(\phi\)] -- [scalar] t1 [myblob, label={[orange]180:\(+\)}, label={[asparagus]0:\(+\)}] -- [gluon, asparagus] t2 [blob, label={[asparagus]90:\(-\)}, label={[blue]-90:\(+\)}] -- [gluon, blue] t3  [blob, violet, label={[blue]0:\(-\)}, label={[red]180:\(-\)}] -- [gluon, red] t4 [blob, label={[red]-90:\(+\)}, label={[orange]90:\(-\)}] -- [gluon, orange] t1, t2 -- [gluon] p1 [particle=\(1^+\)],
+t3 -- [gluon] p2 [particle=\(2^+\)], t3 -- [gluon] p3 [particle=\(3^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+\end{center}
+We only have to compute the following contribution,
+\begin{align*}
+	c_{2me}(\ell_1)\coloneqq&A^{tree}(2^+,3^+,\ell_4^-,(-\ell_3)^-) A^{tree}(4^+,(-\ell_4)^+, \ell_1^-) \\&A^{1L}(\phi;(-\ell_1)^+\ell_2^+)A^{tree}(1^+,(-\ell_2)^-\ell_3^+)\\
+	=&\frac{\langle \ell_4 \ell_3\rangle^3}{\langle 23 \rangle \langle 3\ell_4 \rangle \langle \ell_3 2\rangle}\frac{[\ell_4 4]^3}{[4\ell_1][\ell_1\ell_4]}\frac{-2s_\phi^2}{\langle \ell_1 \ell_2\rangle\langle \ell_2\ell_1\rangle}\frac{[1\ell_3]^3}{[\ell_3\ell_2][\ell_2 1]}\\
+	=&\frac{2s_\phi^2}{\langle 23\rangle}\frac{[4\ell_4\ell_3 1]^3}{[4\ell_1\ell_2 1]\langle 3\ell_4\ell_1\ell_2\ell_3 2\rangle}=\frac{-2 s_\phi^2}{\langle 12 \rangle \langle 23 \rangle\langle 34 \rangle\langle 41 \rangle} \langle 14\ell_1 \phi 1]
+\end{align*}
+We immediately observe that $c_{2me}(\ell_1^{(1)})=0$: this is due to the relation $|\ell_1^{(1)}]=|4]$.\\Using the second solution and in particular the spinors (\ref{eq:spin2}), we can compute the only non-trivial contribution,
+\begin{align*}
+	c_{2me}(\ell_1^{(2)})&=A^{1L}(\phi;1^+,2^+,3^+,4^+) \langle 14\ell_1^{(2)}]\langle \ell_1^{(2)} \phi 1]\\
+	&=A^{1L}(\phi;1^+,2^+,3^+,4^+) \left(s_{14}s_\phi-(s_{\phi 1}-s_\phi)(s_{\phi 4}-s_\phi)\right).
+\end{align*}
+
+Now we are able to extract the coefficient in front of the box integral with massless inner lines and two external masses $s_\phi$ and $s_{23}$ at diagonally opposite corners.
+To connect the desired coefficients with the generalized unitarity cuts, it is useful to introduce the following vector, orthogonal to three given Lorentz vectors $p_a,p_b,p_c$,
+$$
+	\omega^\mu(p_a,p_b,p_c)=N_\omega\left(\langle a\sigma^\mu b]\langle b c a]-\langle b \sigma^\mu a]\langle acb]\right),
+$$
+where $N_\omega$ represents a normalization constant.\\
+From the Section [\ref{sec:ISPs}], we know that a general decomposition of a scalar box integral is
+$$
+	\int \frac{\dd^d k}{(2\pi)^d}\frac{\Delta(k)}{D_0D_1D_2D_3},\ \  \begin{cases}
+		\Delta(k)=d_1+d_2 (k\cdot n )\\
+		{D_i}=\text{ propagators}
+	\end{cases}
+$$
+The contribution proportional to $(k\cdot n)$ is a spurious term that vanishes after the integration. If we fix the generic direction $n$ in order to be equal to the vector $\omega^\mu(p_1,p_4,p_\phi)$, we have
+\begin{align*}
+	\mathcal{D}_{2me}(\ell_1^{(1)})&=d_1^{(2me)}+d_2^{(2me)}(\ell_1^{(1)}\cdot \omega)\equiv c_{2me}(\ell_1^{(1)})\\
+	\mathcal{D}_{2me}(\ell_1^{(2)})&=d_1^{(2me)}+d_2^{(2me)}(\ell_1^{(2)}\cdot \omega)=d_1^{(2me)}-d_2^{(2me)}(\ell_1^{(1)}\cdot \omega)\equiv c_{2me}(\ell_1^{(2)}).
+\end{align*}
+Therefore the coefficient in front of the integrated object $I_4^{2me}(s_{\phi4},s_{1\phi};s_{23},s_{\phi})$ is
+\begin{align}
+	d_1^{(2me)}&=\frac{1}{2}\left(c_{2me}(\ell_1^{(1)})+c_{2me}(\ell_1^{(2)})\right)	\label{eq:coeffquad}\\
+	&=\frac{1}{2}A^{1L}(\phi;1^+,2^+,3^+,4^+) \left(s_{14}s_\phi-(s_{\phi 1}-s_\phi)(s_{\phi 4}-s_\phi)\right).	\label{eq:2meboxcoef}
+\end{align}
+\subsubsection{Hard two-mass box}
+An other possible configuration, that we can study through quadruple cuts, includes two external masses at adjacent corners.
+\begin{center}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\feynmandiagram [horizontal'=p4 to t2] {
+a [particle=\(\phi\)] -- [scalar] t1 [myblob] -- [gluon, momentum=\(\ell_2\)] t2 [blob] -- [gluon, momentum=\(\ell_3\)] t3  [blob] -- [gluon, momentum=\(\ell_4\)] t4 [blob] -- [gluon, momentum=\(\ell_1\)] t1, t2 -- [gluon] p1 [particle=\(2^+\)],
+t2 -- [gluon] p2 [particle=\(1^+\)], t3 -- [gluon] p3 [particle=\(3^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+\end{center}
+In this case, the loop momenta are
+$$
+	\left\{\ell_1,\ \ell_2,\ \ell_3,\ \ell_4\right\}=\left\{\ell_1,\ \ell_1-p_\phi,\ \ell_1+p_4+p_3,\ \ell_1+p_4\right\}.
+$$
+We choose the following parametrization of the loop momentum $\ell_1$,
+$$
+	\ell_1^\mu=a_3 p_3^\mu+a_4 p_4^\mu +d_3 \frac{\langle 3 \sigma^\mu 4]}{2}+d_4 \frac{\langle 4 \sigma^\mu 3]}{2}.
+$$
+The quadruple cut requires the on-shell conditions $\ell_i^2=0$ and, using these constraints, we find the solutions,
+\begin{align}
+	&\ell_1^{(1)}=-p_4^\mu +d_3\frac{\langle3\sigma^\mu4]}{2} \ \ \text{with} \ \ d_3=\frac{s_{4\phi}}{\langle 3\phi4]}, \label{eq:sol1h}\\
+	&\ell_1^{(2)}=-p_4^\mu +d_4\frac{\langle4\sigma^\mu3]}{2} \ \ \text{with} \ \ d_4=\frac{s_{4\phi}}{\langle4\phi 3]}.
+\end{align}
+Cutting the two-loop amplitude, we have only the following contribution due to the fact that the tree-level four gluon amplitude with two external positive gluons requires the negative helicity for the other two particles.
+\begin{align*}
+	c_{2mh}(\ell_1)\coloneqq&A^{tree}(3^+,(-\ell_3)^+,\ell_4^-) A^{tree}(4^+,(-\ell_4)^+, \ell_1^-) \\&A^{1L}(\phi;(-\ell_1)^+\ell_2^+)A^{tree}(1^+,2^+,\ell_3^-,(-\ell_2)^-)\\
+	=&\frac{[3\ell_3]^3}{[\ell_3\ell_4][\ell_4 3]]}\frac{[4\ell_4]^3}{[\ell_4\ell_1][\ell_1 4]}\frac{-2s_\phi^2}{\langle \ell_1\ell_2\rangle\langle\ell_2\ell_1\rangle}\frac{\langle \ell_3\ell_2\rangle^3}{\langle 12 \rangle\langle 2\ell_3 \rangle \langle \ell_2 1 \rangle}
+\end{align*}
+Remembering that $\ell_4=\ell_1+p_4$, from the solution (\ref{eq:sol1h}) we find the expressions for the spinors associated to the gluon with momenta $\ell_1^{(1)}$ and $\ell_4^{(1)}$:
+\begin{align}
+	\begin{cases}
+		|\ell_1^{(1)}\rangle=-|4\rangle+d_3|3\rangle \\
+		|\ell_1^{(1)}]=|4]
+	\end{cases} \ \Rightarrow 
+	\begin{cases}
+		|\ell_4^{(1)}\rangle=d_3|3\rangle \\
+		|\ell_4^{(1)}]=|4]
+	\end{cases}
+	\label{quadA}.
+\end{align}
+The relation $|\ell_4^{(1)}]=|4]$ shows us that the anti-MHV amplitude $A^{tree}(4^+,(-\ell_4)^+, \ell_1^-)$ vanishes if we consider the first solution, therefore
+$
+	c_{2mh}(\ell_1^{(1)})=0
+$.\\
+Similar considerations hold for the second solution, in fact the spinors associated to the momenta $\ell_1^{(2)}$ and $\ell_3^{(2)}=\ell_1^{(2)}+p_3+p_4$ are
+\begin{align}
+	\begin{cases}
+		|\ell_1^{(2)}\rangle=|4\rangle \\
+		|\ell_1^{(2)}]=-|4]+d_4|3]
+	\end{cases} \ \Rightarrow 
+	\begin{cases}
+		|\ell_3^{(2)}\rangle=|4\rangle+\frac{1}{d_4}|3\rangle \\
+		|\ell_3^{(2)}]=d_4|4]
+	\end{cases}.
+	\label{quadB}
+\end{align}
+The last relation implies that $$A^{tree}(3^+,(-\ell_3)^+,\ell_4^-)=0\  \Rightarrow \ c_{2mh}(\ell_3^{(2)})=0.$$
+In conclusion the coefficient investigated using this quadruple cut vanishes and therefore in this sector we observe the absence of a contribution proportional to the integral $I_{4}^{2mh}(s_{34},s_{4\phi};s_{12},s_\phi)$.
+\subsubsection{One-mass box}
+The last configuration we have to consider is the following one-mass box.
+\begin{center}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\feynmandiagram [vertical=t1 to p3] {
+a [particle=\(1^+\)] -- [gluon] t1 [myblob] -- [gluon, momentum'=\(\ell_2\)] t2 [blob] -- [gluon,momentum'=\(\ell_3\)] t3  [blob] -- [gluon, momentum'=\(\ell_4\)] t4 [blob] -- [gluon, momentum'=\(\ell_1\)] t1, t1 -- [scalar] p1 [particle=\(\phi\)], t3 -- [gluon] p3 [particle=\(3^+\)], t2 -- [gluon] p2 [particle=\(2^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+\end{center}
+If we express $\ell_1$ in the decomposition
+$$
+	\ell_1^\mu=a_3 p_3^\mu +a_4 p_4^\mu +d_3\frac{\langle 3 \sigma^\mu 4]}{2}+d_4 \frac{\langle 4 \sigma^\mu 3]}{2},
+$$
+we can determine the coefficients to satisfy the on-shell constraints,
+\begin{align*}
+	&\left\{\ell_1,\ \ell_2,\ \ell_3,\ \ell_4\right\}=\left\{\ell_1,\ \ell_1-p_\phi-p_1,\ \ell_1+p_3+p_4,\ \ell_1+p_4\right\}=\{0,0,0,0\}.
+\end{align*}
+We find two solutions,
+\begin{align}
+	&\ell_1^{(1)}=-p_4^\mu +d_3\frac{\langle3\sigma^\mu4]}{2} \ \ \text{with} \ \ d_3=\frac{s_{\phi1}-s_{24}-s_{34}}{\langle 324]}, \\
+	&\ell_1^{(2)}=-p_4^\mu +d_4\frac{\langle4\sigma^\mu3]}{2} \ \ \text{with} \ \ d_4=\frac{s_{\phi1}-s_{24}-s_{34}}{\langle423]}.
+\end{align}
+We have to study the possible helicity configurations: the non-trivial possibilities are represented by the following diagrams.
+\begin{center}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black} }
+\scalebox{0.88}{
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [vertical=t1 to p3] {
+a [particle=\(1^+\), label=-90:\(\hspace{-2.3cm}(A)\)] -- [gluon] t1 [myblob, label={[purple]0:\(-\)}, label={[text=orange]180:\(+\)}] -- [gluon, orange] t2 [blob, magenta, label={[orange]90:\(-\)}, label={[teal]-90:\(+\)}] -- [gluon, teal] t3  [blob, magenta, label={[teal]180:\(-\)}, label={[violet]0:\(+\)}] -- [gluon, violet] t4 [blob, magenta, label={[violet]-90:\(-\)}, label={[purple]90:\(+\)}] -- [gluon,purple] t1, t1 -- [scalar] p1 [particle=\(\phi\)], t3 -- [gluon] p3 [particle=\(3^+\)], t2 -- [gluon] p2 [particle=\(2^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+\end{feynman}
+\end{tikzpicture}
+}
+\scalebox{0.88}{
+\feynmandiagram [vertical=t1 to p3] {
+a [particle=\(1^+\), label=-90:\(\hspace{-2.3cm}(B)\)] -- [gluon] t1 [myblob, label={[purple]0:\(+\)}, label={[text=orange]180:\(-\)}] -- [gluon, orange] t2 [blob, magenta, label={[orange]90:\(+\)}, label={[teal]-90:\(-\)}] -- [gluon, teal] t3  [blob, magenta, label={[teal]180:\(+\)}, label={[violet]0:\(-\)}] -- [gluon, violet] t4 [blob, magenta, label={[violet]-90:\(+\)}, label={[purple]90:\(-\)}] -- [gluon,purple] t1, t1 -- [scalar] p1 [particle=\(\phi\)], t3 -- [gluon] p3 [particle=\(3^+\)], t2 -- [gluon] p2 [particle=\(2^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+}
+\scalebox{0.88}{
+\feynmandiagram [vertical=t1 to p3] {
+a [particle=\(1^+\), label=-90:\(\hspace{-2.3cm}(C)\)] -- [gluon] t1 [myblob, label={[purple]0:\(+\)}, label={[text=orange]180:\(+\)}] -- [gluon, orange] t2 [blob, magenta, label={[orange]90:\(-\)}, label={[teal]-90:\(+\)}] -- [gluon, teal] t3  [blob, magenta, label={[teal]180:\(-\)}, label={[violet]0:\(+\)}] -- [gluon, violet] t4 [blob, cyan, label={[violet]-90:\(-\)}, label={[purple]90:\(-\)}] -- [gluon,purple] t1, t1 -- [scalar] p1 [particle=\(\phi\)], t3 -- [gluon] p3 [particle=\(3^+\)], t2 -- [gluon] p2 [particle=\(2^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+}
+\\
+\scalebox{0.88}{
+\feynmandiagram [vertical=t1 to p3] {
+a [particle=\(1^+\), label=-90:\(\hspace{-2.3cm}(D)\)] -- [gluon] t1 [myblob, label={[purple]0:\(+\)}, label={[text=orange]180:\(+\)}] -- [gluon, orange] t2 [blob, cyan, label={[orange]90:\(-\)}, label={[teal]-90:\(-\)}] -- [gluon, teal] t3  [blob, magenta, label={[teal]180:\(+\)}, label={[violet]0:\(-\)}] -- [gluon, violet] t4 [blob, magenta, label={[violet]-90:\(+\)}, label={[purple]90:\(-\)}] -- [gluon,purple] t1, t1 -- [scalar] p1 [particle=\(\phi\)], t3 -- [gluon] p3 [particle=\(3^+\)], t2 -- [gluon] p2 [particle=\(2^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+}
+\scalebox{0.88}{
+\feynmandiagram [vertical=t1 to p3] {
+a [particle=\(1^+\), label=-90:\(\hspace{-2.3cm}(E)\)] -- [gluon] t1 [myblob, label={[purple]0:\(+\)}, label={[text=orange]180:\(+\)}] -- [gluon, orange] t2 [blob, magenta, label={[orange]90:\(-\)}, label={[teal]-90:\(+\)}] -- [gluon, teal] t3  [blob, cyan, label={[teal]180:\(-\)}, label={[violet]0:\(-\)}] -- [gluon, violet] t4 [blob, magenta, label={[violet]-90:\(+\)}, label={[purple]90:\(-\)}] -- [gluon,purple] t1, t1 -- [scalar] p1 [particle=\(\phi\)], t3 -- [gluon] p3 [particle=\(3^+\)], t2 -- [gluon] p2 [particle=\(2^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+}
+\hspace{2.1cm}
+\feynmandiagram[small, vertical=s to t]{
+	u -- [white] u2 -- [white] u3 -- [white]  s [blob, magenta, label={0:\(=\text{ anti-MHV}\)}] -- [white]  t [blob, cyan, label={0:\(=\text{ MHV}\)}],
+};
+\end{center}
+If we consider the first solution in which the spinors are
+\begin{align*}
+	\begin{cases}
+	|\ell_1^{(1)}]\propto|\ell_4^{(1)}]\propto|4]\\
+	|\ell_4^{(1)}\rangle\propto|\ell_3^{(1)}\rangle\propto|3\rangle
+	\end{cases},
+\end{align*}
+we immediately observe that:
+\begin{enumerate}
+\item the diagrams $(A)$ and $(C)$ vanish, indeed
+	$$A^{tree}(3^+,(-\ell_3)^-,\ell_4^+) = 
+	\feynmandiagram[inline=(v.base),small,vertical=v to a]{
+		a [particle=\(3^+\)] -- [gluon] v [blob, magenta, label={180:\(-\)}, label={0:\(+\)}] -- [gluon, rmomentum'=\(\ell_3\)] b,
+		v -- [gluon, momentum=\(\ell_4\)] c,
+	};
+	\propto [3\ell_4^{(1)}]^3=0;$$
+\item the diagrams $(B)$ and $(D)$ are zero due to the relation 
+	$$A^{tree}(4^+,(-\ell_4)^+,\ell_1^-) = 
+	\feynmandiagram[inline=(v.base),small,horizontal=v to a]{
+		a [particle=\(4^+\)] -- [gluon] v [blob, magenta, label={-90:\(+\)}, label={90:\(-\)}] -- [gluon, rmomentum'=\(\ell_4\)] b,
+		v -- [gluon, momentum=\(\ell_1\)] c,
+	};
+	\propto [ \ell_4^{(1)} 4 ]^3=0;$$
+\item the diagram $(E)$ vanishes because of the presence of the following factor:
+	$$A^{tree}(3^+,(-\ell_3)^-,\ell_4^-) = 
+	\feynmandiagram[inline=(v.base),small,vertical=v to a]{
+		a [particle=\(3^+\)] -- [gluon] v [blob, cyan, label={180:\(-\)}, label={0:\(-\)}] -- [gluon, rmomentum'=\(\ell_3\)] b,
+		v -- [gluon, momentum=\(\ell_4\)] c,
+	};
+	\propto \langle \ell_3^{(1)}\ell_4^{(1)}\rangle^3=0.$$
+\end{enumerate}
+Therefore we have no contributions considering the first solution $\ell_1^{(1)}$.\\
+For the second solution, we observe that $|\ell_4^{(2)}]\propto|\ell_3^{(2)}]\propto|3]$.
+These relations simplify the calculation because four diagrams are zero due to the following vanishing sub-amplitudes.
+\begin{align*}
+	&\feynmandiagram[inline=(v.base),small,vertical=v to a]{
+		a [particle=\(3^+\)] -- [gluon] v [blob, magenta, label={180:\(-\)}, label={0:\(+\)}] -- [gluon, rmomentum'=\(\ell_3\)] b,
+		v -- [gluon, momentum=\(\ell_4\)] c,
+	};
+	\propto [3\ell_4^{(2)}]^3=0 \Rightarrow \begin{cases}
+	(A)=0\\ (C)=0
+	\end{cases}\\
+	&\feynmandiagram[inline=(v.base),small,vertical=v to a]{
+		a [particle=\(3^+\)] -- [gluon] v [blob, magenta, label={180:\(+\)}, label={0:\(-\)}] -- [gluon, rmomentum'=\(\ell_3\)] b,
+		v -- [gluon, momentum=\(\ell_4\)] c,
+	};
+	\propto [3\ell_3^{(2)}]^3=0 \Rightarrow \begin{cases}(B)=0\\ (D)=0 \end{cases}\\
+\end{align*}
+The only non-trivial contribution is represented by the diagram with the gluon $3^+$ associated to a MHV vertex $(E)$,
+\begin{align*}
+	c_{1m}(\ell_1)&=A^{tree}(3^+,\ell_4^-,(-\ell_3)^-)A^{tree}((-\ell_4)^+,4^+,\ell_1^-)A^{1L}(\phi;1^+,(-\ell_1)^+,\ell_2^+)A^{tree}((-\ell_2)^-,2^+,\ell_3^+)\\
+	&=\frac{\langle \ell_4\ell_3\rangle^3}{\langle \ell_3 3 \rangle\langle 3 \ell_4 \rangle}\frac{[\ell_4 4]^3}{[4\ell_1][\ell_1\ell_4]}\frac{-2s_\phi^2}{\langle \ell_2 \ell_1 \rangle \langle \ell_1 1 \rangle \langle 1 \ell_2 \rangle}\frac{[2\ell_3]^3}{[\ell_3\ell_2][\ell_2 2]}.
+\end{align*}
+Using the momentum conservation laws together with some simple spinor algebra, we obtain
+$$
+	c_{1m}(\ell_1)=\frac{-2m_H^4}{\langle 21\rangle}\frac{[34]\langle \ell_4\ell_3\rangle^2 [\ell_4 4][2 \ell_3]}{\langle 3 \ell_4 \rangle \langle 1 \ell_4 \rangle [\ell_1\ell_4]\langle \ell_1 \ell_3 \rangle}.
+$$
+Now we explicitly use the spinors of the second solution $\ell_1^{(2)}$ and we find
+\begin{align*}
+	c_{1m}(\ell_1^{(2)})=\frac{-2s_\phi^2}{\langle 21 \rangle}\frac{[34][23]}{\langle 41 \rangle}=-s_{34}s_{23}A^{1L}(\phi;1^+2^+3^+4^+).
+\end{align*}
+As shown in the easy two-mass case (\ref{eq:coeffquad}), the desired coefficient is the arithmetic average of the results from the two solutions of the loop momentum:
+\begin{equation}
+	d_1^{1m}=\frac{1}{2}\left(c_{1m}(\ell_1^{(1)})+c_{1m}(\ell_1^{(2)})\right)=-\frac{1}{2}s_{34}s_{23}A^{1L}(\phi;1^+,2^+,3^+,4^+)	\label{eq:d11m}
+\end{equation}
+\subsubsection{Summary of the results}
+We have finished to compute the possible quadruple cuts in this sector with a one-loop $\phi$ amplitude.\\
+We obtain two non-vanishing contributions in the amplitude proportional to the one-mass box and the two-mass easy four-point integral. In the two-loop amplitude, the following terms are present considering the cyclic permutation of the external gluons,
+\begin{align*}
+	A^{1L}(\phi;1^+,2^+,3^+,4^+) \sum_{\sigma\in\mathbb{Z}_4} \left[-\frac{1}{2}s_{\sigma(3)\sigma(4)}s_{\sigma(2)\sigma(3)} I_4^{1m}(s_{\sigma(2)\sigma(3)},s_{\sigma(3)\sigma(4)};s_{\sigma(1)\phi})\right.\\ \left.+\frac{1}{2}\left(s_{\sigma(1)\sigma(4)}s_\phi-(s_{\phi \sigma(1)}-s_\phi)(s_{\phi \sigma(4)}-s_\phi)\right)I_4^{2me}(s_{\phi\sigma(4)},s_{\sigma(1)\phi};s_{\sigma(2)\sigma(3)},s_\phi)
+	\right].
+\end{align*}
+On the contrary, we observed the absence of two-mass hard scalar boxes in our amplitude in this sector with a one-loop self-dual Higgs sub-amplitude.
+
+\section{Second sector with a one-loop YM sub-amplitude}
+As observe in the first sector, in principle we can have three configurations (\ref{sbox:2me}, \ref{sbox:2mh}, \ref{sbox:1m}) due to the presence of five asymptotic states with one external mass. We will consider the possible helicity configurations of the inner gluons and compute the product of the sub-amplitudes. Connecting these expressions with the coefficient in front of the scalar boxes, we will deduce the weight of the two-mass easy four-point integral in the two-loop amplitude and we will demonstrate the absence of other boxes in this sector with a one-loop YM sub-amplitude.
+\subsubsection{Easy two-mass box}
+Let us start computing the quadruple cut in the configuration of two external masses at opposite corners. In principle, one can consider three different possibilities because there are three sub-amplitudes with only gluons and each of these can be considered at one-loop level, but the only non-trivial configuration is the following one.
+\columnratio{0.4}
+\begin{paracol}{2}
+\begin{center}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\feynmandiagram [] {
+a [particle=\(\phi\)] -- [scalar] t1 [blob, label={[purple]180:\(-\)}, label={[orange]0:\(-\)}] -- [gluon, orange] t2 [blob, label={[orange]90:\(+\)}, label={[teal]-90:\(-\)}] -- [gluon, teal] t3  [myblob, label={[teal]0:\(+\)}, label={[violet]180:\(+\)}] -- [gluon, violet] t4 [blob, label={[violet]-90:\(-\)}, label={[purple]90:\(+\)}] -- [gluon, momentum'={[black]\(\ell_1\)}, purple] t1, t2 -- [gluon] p1 [particle=\(1^+\)],
+t3 -- [gluon] p2 [particle=\(2^+\)], t3 -- [gluon] p3 [particle=\(3^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+\end{center}
+\switchcolumn
+Indeed, the only non vanishing $\phi+2g$ amplitude requires negative helicity (\ref{phi2g}) and, according to the non-vanishing condition of three gluon vertices, this completely fixes the helicity of all internal gluons. If we choose a different position for the one-loop gluon sub-amplitude, we can see the presence of the four gluon amplitude $A^{tree}(2^+,3^+,+,\pm)$ which nullifies the contribution.\\
+Established what the only relevant loop configuration is for this quadruple cut, we can compute the discontinuity keeping in mind the definition of loop momenta,
+$$
+	\left\{\ell_1,\ \ell_2,\ \ell_3,\ \ell_4\right\}=\left\{\ell_1,\ \ell_1-p_\phi,\ \ell_1-p_\phi-p_1,\ \ell_1+p_4\right\},
+$$
+and the on-shell solutions already computed [\ref{solveasyquadruplekin}].
+\end{paracol}
+Doing the quadruple cut, we need to consider the following product of sub-amplitudes,
+\begin{align*}
+	c'_{2me}(\ell_1)\coloneqq &A^{1L}(2^+,3^+,\ell_4^+,(-\ell_3)^-)A^{tree}(4^+,\ell_1^+,(-\ell_4)^-)\\
+	&A^{tree}(\phi;\ell_2^-,(-\ell_1)^-)A^{tree}(1^+,\ell_3^-,(-\ell_2)^+)\\
+	%=&\frac{1}{3}\frac{[\ell_4(-\ell_3)][23]}{\langle \ell_4 (-\ell_3)\rangle \langle 23 \rangle}\frac{[4\ell_1]^3}{[\ell_1\ell_4][\ell_4 4]}\left(-\langle \ell_2\ell_1 \rangle^2\right)\frac{[\ell_2 1]^3}{[\ell_3 \ell_2][1\ell_3]}\\
+	=&\frac{1}{3}\frac{[\ell_4\ell_3][23]}{\langle \ell_4 \ell_3\rangle \langle 23 \rangle}\frac{[4\ell_1]^3}{[\ell_1\ell_4][\ell_4 4]} \langle\ell_2\ell_1 \rangle^2\frac{[\ell_2 1]^3}{[\ell_3 \ell_2][1\ell_3]}
+\end{align*}
+where we carefully used the analytic continuation of spinors (\ref{analcont_spinors}).\\
+Using a simple spinor algebra, we can do the following simplifications:
+\begin{align*}
+	c'_{2me}(\ell_1)&=\frac{[\ell_4\ell_3][23][4\ell_1]^3\langle \ell_1 \ell_2 1]^2[\ell_2 1]}{3\langle \ell_4 (\ell_2-1)\ell_2] \langle 23 \rangle[\ell_1\ell_4][\ell_4 4][1\ell_3]}\\
+	&=\frac{[\ell_4\ell_3][23][4\ell_1]^3\langle \ell_1 (\ell_1-\phi) 1]\langle \ell_1(\ell_3+1)1][\ell_2 1]}{-3\langle \ell_4 1\rangle[1\ell_2] \langle 23 \rangle[\ell_1\ell_4][\ell_4 4][1\ell_3]}
+	%&=\frac{-[\ell_4\ell_3][23][4\ell_1]^3\langle \ell_1 \phi 1]\langle \ell_1\ell_3\rangle[\ell_31]}{3\langle \ell_4 1\rangle\langle 23 \rangle[\ell_1\ell_4][\ell_4 4][1\ell_3]}\\
+	=\frac{[23][4\ell_1]^3\langle \ell_1\phi1]\langle \ell_1 (\ell_4+P_{23})\ell_4][\ell_3 1]}{-3\langle 1(\ell_1+4)4]\langle 23 \rangle[\ell_1\ell_4][1 \ell_3]}\\
+	%&=\frac{[23][4\ell_1]^2\langle \ell_1\phi1]\langle \ell_1 p_{23}\ell_4]}{3\langle 1\ell_1\rangle\langle 23 \rangle[\ell_1\ell_4]}=\frac{[23][4\ell_1\ell_1\phi1][4\ell_1 p_{23}\ell_4]}{3\langle 23 \rangle \langle 1 4 \rangle [4\ell_4]}\\
+	&=\frac{[23][4\ell_4\ell_1\phi1][4\ell_4 P_{23}\ell_4]}{3\langle 23 \rangle \langle 1 4 \rangle [4\ell_4]}=\frac{[23][4\ell_4]}{3\langle 23 \rangle \langle 14 \rangle}\langle \ell_4\phi1]\langle \ell_4 P_{23}\ell_4].
+\end{align*}
+Now using the property
+$$
+	\langle \ell_4 P_{23} \ell_4]=(\ell_4+P_{23})^2-s_{23}=\ell_3^2-s_{23}=-s_{23},
+$$
+we obtain
+$$
+	c'_{2me}(\ell_1)=\frac{1}{3}\frac{[23]^2}{\langle 14 \rangle}[4\ell_4]\langle \ell_4 \phi 1].
+$$
+For the first solution $\ell_1^{(1)}$, we have $[4\ell_4]=0$, then $c'_{2me}(\ell_1^{(1)})$ vanishes. A non-trivial contribution comes from the second solution:
+\begin{align*}
+	c'_{2me}(\ell_1^{(2)})&=\frac{1}{3}\frac{[23]^2}{\langle 14 \rangle}d_4 [41]\langle 4\phi 1]=\frac{1}{3}\frac{[23]^2}{\langle 14 \rangle} s_{14}\left(s_\phi-\frac{(s_{\phi1}-s_{\phi})(s_{\phi4}-s_\phi)}{s_{14}}\right)\\
+	&=\frac{1}{3}\frac{[23]^2}{\langle 14 \rangle^2}\left(-s_{1\phi}s_{4\phi}+s_\phi (s_{14}+s_{\phi1}+s_{4\phi}-s_\phi)\right)=\frac{1}{3}\frac{[23]^2}{\langle 14 \rangle^2}(-s_{1\phi}s_{4\phi}+s_\phi s_{23}).
+\end{align*}
+In conclusion in this sector with a one-loop YM sub-amplitude, the coefficient of the easy two-mass four-point integral $I_4^{2me}(s_{\phi4},s_{1\phi};s_{23},s_\phi)$ is
+\begin{equation}
+d'^{(2me)}_1=\frac{1}{2}\left(c'_{2me}(\ell_1^{(1)})+c'_{2me}(\ell_1^{(2)})\right)=\frac{1}{6}\frac{[23]^2}{\langle 1 4 \rangle^2}(-s_{1\phi}s_{4\phi}+s_\phi s_{23}).
+\end{equation}
+\subsubsection{Hard two-mass box}
+For the easy two-mass box, we observed the presence of only one allowed configuration; similar considerations hold for the harder case: the tree-level $\phi$+gluon amplitude requires a negative helicity for the inner gluons, then the vertex with four gluon must have at least three positive gluons and therefore we have to consider the one-loop level for this four gluon sub-amplitude in order to obtain a non-trivial result.
+\columnratio{0.4}
+\begin{paracol}{2}
+\begin{center}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\feynmandiagram [horizontal'=p4 to t2] {
+a [particle=\(\phi\)] -- [scalar] t1 [blob, label={[purple]180:\(-\)}, label={[orange]0:\(-\)}] -- [gluon, orange] t2 [myblob, label={[orange]90:\(+\)}, label={[teal]-90:\(+\)}] -- [gluon, teal] t3  [blob, magenta, label={[teal]0:\(-\)}, label={[violet]180:\(+\)}] -- [gluon, violet] t4 [blob, magenta, label={[violet]-90:\(-\)}, label={[purple]90:\(+\)}] -- [gluon, purple, momentum'={[black]\(\ell_1\)}] t1, t2 -- [gluon] p1 [particle=\(2^+\)],
+t2 -- [gluon] p2 [particle=\(1^+\)], t3 -- [gluon] p3 [particle=\(3^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+\end{center}
+\switchcolumn
+In the diagram, we explicitly represent the adjacent anti-MHV vertexes, then the contribution vanishes. In fact, we can consider the two kinematical solutions for the loop momentum $\ell_1$ using the on-shell conditions dictated by the quadruple cut [\ref{quadA}, \ref{quadB}] and we can observe that:
+\begin{enumerate}
+\item for the first solution $\ell_1^{(1)}$,
+		$$A^{tree}(4^+,(-\ell_4)^+,\ell_1^-) 
+	%\feynmandiagram[inline=(v.base),small,horizontal=a to v]{
+	%	a [particle=\(4^+\)] -- [gluon] v [blob, magenta, label={-90:\(+\)}, label={90:\(-\)}] -- [gluon, momentum'=\(\ell_1\)] b,
+	%	v -- [gluon, rmomentum=\(\ell_4\)] c,
+	%};
+	\propto [ \ell_4^{(1)} 4 ]^3=0;$$
+\item considering the second solution $\ell_1^{(2)}$,
+	$$A^{tree}(3^+,(-\ell_3)^-,\ell_4^+) 
+	%\feynmandiagram[inline=(v.base),small,vertical=v to a]{
+	%	a [particle=\(3^+\)] -- [gluon] v [blob, magenta, label={180:\(+\)}, label={0:\(-\)}] -- [gluon, momentum'=\(\ell_4\)] b,
+	%	v -- [gluon, rmomentum=\(\ell_3\)] c,
+	%};
+	\propto [3\ell_4^{(2)}]^3=0.$$
+\end{enumerate}
+\end{paracol}
+This explicitly shows us that, also in the sector with a one-loop YM sub-amplitude, the contribution proportional to the hard two-mass four-point integral is absent.
+\subsubsection{One-mass box}
+The last quadruple cut we need to consider is applied to the one-mass box configuration. Also in this case, we need to consider a one-loop pure gluon sub-amplitude and in principle we have three possible contributions. The self-dual Higgs is coupled with four gluons: one external with positive helicity and two inner gluons which must have negative helicity in order to obtain a non-vanishing tree amplitude. This completely fixes the helicity of the other inner legs, therefore we have to consider only three helicity configurations, one for each possible position of the one-loop sub-amplitude.\\
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black} }
+\scalebox{0.9}{
+\feynmandiagram [vertical=t1 to p3] {
+a [particle=\(1^+\), label=-90:\(\hspace{-2.3cm}(A)\)] -- [gluon] t1 [blob, label={[purple]0:\(-\)}, label={[text=orange]180:\(-\)}] -- [gluon, orange] t2 [myblob, label={[orange]90:\(+\)}, label={[teal]-90:\(+\)}] -- [gluon, teal] t3  [blob, magenta, label={[teal]180:\(-\)}, label={[violet]0:\(+\)}] -- [gluon, violet] t4 [blob, magenta, label={[violet]-90:\(-\)}, label={[purple]90:\(+\)}] -- [gluon,purple, momentum={[black]\(\ell_1\)}] t1, t1 -- [scalar] p1 [particle=\(\phi\)], t3 -- [gluon] p3 [particle=\(3^+\)], t2 -- [gluon] p2 [particle=\(2^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+}
+\scalebox{0.9}{
+\feynmandiagram [vertical=t1 to p3] {
+a [particle=\(1^+\), label=-90:\(\hspace{-2.3cm}(B)\)] -- [gluon] t1 [blob, label={[purple]0:\(-\)}, label={[text=orange]180:\(-\)}] -- [gluon, orange] t2 [blob, magenta, label={[orange]90:\(+\)}, label={[teal]-90:\(-\)}] -- [gluon, teal] t3  [blob, magenta, label={[teal]180:\(+\)}, label={[violet]0:\(-\)}] -- [gluon, violet] t4 [myblob, label={[violet]-90:\(+\)}, label={[purple]90:\(+\)}] -- [gluon,purple, momentum={[black]\(\ell_1\)}] t1, t1 -- [scalar] p1 [particle=\(\phi\)], t3 -- [gluon] p3 [particle=\(3^+\)], t2 -- [gluon] p2 [particle=\(2^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+}
+\scalebox{0.9}{
+\feynmandiagram [vertical=t1 to p3] {
+a [particle=\(1^+\), label=-90:\(\hspace{-2.3cm}(C)\)] -- [gluon] t1 [blob, label={[purple]0:\(-\)}, label={[text=orange]180:\(-\)}] -- [gluon, orange] t2 [blob, magenta, label={[orange]90:\(+\)}, label={[teal]-90:\(-\)}] -- [gluon, teal] t3  [myblob, label={[teal]180:\(+\)}, label={[violet]0:\(+\)}] -- [gluon, violet] t4 [blob, magenta, label={[violet]-90:\(-\)}, label={[purple]90:\(+\)}] -- [gluon,purple, momentum={[black]\(\ell_1\)}] t1, t1 -- [scalar] p1 [particle=\(\phi\)], t3 -- [gluon] p3 [particle=\(3^+\)], t2 -- [gluon] p2 [particle=\(2^+\)], t4 -- [gluon] p4 [particle=\(4^+\)],
+};
+}
+\\
+We have represented the only possible configurations which do not have tree-level three-gluon amplitudes with all-plus particles. One can show that the contributions $(A)$ and $(B)$ vanish when we consider the two on-shell solutions $\ell_1^{(1)}$ and $\ell_1^{(2)}$, in fact they present two adjacent anti-MHV vertexes. But there is a general observation that immediately proves the absence of one-mass boxes in our amplitude in this sector: the three diagrams required a one-loop all-plus three gluon vertex, but we can show that $A^{nL}(a^+,b^+,c^+)=0$.\\
+To prove this statement we use special three-point kinematics and little group scaling \cite{2014}. If three light-like vectors satisfy the momentum conservation $p_a^\mu+p_b^\mu+p_c^\mu=0$, then one product between $[ab]$ and $\langle ab \rangle$ must vanish due to the relation
+$$
+	\langle ab \rangle [b a]=2p_a\cdot p_b=(p_a+p_b)^2=p_c^2=0.
+$$
+Supposing $[ab]$ different to zero, the condition $$[ ab c\rangle=[ a(-a-c) c\rangle=0$$ implies $\langle bc\rangle=0$ and a similar observation holds to the square product $\langle ac\rangle=0$ considering the spinor structure $[ bac\rangle$. This shows that an on-shell three-point amplitude with massless particles can only depend on either angle or square brackets. If we suppose that the amplitude can be written in terms of square brackets, we can write the result in the following form
+$$
+	A(a^{h_a},b^{h_b},c^{h_c})=\xi\ [ab]^{x_{ab}}[ac]^{x_{ac}}[bc]^{x_{bc}}.
+$$
+If we consider the little group scaling 
+$$
+	|p\rangle\rightarrow t |p\rangle, \ \ \ |p]\rightarrow t^{-1}|p]
+$$
+which does not change the momentum $p^\mu=\tfrac{1}{2}\langle p|\sigma^\mu |p]$, an amplitude with massless spin-1 particles transforms homogeneously with weight $-2h_i$ where $h_i=\pm 1$ is the helicity of the $i-$th particle. In fact this changing is inherited from the beaviour of polarization vectors $\epsilon_\pm^\mu(p;q)$. Applying the little group scaling separately for the three momenta, one can find the relation between the exponents and the helicity of the external gluons obtaining
+$$
+	A(a^{h_a},b^{h_b},c^{h_c})=\xi\ [ab]^{h_a+h_b-h_c}[ac]^{h_a+h_c-h_b}[bc]^{h_b+h_c-h_a}.
+$$
+In our case with all-plus gluons, using basic principles and independently from the loop-level we have
+$$
+	A(a^+,b^+,c^+)=\xi\, [ab][ac][bc]
+$$
+Using dimensional analysis, the  color-ordered three-gluon amplitude must have mass dimension $1$, therefore the parameter $\xi$ must have a mass-dimension $-2$. We need to understand if in our theory a constant $\xi$ with this dimensional property can emerge. We observe that Bose-symmetry requires that the coupling must be associated with antisymmetric structure constants, therefore the natural term which can produce this amplitude is $\Tr \left(\tensor{G}{^\mu_{\nu}}\tensor{G}{^\nu_{\lambda}}\tensor{G}{^\lambda_{\mu}}\right)$ which is a dimension-6 operator. However we do not have this object in our Lagrangian which only contains the YM structure and the effective 5-dimension operators which describes the couplings between gluons and scalars.\\
+This shows that at any loop level the all-plus three gluon amplitude is zero: as a consequence, all the possible contributions in this quadruple cut vanish and the coefficient of the one-mass four-point integral is zero in this sector, contrary to what observed in the cut-constructible pieces with a one-loop $\phi$ amplitude.
+\subsubsection{Summary of the results}
+From the quadruple cuts, we found a four-point contribution in the cut-constructible part of this sector which is proportional to the two-mass easy box. We obtained
+\begin{align*}
+	\frac{1}{3}\frac{[23]^2}{\langle 14 \rangle^2} (-s_{1\phi}s_{4\phi}+s_\phi s_{23})I_4^{2me}(s_{\phi 4},s_{1\phi};s_{23},s_\phi)
+\end{align*}
+and similar contributions can be observed applying a cyclic permutation of the gluons.\\
+Studying the allowed helicity configurations for the sub-amplitudes involved in the computation of the two-mass hard contribution and the one-mass four-point coefficient, we demonstrated the absence of other boxes in this sector. Although the lack of the hard configuration was already seen in the previous sector, we also observed the absence of contributions proportional to the one-mass four-point integral in the current sector. This fact is due to the vanishing behavior of the one-loop three gluon amplitude in the all-plus configuration.
+
+\chapter{Cut constructible pieces of the two-loop $\phi+3g^+$ amplitude} \label{phi+3g}
+The cut-constructible part of the self-dual Higgs plus three gluon amplitude is
+\begin{align*}
+A^{2L}_{cc}(\phi;1^+,2^+,3^+)=&\, A^{1L}(\phi;1^+,2^+,3^+)\sum_{\sigma\in \mathbb{Z}_3} d_{\sigma(i)} I_{4}^{1m}(s_{\phi\sigma(i)},s_{\phi\sigma(i+2)};s_\phi)\\&+A^{1L}(\phi;1^+,2^+,3^+)\sum_{\sigma\in \mathbb{Z}_3} c_{\sigma(1)} I_{3,\sigma(1)}^{2m}(s_{\phi\sigma(i)},s_{\phi}) -\frac{1}{3} A^{1L}(\phi;1^+2^+3^+)\, I_2(s_\phi)
+\end{align*}
+where
+\begin{align*}
+	d_{\sigma(i)}=-\frac{1}{2}s_{\phi \sigma(i)}s_{\phi\sigma(i+2)}, \hspace{0.5cm}c_{\sigma(i)}=s_{\phi\sigma(i)}-s_\phi.
+\end{align*}
+We can extract the divergent part which is consistent with the general structure,
+\begin{align*}
+	\left[A^{2L}_{cc}(\phi;1^+,2^+,3^+)\right]_{IR+UV}=\left[-\frac{1}{\epsilon^2}\sum_{i=1}^3 \left(-s_{i,i+1}\right)^{-\epsilon}-\frac{1}{3\epsilon}\right].
+\end{align*}
+The remainder part comes from the finite contribution of one-mass boxes and the bubble integral. We obtain
+\begin{align*}
+	\left[A^{2L}_{cc}(\phi;1^+2^+3^+)\right]_{finite}=A^{1L}(\phi;1^+2^+3^+)\left[2\,\text{Li}_2\left(1-\frac{s_\phi}{s_{12}}\right)+2\,\text{Li}_2\left(1-\frac{s_\phi}{s_{23}}\right)+2\,\text{Li}_2\left(1-\frac{s_\phi}{s_{31}}\right) \right.\\ \left.
++\frac{1}{2}\ln^2\frac{s_{12}}{s_{23}}+\frac{1}{2}\ln^2\frac{s_{23}}{s_{31}}+\frac{1}{2}\ln^2\frac{s_{31}}{s_{12}}+\frac{\pi^2}{2}-\frac{1}{3}\left(2+\ln\left(\frac{\mu_R^2}{-s_\phi}\right)\right)\right].
+\end{align*}
+In the following sections there are some details about the computation. Similarly to the case of four gluons, we divide the double cuts into two sectors according to the different perturbative level of sub-amplitudes.
+\section{Cuts with a one-loop $\phi$+gluon sub-amplitude}
+\begin{tabularx}{\linewidth}{XX}
+\vspace{-1cm}
+\begin{equation}	\tag{dcut A3} 	
+    \begin{aligned}	\label{dcut A3}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [scale=0.85, horizontal=b to c] {
+      b [blob] --  [white] db -- [white] c [myblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(2^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, rmomentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, rmomentum=\(\ell_2\)] b ,
+      d1 [particle=\(1^+\)] -- [gluon] b,
+      d3 [particle=\(3^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 1.9)$) -- ($(midpoint) + (0, -1.9)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}	
+\end{equation}
+&
+\vspace{-1cm}
+
+\begin{equation}	\tag{dcut B3} 	
+    \begin{aligned}	\label{dcut B3} 	
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [scale=0.95, horizontal=b to c] {
+      b [blob] --  [white] db -- [white] c [myblob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(3^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, rmomentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, rmomentum=\(\ell_2\)] b ,
+      d1 [particle=\(2^+\)] -- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d2 [particle=\(1^+\)],
+    };
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 1.9)$) -- ($(midpoint) + (0, -1.9)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+\end{tabularx}
+In $s_\phi$-channel (\ref{dcut A3}), the integrand for the double cut is
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut A3}}&=A^{1L}(\phi;\ell_1^+,(-\ell_2)^+)\frac{\langle \ell_1 \ell_2 \rangle^3}{\langle 12 \rangle \langle 23 \rangle \langle 3 \ell_1 \rangle \langle \ell_2 1 \rangle}.
+\end{align*}
+Using (\ref{1Lphi}) and reconstructing the scalar product of momenta at denominator, we obtain
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut A3}}=A^{1L}(\phi;1^+,2^+,3^+)\frac{\tr_-(13\ell_1 \ell_2)}{\langle 3 \ell_1 3]\langle 1 \ell_2 1]}.
+\end{align*}
+We can expand the trace and isolate the integrand of scalar functions. At the integral level, we achieve the following result,
+\begin{align*}
+	\int \dd \Phi_2 A^{2L}_{int}|_{\text{dcut A3}}&=A^{1L}(\phi;1^+,2^+,3^+) \left[\frac{1}{2}(-s_{1\phi} s_{3\phi}) I_4^{1m}(s_{1\phi},s_{3\phi};s_\phi)|_{s_\phi\text{-cut}}\right.\\
+	&\hspace{0.5cm}\left.+ \frac{1}{2}(s_{1\phi}-s_\phi)I_3^{2m}(s_{1\phi},s_\phi)|_{s_\phi\text{-cut}}+ \frac{1}{2}(s_{3\phi}-s_{\phi})I_3^{2m}(s_{3\phi},s_\phi)|_{s_\phi\text{-cut}}\right].
+\end{align*}
+In $s_{\phi1}$-channel, the double cut (\ref{dcut B3}) can be easily computed using Schouten identity.
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut B3}}&=A^{1L}(\phi;1^+,\ell_1^+,(-\ell_2)^+)\frac{\langle \ell_1 \ell_2 \rangle^3}{\langle 23 \rangle \langle 3 \ell_1 \rangle \langle \ell_2 2 \rangle}\\
+	&=A^{1L}(\phi;1^+,2^+,3^+)\left(\frac{\langle 1 \ell_2 \rangle}{\langle \ell_1 1 \rangle}+\frac{\langle \ell_2 3 \rangle}{\langle \ell_1 3 \rangle}\right)\left(\frac{\langle 1 \ell_1 \rangle}{\langle \ell_2 1 \rangle}+\frac{\langle \ell_1 2 \rangle}{\langle \ell_2 2 \rangle}\right).
+\end{align*}
+After the multiplication, we can reconstruct the propagators at denominators inserting antiholomorphic spinor products. This process produces traces at numerator which can be expanded. The computation is similar to the double cut described in Section [\ref{sec:dcutB}].
+\begin{align*}
+	\int \dd \Phi_2 A^{2L}_{int}|_{\text{dcut B3}}&=A^{1L}(\phi;1^+,2^+,3^+)\left[\frac{1}{2}(-s_{1\phi}s_{3\phi})I_4^{1m}(s_{1\phi},s_{3\phi};s_\phi)|_{s_{\phi1}\text{-cut}}+\right.\\
+	&\hspace{0.5cm}\left.\frac{1}{2}(-s_{1\phi}s_{2\phi})I_4^{1m}(s_{1\phi},s_{2\phi};s_\phi)|_{s_{\phi1}\text{-cut}} +2\frac{1}{2}(s_{1\phi}-s_\phi) I_3^{2m}(s_{1\phi},s_\phi)|_{s_{\phi1}\text{-cut}}\right].
+\end{align*}
+The self-dual Higgs is unordered and this is the motivation of the presence of two boxes with a different configuration of gluons.
+We do not observe the presence of contributions in this channel that cannot be investigated in the previous one. In conclusion, from this sector we only have one-mass boxes and two-mass triangles.
+\section{Cuts with a one-loop YM sub-amplitude}
+\begin{tabularx}{\linewidth}{XX}
+\vspace{-1cm}
+\begin{equation}	\tag{dcut C3} 
+    \begin{aligned}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [ horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(3^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, rmomentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, rmomentum=\(\ell_2\)] b ,
+      d1 [particle=\(2^+\)] -- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+      c -- [gluon] d2 [particle=\(1^+\)],
+    };
+	\label{sphi1}
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 1.8)$) -- ($(midpoint) + (0, -1.8)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}
+\end{equation}
+&
+\vspace{-1cm}
+\begin{equation}	\tag{dcut D3}
+    \begin{aligned}
+\tikzfeynmanset{ myblob/.style={ shape=circle, typeset=$\bigcirc$,
+draw=black, } }
+\begin{tikzpicture}
+  \begin{feynman}
+    \diagram [scale=0.9, horizontal=b to c] {
+      b [myblob] --  [white] db -- [white] c [blob], %uso solo per distanziare i due blob, ma essendo bianchi verranno ricoperti
+      b -- [white] ds -- [white] c,
+      a [particle=\(2^+\)] -- [gluon] b
+        -- [gluon, half left, out=60, in=120, momentum=\(\ell_1\)] c
+        -- [gluon, half left, in=120, out=60, momentum=\(\ell_2\)] b ,
+      d1 [particle=\(1^+\)] -- [gluon] b,
+      d3 [particle=\(3^+\)]-- [gluon] b,
+      c -- [scalar] d [particle=\(\phi\)],
+    };
+
+    %% Find the midpoint, which is halfway between b and c.
+    \coordinate (midpoint) at ($(b)!0.5!(c)$);
+    %% Draw a line starting 2 units above the midpoint, and ending 2 units below
+    %% the midpoint.
+    \draw [dashed] ($(midpoint) + (0, 1.8)$) -- ($(midpoint) + (0, -1.8)$);
+  \end{feynman}
+\end{tikzpicture}
+\end{aligned}	
+\end{equation}
+\end{tabularx}
+In $s_{\phi 1}$-channel, the product of sub-amplitude is
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut C3}}&=A^{tree}(\phi;\ell_1^+,(-\ell_2)^+,1^+)\,A^{1L}((-\ell_1)^+,\ell_2^+,2^+,3^+)\\
+	&=\left[\frac{\langle \ell_1 \ell_2 \rangle^3}{\langle 1 \ell_1 \rangle \langle \ell_2 1 \rangle}\right] \left[ \frac{1}{3}\frac{[\ell_1\ell_2][23]}{\langle \ell_1 \ell_2 \rangle\langle 23 \rangle}\right]=\frac{1}{3}[23]^2 \frac{\langle \ell_1 \ell_2 \rangle}{\langle \ell_1 1 \rangle \langle 1 \ell_2 \rangle}.
+\end{align*}
+We can simplify the integrand showing that the contribution is spurious. Using Schouten identity, we obtain the following simplifications,
+\begin{align*}
+	A^{2L}_{int}|_{\text{dcut C3}}&=\frac{1}{3}\frac{[23]^2}{\langle 12 \rangle}\left(\frac{-\langle \ell_1 1 \rangle \langle 2 \ell_2 \rangle-\langle \ell_1 2 \rangle \langle \ell_2 1 \rangle}{\langle \ell_1 1 \rangle \langle 1 \ell_2 \rangle}\right)=\\
+	&=\frac{1}{3} \frac{[23]^2}{\langle 12 \rangle} \left(-\frac{\langle 2 \ell_2 \rangle}{\langle 1 \ell_2 \rangle}+\frac{\langle 2 \ell_1 \rangle}{\langle 1 \ell_1 \rangle}\right)=\frac{1}{3} \frac{[23]^2}{\langle 12 \rangle} \left(-\frac{\langle 2 \ell_2 1]}{\langle 1 \ell_2 1]}+\frac{\langle 2 \ell_1 1]}{\langle 1 \ell_1 1 ]}\right)\\
+	&=\frac{1}{3} \frac{[23]^2}{\langle 12 \rangle} \left(-\frac{\langle 2 \phi 1]}{\langle 1 \phi 1]}+\frac{\langle 2 \phi 1]}{\langle 1 \phi 1 ]}\right)=0.
+\end{align*}
+The last passage can be shown using the explicit integrand reduction of 3-pts tensor integrals. The derivation is equivalent to the reduction done in Section [\ref{sec:sphi1_2ndsec}] in order to prove the property (\ref{sub3}). For example, let us consider
+$$
+	\frac{\langle 2 \ell_2 1 ]}{\langle 1 \ell_2 1]}=\langle 2| \left[\ell_2^\mu \left(
+	\begin{tikzpicture}[baseline=(current bounding box.center)]
+ 	 \begin{feynman}
+    		\diagram [scale=0.65,vertical=c to d] {
+      			d2 [particle=\(3\)]-- b -- [momentum={\tiny\(\ell_1\)}] c
+        			-- [momentum={\tiny\(\ell_2+p_1\)}] d -- [momentum={[label distance=-3.5pt]\tiny\(\ell_2\)}] b,
+			d3  [particle=\(2\)]-- [] b,
+      			d4 [particle=\(\phi\)]-- [] c,
+      			d -- [] s [particle=\(1\)],
+   		 };
+    		\coordinate (midpoint) at ($(b)!0.5!(d)$);
+		\coordinate (midpoint2) at ($(c)!0.5!(d)$);
+   		\draw [dashed] ($(midpoint) + (0, 1.25)$) to ($(midpoint) + (0, -0.75)$);
+  	\end{feynman}
+	\end{tikzpicture} \right) \right]\gamma_\mu |1].
+$$
+We introduce the propagators,
+\begin{align*}
+	&D_1=\ell_1^2 \overset{\text{(cut)}}{=} 0,\\
+	&D_2=\ell_2^2 \overset{\text{(cut)}}{=} 0,\\
+	&D_3=(\ell_2+p_1)^2.
+\end{align*}
+In order to reduce the tensor triangle, we can decompose the loop momentum in a basis characterised by $p_1$, $p_\phi$ and two orthogonal vectors $\omega_1$ and $\omega_2$,
+$$
+	\ell_2^\mu=\alpha p_1^\mu + \beta p_\phi^\mu + \gamma \omega_1^\mu + \delta \omega_2^\mu.
+$$
+After the contraction with the spinors, the only non-vanishing contribution is proportional to $p_\phi$. Hence, we are interested in the coefficient $\beta$ which can be written in terms of propagators,
+\begin{align*}
+	&p_1 \cdot \ell_2=  \frac{1}{2} D_3 = \beta p_1 \cdot p_\phi, \hspace{0.5cm}\beta=\frac{D_3}{\langle 1 \phi 1]}.
+\end{align*}
+Since the numerator $D_3$ cancels the same contribution at denominator of the three-point integrand, we obtain a bubble contribution,
+$$
+	\frac{\langle 2 \ell_2 1 ]}{\langle 1 \ell_2 1]}=\langle 2| \left[ \beta p_\phi^\mu \left(
+	\frac{1}{D_3} \right) \right]\gamma_\mu |1] = \langle 2 | \frac{p_\phi^\mu}{\langle 1 \phi 1]} \gamma_\mu |1]=\frac{\langle 2 \phi 1]}{\langle 1 \phi 1]}.
+$$
+
+We have computed the last double cut in $s_\phi$-channel with the help of Mathematica in order to manage the different addends which come from the one-loop five gluon amplitude. We have applied the same techniques used in Section [\ref{sec:sphi1_3rdsec}]. The use of momentum conservation and Schouten identities helps us to isolate combinations of spinors with loop momenta which can be easily computed through Gamma technology and tensor reductions. We have decomposed the result in terms of scalar integrals and we observed the absence of boxes and triangles in this channel. We only have a contribution proportional to the bubble $I_2(s_\phi)$.
+Due to the absence of color of the $\phi$ field, we sum over the three possible configurations of gluons and we obtain a coefficient proportional to the one-loop amplitude,
+$$
+	-\frac{1}{3} A^{1L}(\phi;1^+,2^+,3^+) I_2(s_\phi).
+$$
